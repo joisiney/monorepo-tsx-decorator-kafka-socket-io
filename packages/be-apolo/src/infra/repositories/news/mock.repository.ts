@@ -66,7 +66,7 @@ export class NewsMockRepository implements INewsRepository.Implements {
     return new Right(news.id)
   }
 
-  async delete(id: string): Promise<Either<boolean, NotFoundException>> {
+  async remove(id: string): Promise<Either<boolean, NotFoundException>> {
     const index = this.mockNews.findIndex((item) => item.id === id)
     if (index === -1) {
       return new Left(new NotFoundException('News not found'))

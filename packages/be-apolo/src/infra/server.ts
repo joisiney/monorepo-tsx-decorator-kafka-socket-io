@@ -2,6 +2,7 @@ import { NewsController } from '@/application/controllers/news/index.controller'
 import { NewsCreateUseCase } from '@/application/use-cases/news/create/index.use-case'
 import { NewsFindAllUseCase } from '@/application/use-cases/news/find-all/index.use-case'
 import { NewsFindByIdUseCase } from '@/application/use-cases/news/find-id/index.use-case'
+import { NewsRemoveByIdUseCase } from '@/application/use-cases/news/remove/index.use-case'
 import { NewsUpdateByIdUseCase } from '@/application/use-cases/news/update/index.use-case'
 import { InjectorFactory } from '@olympus/lib-hera'
 import Fastify, { FastifyInstance } from 'fastify'
@@ -22,6 +23,7 @@ InjectorFactory.instance.set('PluginRouter', app)
     InjectorFactory.resolve(NewsCreateUseCase)
     InjectorFactory.resolve(NewsFindByIdUseCase)
     InjectorFactory.resolve(NewsUpdateByIdUseCase)
+    InjectorFactory.resolve(NewsRemoveByIdUseCase)
   }
   {
     // INJECTING NEWS REPOSITORY

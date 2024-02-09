@@ -17,6 +17,6 @@ export namespace INewsRepository {
       news: Omit<IOptional<INewsDto, 'id'>, 'createdAt'>,
     ): Promise<Either<string, NotFoundException>>
     update(news: IRequired<Partial<INewsDto>, 'id'>): Promise<Either<string, NotFoundException>>
-    delete(id: string): Promise<Either<boolean, NotFoundException>>
+    remove(id: string): Promise<Either<boolean, NotFoundException>>
   }
 }

@@ -27,3 +27,7 @@ content-type: application/json
 {
     title: "Noticia 2",
 }
+
+### 3. Remover notícia por id
+DELETE {{host}}/olympus/news/1 HTTP/1.1
+content-type: application/json

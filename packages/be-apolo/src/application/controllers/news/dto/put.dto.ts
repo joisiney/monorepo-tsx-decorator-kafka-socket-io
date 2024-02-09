@@ -13,7 +13,6 @@ export const newsUpdateDto = z.object({
       message: 'Thumbnail da notícia deve ser uma URL válida',
     }).optional(),
 }).refine((data) => {
-  console.log('validate',data)
   return Object.keys(data).length > 1
 },{
   message: 'É necessário informar pelo menos um campo para atualização'
