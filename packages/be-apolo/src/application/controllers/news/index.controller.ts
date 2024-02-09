@@ -1,6 +1,6 @@
-
 import { INewsKeyDto } from '@/application/dto/id.dto'
 
+import { NewsCreateUseCase } from '@/application/use-cases/news/create/index.use-case'
 import { NewsFindAllUseCase } from '@/application/use-cases/news/find-all/index.use-case'
 import {
   Controller,
@@ -12,9 +12,12 @@ import { INewsAllDto, newsAllDto } from './dto/all.dto'
 import { INewsDto, newsDto } from './dto/news.dto'
 
 @Controller('/olympus/news/')
-@Injectable({ dep: ['NewsFindAllUseCase'] })
+@Injectable({ dep: ['NewsFindAllUseCase', 'NewsCreateUseCase'] })
 export class NewsController extends ControllerComposer {
-  constructor(private findAllUseCase: NewsFindAllUseCase) {
+  constructor(
+    private findAllUseCase: NewsFindAllUseCase
+    , private createUseCase: NewsCreateUseCase
+  ) {
     super()
   }
 
@@ -38,9 +41,7 @@ export class NewsController extends ControllerComposer {
 
   @Route({ method: 'POST', url: '/', dto: newsDto })
   async newsCreate(data: INewsDto) {
-    console.log('create', data)
-
-    return { status: true }
+    return this.createUseCase.execute(data)
   }
 
   @Route({ method: 'DELETE', url: '/:id' })
