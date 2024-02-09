@@ -17,7 +17,8 @@ export class TransformExceptionService {
     if (is) {
       return {
         code: error.code,
-        status: name,
+        status: 'error',
+        name,
         message: error.message,
         method: this.method,
         url: this.url,
@@ -32,7 +33,8 @@ export class TransformExceptionService {
     }
     return {
       code: 500,
-      status: 'InternalException',
+      status: 'error',
+      name: 'InternalException',
       message: 'Erro interno no servidor',
       stack: this.stack,
     };
