@@ -1,0 +1,24 @@
+{
+  "name": "@olympus/be-apolo",
+  "version": "1.0.0",
+  "description": "News Consumer",
+  "main": "src/infra/server.ts",
+  "author": "Joisiney Leandro",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "node dist/server.js",
+    "build": "tsc && tsc-alias",
+    "start:dev": "tsx watch src/infra/server.ts",
+    "husky:prepare": "husky install",
+    "test": "vitest",
+    "lint": "eslint --fix"
+  },
+  "dependencies": {
+    "fastify": "^4.26.0",
+    "stacktrace-js": "^2.0.2"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.3"
+  }
+}

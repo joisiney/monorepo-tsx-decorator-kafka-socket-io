@@ -1,0 +1,15 @@
+### 1. Consultar usuario por id
+GET {{host}}/olympus/news HTTP/1.1
+content-type: application/json
+x-page: 1
+x-take: 12
+
+### 1. Consultar usuario por id
+POST {{host}}/olympus/news HTTP/1.1
+content-type: application/json
+{
+    "title": "Noticia 1    ",
+    "description": "Descripción de la noticia 1",
+    "content": "Contenido de la noticia 1",
+    "thumbnail": "https://www.google.com"
+}

@@ -1,0 +1,27 @@
+{
+  "name": "olympus",
+  "private": true,
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "test": "jest"
+  },
+  "dependencies": {
+    "@olympus/lib-hera": "*",
+    "reflect-metadata": "^0.2.1",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@olympus/lint-zeus": "*",
+    "@types/node": "^20.11.16",
+    "tsx": "^4.5.1",
+    "typescript": "4.5.2",
+    "vitest": "^1.2.2"
+  },
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
+  }
+}

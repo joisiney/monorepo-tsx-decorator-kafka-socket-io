@@ -1,0 +1,22 @@
+{
+  "name": "@olympus/lib-hera",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "author": "Joisiney Leandro",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc && tsc-alias",
+    "watch": "tsc -w",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "useragent": "^2.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.16",
+    "@types/useragent": "^2.3.4",
+    "tsc-alias": "^1.8.8",
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.3"
+  }
+}
