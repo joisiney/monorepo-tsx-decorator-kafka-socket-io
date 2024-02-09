@@ -4,6 +4,7 @@ import { NewsEntity } from '@/domain/entities/news.entity'
 import {
   Either,
   IOptional,
+  IRequired,
   Injectable,
   Left,
   NotFoundException,
@@ -54,13 +55,14 @@ export class NewsMockRepository implements INewsRepository.Implements {
   }
 
   async update(
-    news: INewsDto,
+    news: IRequired<Partial<INewsDto>, 'id'>,
   ): Promise<Either<string, NotFoundException>> {
     const index = this.mockNews.findIndex((item) => item.id === news.id)
     if (index === -1) {
       return new Left(new NotFoundException('News not found'))
     }
-    this.mockNews[index] = new NewsEntity(news)
+    const clone = { ...this.mockNews[index], ...news } as INewsDto
+    this.mockNews[index] = new NewsEntity(clone)
     return new Right(news.id)
   }
 

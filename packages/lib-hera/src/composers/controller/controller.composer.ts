@@ -26,11 +26,14 @@ export class ControllerComposer {
           request: IController.IRequest,
           reply: IController.IResponse,
         ) => {
+          console.log('antes')
           try {
             const parent = this as any as {
               [key: string]: (props?: any) => Promise<any>
             }
+            console.log('parent', method, url)
             if (propertyKey in this) {
+              console.log('propertyKey', propertyKey)
               const paramsService = new ControllerParams(request)
               const parsedService = new ControllerParamsParser(paramsService)
               const parseded = parsedService.parseTo(dto)

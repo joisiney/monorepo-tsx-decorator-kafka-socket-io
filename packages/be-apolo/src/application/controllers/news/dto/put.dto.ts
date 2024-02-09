@@ -4,24 +4,18 @@ export const newsUpdateDto = z.object({
   id: z.string({
     required_error: 'Id da notícia é obrigatório',
   }),
-  title: z.string({
-    required_error: 'Título da notícia é obrigatório',
-  }),
-  description: z.string({
-    required_error: 'Descrição da notícia é obrigatória',
-  }),
-  content: z.string({
-    required_error: 'Conteúdo da notícia é obrigatório',
-  }),
-  createdAt: z.date({
-    required_error: 'Data de criação da notícia é obrigatória',
-  }),
+  title: z.string().optional(),
+  description: z.string().optional(),
+  content: z.string().optional(),
   thumbnail: z
-    .string({
-      required_error: 'Thumbnail da notícia é obrigatório',
-    })
+    .string()
     .url({
       message: 'Thumbnail da notícia deve ser uma URL válida',
-    }),
+    }).optional(),
+}).refine((data) => {
+  console.log('validate',data)
+  return Object.keys(data).length > 1
+},{
+  message: 'É necessário informar pelo menos um campo para atualização'
 })
 export type INewsUpdateDto = z.output<typeof newsUpdateDto>

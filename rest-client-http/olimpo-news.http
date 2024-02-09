@@ -19,3 +19,11 @@ x-take: 12
 ### 3. Consultar notícia por id
 GET {{host}}/olympus/news/1 HTTP/1.1
 content-type: application/json
+
+### 3. Atualizar notícia por id
+PUT {{host}}/olympus/news/1 HTTP/1.1
+content-type: application/json
+
+{
+    title: "Noticia 2",
+}
