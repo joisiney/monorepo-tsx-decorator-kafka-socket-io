@@ -1,6 +1,7 @@
 import { z } from 'zod'
 
 export const newsDto = z.object({
+  id: z.string().optional(),
   title: z.string({
     required_error: 'Título da notícia é obrigatório',
   }).transform((val) => val.trim()),

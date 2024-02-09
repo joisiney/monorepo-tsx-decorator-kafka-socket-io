@@ -14,7 +14,7 @@ export namespace INewsRepository {
     findAll(props: INewsRepository.InputFindAll): Promise<Either<PaginationEntity<NewsEntity>, NotFoundException>>
     findById(id: string): Promise<Either<NewsEntity, NotFoundException>>
     create(
-      news: IOptional<INewsDto, 'id' | 'createdAt'>,
+      news: Omit<IOptional<INewsDto, 'id'>, 'createdAt'>,
     ): Promise<Either<string, NotFoundException>>
     update(news: INewsDto): Promise<Either<string, NotFoundException>>
     delete(id: string): Promise<Either<boolean, NotFoundException>>

@@ -37,7 +37,7 @@ export class NewsMockRepository implements INewsRepository.Implements {
   }
 
   async create(
-    news: IOptional<INewsDto, 'id' | 'createdAt'>,
+    news: Omit<IOptional<INewsDto, 'id'>, 'createdAt'>,
   ): Promise<Either<string, NotFoundException>> {
     const hasNews = await this.has(news.id)
     if (hasNews) {

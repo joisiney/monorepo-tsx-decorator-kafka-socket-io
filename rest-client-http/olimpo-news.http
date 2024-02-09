@@ -1,16 +1,21 @@
-### 1. Consultar usuario por id
-GET {{host}}/olympus/news HTTP/1.1
-content-type: application/json
-x-page: 1
-x-take: 12
-
-### 1. Consultar usuario por id
+### 1. Criar notícia
 POST {{host}}/olympus/news HTTP/1.1
 content-type: application/json
 
 {
+    "id": "1",
     "title": "Noticia 1    ",
     "description": "Descripción de la noticia 1",
     "content": "Contenido de la noticia 1",
     "thumbnail": "https://www.google.com"
 }
+
+### 2. Listar todas as notícias
+GET {{host}}/olympus/news HTTP/1.1
+content-type: application/json
+x-page: 1
+x-take: 12
+
+### 3. Consultar notícia por id
+GET {{host}}/olympus/news/1 HTTP/1.1
+content-type: application/json

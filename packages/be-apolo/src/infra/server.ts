@@ -1,6 +1,7 @@
 import { NewsController } from '@/application/controllers/news/index.controller'
 import { NewsCreateUseCase } from '@/application/use-cases/news/create/index.use-case'
 import { NewsFindAllUseCase } from '@/application/use-cases/news/find-all/index.use-case'
+import { NewsFindByIdUseCase } from '@/application/use-cases/news/find-id/index.use-case'
 import { InjectorFactory } from '@olympus/lib-hera'
 import Fastify, { FastifyInstance } from 'fastify'
 import 'reflect-metadata'
@@ -17,6 +18,7 @@ app.setErrorHandler(function (error, request, reply) {
 
 InjectorFactory.resolve(NewsFindAllUseCase)
 InjectorFactory.resolve(NewsCreateUseCase)
+InjectorFactory.resolve(NewsFindByIdUseCase)
 InjectorFactory.resolve(NewsMockRepository)
 InjectorFactory.resolve(NewsController)
 
