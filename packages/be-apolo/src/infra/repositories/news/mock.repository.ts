@@ -22,7 +22,8 @@ export class NewsMockRepository implements INewsRepository.Implements {
       page: props.page,
       take: props.take,
     })
-    paginationService.data = this.mockNews.slice(paginationService.skip, paginationService.skip + paginationService.take)
+    const data = this.mockNews.slice(paginationService.skip, paginationService.skip + paginationService.take)
+    paginationService.data = data
     paginationService.total = this.mockNews.length
     return new Right(paginationService)
   }

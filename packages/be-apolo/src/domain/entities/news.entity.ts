@@ -1,5 +1,5 @@
 import { type IOptional } from '@olympus/lib-hera'
-import { INewsDto, INewsWhiteListDto } from '../dto/news.dto'
+import { INewsDto } from '../dto/news.dto'
 
 export class NewsEntity {
   private data: INewsDto
@@ -19,7 +19,8 @@ export class NewsEntity {
     return this.data
   }
 
-  get whiteList(): INewsWhiteListDto {
-    return this.data
+  toJSON() {
+    const {createdAt, ...data} = this.data
+    return data
   }
 }
