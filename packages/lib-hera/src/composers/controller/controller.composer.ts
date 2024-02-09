@@ -26,7 +26,6 @@ export class ControllerComposer {
           request: IController.IRequest,
           reply: IController.IResponse,
         ) => {
-          console.log('executed', method, url)
           try {
             const parent = this as any as {
               [key: string]: (props?: any) => Promise<any>
@@ -36,10 +35,16 @@ export class ControllerComposer {
               const parsedService = new ControllerParamsParser(paramsService)
               const parseded = parsedService.parseTo(dto)
               const handler = parent[propertyKey].bind(parent)
-              const response = parseded
+              const result = parseded
                 ? await handler(parseded)
                 : await handler()
-              reply.status(200).send(response)
+              
+              const response = {
+                code:200,
+                status: 'success',
+                ...(typeof result === 'boolean' ? {  } : result)
+              }
+              reply.status(response.code).send(response)
             }
             throw new Error('Method not found')
           } catch (error) {
