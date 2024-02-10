@@ -6,16 +6,16 @@
   "license": "MIT",
   "packageManager": "yarn@1.22.19",
   "scripts": {
-    "start:dev:apolo": "cd packages/be-apolo && yarn start:dev",
+    "start:dev:apolo": "cd apps/be-apolo && yarn start:dev",
     "start:dev": "npm-run-all --parallel start:dev:apolo",
-    "build:apolo": "cd packages/be-apolo && yarn build",
+    "build:apolo": "cd apps/be-apolo && yarn build",
     "build:hera": "cd packages/lib-hera && yarn build",
     "build": "npm-run-all --parallel build:hera build:apolo",
-    "start:apolo": "cd packages/be-apolo && yarn start",
+    "start:apolo": "cd apps/be-apolo && yarn start",
     "start": "npm-run-all --parallel start:apolo",
-    "lint:apolo": "cd packages/be-apolo && yarn lint",
+    "lint:apolo": "cd apps/be-apolo && yarn lint",
     "lint": "npm-run-all --parallel lint:apolo",
-    "lint:fix:apolo": "cd packages/be-apolo && yarn lint:fix",
+    "lint:fix:apolo": "cd apps/be-apolo && yarn lint:fix",
     "lint:fix:hera": "cd packages/lib-hera && yarn lint:fix",
     "lint:fix": "npm-run-all --parallel lint:fix:apolo lint:fix:hera"
   },
@@ -43,7 +43,8 @@
   },
   "workspaces": {
     "packages": [
-      "packages/*"
+      "packages/*",
+      "apps/*"
     ]
   }
 }
