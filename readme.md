@@ -10,14 +10,14 @@
 
 - **be-demeter:** Servidor responsável por consumir as notícias na fila do Apache Kafka
 - **be-apolo:** Servidor responsável pela produção de notícias e envio para a fila do Apache Kafka
-- **fe-atena:** Aplicação feita em React Native inicializada com Expo.
+- **fe-rn-atena:** Aplicação feita em React Native inicializada com Expo.
 - **lib-hera:** Código JavaScript compartilhado entre todos os projetos
 - **lint-zeus:** Configuração global de tipagem e formatação do TypeScript
 
 ## Documentação dos **workspaces**
 - [BE-DEMETER](docs/demeter.md)
 - [BE-APOLO](docs/apolo.md)
-- [FE-ATENA](docs/atena.md)
+- [FE-RN-ATENA](docs/atena.md)
 - [LIB-HERA](docs/hera.md)
 - [LINT-ZEUS](docs/zeus.md)
 
