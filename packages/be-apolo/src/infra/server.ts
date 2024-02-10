@@ -5,7 +5,12 @@ import { NewsFindByIdUseCase } from '@/application/use-cases/news/find-id/index.
 import { NewsRemoveByIdUseCase } from '@/application/use-cases/news/remove/index.use-case'
 import { NewsUpdateByIdUseCase } from '@/application/use-cases/news/update/index.use-case'
 import { InjectorFactory } from '@olympus/lib-hera'
-import Fastify, { FastifyInstance } from 'fastify'
+import Fastify, {
+  FastifyError,
+  FastifyInstance,
+  FastifyReply,
+  FastifyRequest,
+} from 'fastify'
 import 'reflect-metadata'
 import { NewsMockRepository } from './repositories/news/mock.repository'
 
@@ -14,7 +19,7 @@ const port = +(process.env.PORT ?? 3001)
 // BOOTSTRAP FASTIFY
 const app: FastifyInstance = Fastify({ logger: false })
 
-// INJECTING ROUTER 
+// INJECTING ROUTER
 InjectorFactory.instance.set('PluginRouter', app)
 
 // INJECTING NEWS MODULE
@@ -35,7 +40,11 @@ InjectorFactory.instance.set('PluginRouter', app)
 }
 
 // ERROR HANDLER
-app.setErrorHandler(function (error, request, reply) {
+app.setErrorHandler(function (
+  error: FastifyError,
+  request: FastifyRequest,
+  reply: FastifyReply,
+) {
   console.log('app/setErrorHandler()', error)
   return reply.send(error)
 })

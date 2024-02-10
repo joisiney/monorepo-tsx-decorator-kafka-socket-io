@@ -10,9 +10,9 @@
     "start": "node --env-file=./.env-development --import ./dist/src/infra/server.js",
     "build": "tsc && tsc-alias",
     "start:dev": "node --watch --env-file=./.env-development --import tsx src/infra/server.ts",
-    "husky:prepare": "husky install",
     "test": "vitest",
-    "lint": "eslint --fix"
+    "lint": "eslint ./ --ext .ts,.tsx",
+    "lint:fix": "eslint . --ext .ts,.tsx --fix"
   },
   "dependencies": {
     "fastify": "^4.26.0",
