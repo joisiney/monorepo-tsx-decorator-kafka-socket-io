@@ -9,6 +9,8 @@ import Fastify, { FastifyInstance } from 'fastify'
 import 'reflect-metadata'
 import { NewsMockRepository } from './repositories/news/mock.repository'
 
+const port = +(process.env.PORT ?? 3001)
+
 // BOOTSTRAP FASTIFY
 const app: FastifyInstance = Fastify({ logger: false })
 
@@ -41,7 +43,7 @@ app.setErrorHandler(function (error, request, reply) {
 // START SERVER
 app.listen(
   {
-    port: 3001,
+    port,
   },
   (err, address) => {
     if (err) {

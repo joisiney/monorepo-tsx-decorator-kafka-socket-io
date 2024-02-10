@@ -7,9 +7,9 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "start": "node dist/server.js",
+    "start": "node --env-file=./.env-development --import ./dist/src/infra/server.js",
     "build": "tsc && tsc-alias",
-    "start:dev": "tsx watch src/infra/server.ts",
+    "start:dev": "node --watch --env-file=./.env-development --import tsx src/infra/server.ts",
     "husky:prepare": "husky install",
     "test": "vitest",
     "lint": "eslint --fix"
@@ -18,7 +18,7 @@
     "fastify": "^4.26.0",
     "stacktrace-js": "^2.0.2"
   },
-  "devDependencies": {
+  "peerDependencies": {
     "typescript": "^5.3.3"
   }
 }
