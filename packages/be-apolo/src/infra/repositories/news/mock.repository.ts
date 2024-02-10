@@ -1,4 +1,3 @@
-
 import { INewsDto } from '@/domain/dto/news.dto'
 import { NewsEntity } from '@/domain/entities/news.entity'
 import {
@@ -13,17 +12,21 @@ import {
 } from '@olympus/lib-hera'
 import { INewsRepository } from './index.dto'
 
-
 @Injectable({ name: 'NEWS_REPOSITORY' })
 export class NewsMockRepository implements INewsRepository.Implements {
   private mockNews: NewsEntity[] = []
 
-  async findAll(props: INewsRepository.InputFindAll): Promise<Either<PaginationEntity<NewsEntity>, NotFoundException>> {
+  async findAll(
+    props: INewsRepository.InputFindAll,
+  ): Promise<Either<PaginationEntity<NewsEntity>, NotFoundException>> {
     const paginationService = new PaginationEntity<NewsEntity>({
       page: props.page,
       take: props.take,
     })
-    const data = this.mockNews.slice(paginationService.skip, paginationService.skip + paginationService.take)
+    const data = this.mockNews.slice(
+      paginationService.skip,
+      paginationService.skip + paginationService.take,
+    )
     paginationService.data = data
     paginationService.total = this.mockNews.length
     return new Right(paginationService)

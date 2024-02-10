@@ -4,10 +4,9 @@ import { IFindByIdUseCase } from './index.dto'
 
 @Injectable({ dep: ['NEWS_REPOSITORY'] })
 export class NewsFindByIdUseCase {
-  constructor(private readonly newsRepository: INewsRepository.Implements) {
-  }
+  constructor(private readonly newsRepository: INewsRepository.Implements) {}
 
-  async execute(props:IFindByIdUseCase.Input) {
+  async execute(props: IFindByIdUseCase.Input) {
     const news = await this.newsRepository.findById(props.id)
     if (news.isError) return news.lanchError()
     return news.value

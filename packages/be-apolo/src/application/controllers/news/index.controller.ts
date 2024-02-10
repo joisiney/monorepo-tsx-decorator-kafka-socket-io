@@ -16,14 +16,22 @@ import { INewsDto, newsDto } from './dto/news.dto'
 import { INewsUpdateDto, newsUpdateDto } from './dto/put.dto'
 
 @Controller('/olympus/news/')
-@Injectable({ dep: ['NewsFindAllUseCase', 'NewsCreateUseCase', 'NewsFindByIdUseCase', 'NewsUpdateByIdUseCase', 'NewsRemoveByIdUseCase'] })
+@Injectable({
+  dep: [
+    'NewsFindAllUseCase',
+    'NewsCreateUseCase',
+    'NewsFindByIdUseCase',
+    'NewsUpdateByIdUseCase',
+    'NewsRemoveByIdUseCase',
+  ],
+})
 export class NewsController extends ControllerComposer {
   constructor(
-    private findAllUseCase: NewsFindAllUseCase
-    , private createUseCase: NewsCreateUseCase
-    , private findByIdUseCase: NewsFindByIdUseCase
-    , private updateByIdUseCase: NewsUpdateByIdUseCase
-    , private removeByIdUseCase: NewsRemoveByIdUseCase
+    private findAllUseCase: NewsFindAllUseCase,
+    private createUseCase: NewsCreateUseCase,
+    private findByIdUseCase: NewsFindByIdUseCase,
+    private updateByIdUseCase: NewsUpdateByIdUseCase,
+    private removeByIdUseCase: NewsRemoveByIdUseCase,
   ) {
     super()
   }
@@ -49,7 +57,7 @@ export class NewsController extends ControllerComposer {
     return this.updateByIdUseCase.execute(input)
   }
 
-  @Route({ method: 'DELETE', url: '/:id', dto:newsKeyDto })
+  @Route({ method: 'DELETE', url: '/:id', dto: newsKeyDto })
   async newsDelete(input: INewsKeyDto) {
     return this.removeByIdUseCase.execute(input)
   }

@@ -1,4 +1,3 @@
-
 export namespace ICreateUseCase {
   export interface Input {
     id?: string

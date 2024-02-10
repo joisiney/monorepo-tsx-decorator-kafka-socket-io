@@ -1,4 +1,3 @@
-
 export namespace IUpdateByIdUseCase {
   export interface Input {
     id: string

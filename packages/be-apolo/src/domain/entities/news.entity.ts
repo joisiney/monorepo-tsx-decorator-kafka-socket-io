@@ -20,7 +20,7 @@ export class NewsEntity {
   }
 
   toJSON() {
-    const {createdAt, ...data} = this.data
+    const { createdAt, ...data } = this.data
     return data
   }
 }

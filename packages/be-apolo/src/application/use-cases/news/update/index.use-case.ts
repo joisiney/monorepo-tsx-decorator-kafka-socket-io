@@ -4,10 +4,9 @@ import { IUpdateByIdUseCase } from './index.dto'
 
 @Injectable({ dep: ['NEWS_REPOSITORY'] })
 export class NewsUpdateByIdUseCase {
-  constructor(private readonly newsRepository: INewsRepository.Implements) {
-  }
+  constructor(private readonly newsRepository: INewsRepository.Implements) {}
 
-  async execute(props:IUpdateByIdUseCase.Input) {
+  async execute(props: IUpdateByIdUseCase.Input) {
     const news = await this.newsRepository.update(props)
     if (news.isError) return news.lanchError()
     return news.value
