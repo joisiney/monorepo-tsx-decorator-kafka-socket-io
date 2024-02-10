@@ -3,3 +3,6 @@
 yarn create expo apps/fe-rn-atena
 yarn expo install expo-system-ui
 
+yarn cache clean --force
+cd android && ./gradlew clean
+yarn prebuild

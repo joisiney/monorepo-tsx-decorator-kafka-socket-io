@@ -3,13 +3,18 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "EXPO_USE_METRO_WORKSPACE_ROOT=1 npx expo start",
-    "android": "EXPO_USE_METRO_WORKSPACE_ROOT=1 npx expo run:android",
-    "ios": "EXPO_USE_METRO_WORKSPACE_ROOT=1 npx expo run:ios",
+    "start": "EXPO_USE_METRO_WORKSPACE_ROOT=1 yarn expo start",
+    "android": "EXPO_USE_METRO_WORKSPACE_ROOT=1 yarn expo run:android",
+    "ios": "EXPO_USE_METRO_WORKSPACE_ROOT=1 yarn expo run:ios",
+    "prebuild": "EXPO_USE_METRO_WORKSPACE_ROOT=1 yarn expo prebuild",
+    "clean": "EXPO_USE_METRO_WORKSPACE_ROOT=1 yarn cache clean --force",
+    "clean:gradlew": "EXPO_USE_METRO_WORKSPACE_ROOT=1 && cd android && ./gradlew clean",
     "web": "expo start --web"
   },
   "dependencies": {
+    "@expo-google-fonts/inter": "^0.2.3",
     "expo": "~50.0.6",
+    "expo-font": "~11.10.2",
     "expo-status-bar": "~1.11.1",
     "expo-system-ui": "~2.9.3",
     "nativewind": "^2.0.11",
@@ -20,7 +25,8 @@
   "devDependencies": {
     "@babel/core": "^7.20.0",
     "@types/react": "^18.2.55",
-    "@types/react-native": "^0.73.0"
+    "@types/react-native": "^0.73.0",
+    "vite": "^5.1.1"
   },
   "private": true
 }

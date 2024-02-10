@@ -4,9 +4,9 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        robotobold: ['Roboto_700Bold'],
-        robotosemibold: ['Roboto_500Medium'],
-        robotoregular: ['Roboto_400Regular'],
+        interblack: ['Inter_900Black'],
+        interbold: ['Inter_500Medium'],
+        interregular: ['Inter_300Light'],
       },
     },
   },
