@@ -8,7 +8,7 @@
   "private": true,
   "scripts": {
     "start": "node --env-file=./.env-development --import ./dist/src/infra/server.js",
-    "build": "tsc && tsc-alias",
+    "build": "rm -rf dist && tsc && tsc-alias",
     "start:dev": "node --watch --env-file=./.env-development --import tsx src/infra/server.ts",
     "test": "vitest",
     "lint": "eslint ./ --ext .ts,.tsx",

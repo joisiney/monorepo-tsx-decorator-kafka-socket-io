@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "start": "node ./dist/src/index.js",
-    "build": "tsc && tsc-alias",
+    "build": "rm -rf dist && tsc && tsc-alias",
     "start:dev": "node --watch --import tsx src/index.ts",
     "test": "vitest",
     "lint": "eslint ./ --ext .ts,.tsx",

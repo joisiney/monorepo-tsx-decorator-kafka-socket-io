@@ -6,9 +6,18 @@
   "license": "MIT",
   "packageManager": "yarn@1.22.19",
   "scripts": {
-    "start:dev": "turbo start:dev --parallel",
-    "build": "turbo run build",
-    "build:packages": "turbo run build --filter=./packages/be-apolo"
+    "start:dev:apolo": "cd packages/be-apolo && yarn start:dev",
+    "start:dev": "npm-run-all --parallel start:dev:apolo",
+    "build:apolo": "cd packages/be-apolo && yarn build",
+    "build:hera": "cd packages/lib-hera && yarn build",
+    "build": "npm-run-all --parallel build:hera build:apolo",
+    "start:apolo": "cd packages/be-apolo && yarn start",
+    "start": "npm-run-all --parallel start:apolo",
+    "lint:apolo": "cd packages/be-apolo && yarn lint",
+    "lint": "npm-run-all --parallel lint:apolo",
+    "lint:fix:apolo": "cd packages/be-apolo && yarn lint:fix",
+    "lint:fix:hera": "cd packages/lib-hera && yarn lint:fix",
+    "lint:fix": "npm-run-all --parallel lint:fix:apolo lint:fix:hera"
   },
   "engines": {
     "node": ">=v20.9.0"
@@ -23,6 +32,7 @@
     "@olympus/lint-zeus": "*",
     "@types/node": "^20.11.16",
     "eslint": "^8.56.0",
+    "npm-run-all": "^4.1.5",
     "prettier": "^3.2.5",
     "tsx": "^4.5.1",
     "typescript": "^5.3.3",
