@@ -1,0 +1,24 @@
+{
+  "name": "@olympus/fe-rn-atena",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "EXPO_USE_METRO_WORKSPACE_ROOT=1 npx expo start",
+    "android": "EXPO_USE_METRO_WORKSPACE_ROOT=1 npx expo run:android",
+    "ios": "EXPO_USE_METRO_WORKSPACE_ROOT=1 npx expo run:ios",
+    "web": "expo start --web"
+  },
+  "dependencies": {
+    "expo": "~50.0.6",
+    "expo-status-bar": "~1.11.1",
+    "expo-system-ui": "~2.9.3",
+    "react": "18.2.0",
+    "react-native": "0.73.4"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.20.0",
+    "@types/react": "^18.2.55",
+    "@types/react-native": "^0.73.0"
+  },
+  "private": true
+}
