@@ -6,7 +6,9 @@
   "license": "MIT",
   "packageManager": "yarn@1.22.19",
   "scripts": {
-    "test": "jest"
+    "start:dev": "turbo start:dev --parallel",
+    "build": "turbo run build",
+    "build:packages": "turbo run build --filter=./packages/be-apolo"
   },
   "engines": {
     "node": ">=v20.9.0"
@@ -20,11 +22,11 @@
   "devDependencies": {
     "@olympus/lint-zeus": "*",
     "@types/node": "^20.11.16",
+    "eslint": "^8.56.0",
+    "prettier": "^3.2.5",
     "tsx": "^4.5.1",
     "typescript": "^5.3.3",
-    "vitest": "^1.2.2",
-    "eslint": "^8.56.0",
-    "prettier": "^3.2.5"
+    "vitest": "^1.2.2"
   },
   "peerDependencies": {
     "typescript": "^5.3.3"

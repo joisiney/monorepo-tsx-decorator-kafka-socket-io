@@ -1,0 +1,1 @@
+# Bibiotecas compartilhadas entre todos os **workspaces**

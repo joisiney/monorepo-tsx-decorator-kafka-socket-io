@@ -1,0 +1,1 @@
+# Consumidor de notícias do Apolo em react-native

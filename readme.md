@@ -1,34 +1,20 @@
 # Olimpo News
+Aqui será o ponto focal de toda a documentação de todos os fluxos que criaremos dentro da OLYMPUS, sendo constantemente e obrigatóriamente atualizado.
+<br></br>
+## Quais são os **workspaces** e qual é a responsábilidade de cada um?
+<br></br>
+- **be-demeter:** Servidor responsável pela consumir das notícias na fila do Apache Kafka
+- **be-apolo:** Servidor responsável pela produção de notícias e enviar para a fila do Apache Kafka
+- **fe-atena:** Aplicação feita em react-native inicializada com expo.
+- **lib-hera:** Código *javascript* compartilhado entre todos os projetos
+- **lint-zeus:** Configuração global de datilografia e formatação do TypeScript
+<br></br>
+## Documentação dos **workspaces**
+<br></br>
+- [BE-DEMETER](docs/demeter.md)
+- [BE-APOLO](docs/apolo.md)
+- [FE-ATENA](docs/atena.md)
+- [LIB-HERA](docs/hera.md)
+- [LINT-ZEUS](docs/zeus.md)
 
-- Este projeto foi dividido em 5 subprojetos, vou descrever cada um:
-  - **be-apolo:** Servidor responsável pela consumir das notícias na fila do Apache Kafka
-  - **be-demeter:** Servidor responsável pela produção de notícias e enviar para a fila do Apache Kafka
-  - **fe-atena:** Aplicação feita em react-native inicializada com expo.
-  - **lib-hera:** Código *javascript* compartilhado entre todos os projetos
-  - Consumidor de notícias
-
-
-Sempre que cria um pacote dentro dele tem que executar
-```bash
-yarn link
-# Este comando faz build de todos
-yarn tsc --build
-# Este comando faz build de um unico
-yarn tsc --build packages/lib-hera/tsconfig.json
-```
-
-
-comandos iniciais:
-```bash
-yarn add -D @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint eslint-config-prettier eslint-config-standard eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-n eslint-plugin-prettier eslint-plugin-promise eslint-plugin-react eslint-plugin-react-hooks prettier tsx typescript @types/node vitest
-
-
-
-```
-```bash
-yarn add reflect-metadata zod fastify stacktrace-js useragent
-```
-
-
-Video aula
-https://www.youtube.com/watch?v=QeDgjmwN7kM&t=815s
+No minuto 49 o cara ensina como transilar tsx do monorepo UX para o projeto

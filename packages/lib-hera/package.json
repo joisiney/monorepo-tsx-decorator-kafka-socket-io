@@ -5,11 +5,12 @@
   "author": "Joisiney Leandro",
   "license": "MIT",
   "scripts": {
-    "build": "tsc",
-    "watch": "tsc -w",
+    "start": "node ./dist/src/index.js",
+    "build": "tsc && tsc-alias",
+    "start:dev": "node --watch --import tsx src/index.ts",
+    "test": "vitest",
     "lint": "eslint ./ --ext .ts,.tsx",
-    "lint:fix": "eslint . --ext .ts,.tsx --fix",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint:fix": "eslint . --ext .ts,.tsx --fix"
   },
   "dependencies": {
     "useragent": "^2.3.0"
