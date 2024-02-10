@@ -47,9 +47,26 @@ $ git clone git@github.com:joisiney/monorepo-tsx-decorator-kafka.git
 **Siga os passos abaixo**
 
 ```bash
+# Forcei a versão do node para a 20.9.0
+# Usando esta versão apenas no terminal atual
+$ nvm use v20.9.0
+# Definindo ela como padrão
+$ nvm alias default v20.9.0
+
 # Instale as dependências com yarn ou npm
 $ yarn
 
 # Iniciando todas as aplicações em paralelo
 $ yarn start
+```
+
+## 🤯 Comandos úteis
+
+**Para a evolução da POC talvez você precise de:**
+
+```BASH
+# Instalar novos pacotes
+$ yarn workspace @olympus/PROJECT_NAME add MODULE_1 MODULE_2
+
+yarn workspace @olympus/fe-rn-atena add react-app-rewired react-app-rewire-babel-loader -D
 ```
