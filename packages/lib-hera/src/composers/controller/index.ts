@@ -1,2 +1,1 @@
-export * from './controller.composer';
-
+export * from './controller.composer'

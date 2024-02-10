@@ -1,3 +1,1 @@
-const eslintConfig = require('@olympus/lint-zeus')
-
-module.exports = eslintConfig
+module.exports = require('@olympus/lint-zeus/eslintrc')

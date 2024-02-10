@@ -1,4 +1,4 @@
-import { type Type } from "../index.dto"
+import { type Type } from '../index.dto'
 
 export class InjectorFactory {
   public static raw = new Map<string, any>()
@@ -7,7 +7,7 @@ export class InjectorFactory {
   static resolve<T>(target: Type<T>): T {
     if (!target || !target.name) {
       console.error('Class not found')
-      return null as T
+      return null as any as T
     }
     const targetName = Reflect.getMetadata('target-name', target)
 
@@ -31,6 +31,5 @@ export class InjectorFactory {
       InjectorFactory.instance.set(targetName, instance)
     }
     return instance as T
-
   }
 }

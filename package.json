@@ -4,11 +4,16 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "packageManager": "yarn@1.22.19",
   "scripts": {
     "test": "jest"
   },
+  "engines": {
+    "node": ">=v20.9.0"
+  },
   "dependencies": {
     "@olympus/lib-hera": "*",
+    "@olympus/lint-zeus": "*",
     "reflect-metadata": "^0.2.1",
     "zod": "^3.22.4"
   },
@@ -16,8 +21,13 @@
     "@olympus/lint-zeus": "*",
     "@types/node": "^20.11.16",
     "tsx": "^4.5.1",
-    "typescript": "4.5.2",
-    "vitest": "^1.2.2"
+    "typescript": "^5.3.3",
+    "vitest": "^1.2.2",
+    "eslint": "^8.56.0",
+    "prettier": "^3.2.5"
+  },
+  "peerDependencies": {
+    "typescript": "^5.3.3"
   },
   "workspaces": {
     "packages": [

@@ -1,12 +1,14 @@
 {
   "name": "@olympus/lib-hera",
   "version": "1.0.0",
-  "main": "index.ts",
+  "main": "src/index.ts",
   "author": "Joisiney Leandro",
   "license": "MIT",
   "scripts": {
-    "build": "tsc && tsc-alias",
+    "build": "tsc",
     "watch": "tsc -w",
+    "lint": "eslint ./ --ext .ts,.tsx",
+    "lint:fix": "eslint . --ext .ts,.tsx --fix",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
@@ -18,5 +20,19 @@
     "tsc-alias": "^1.8.8",
     "tsx": "^4.7.0",
     "typescript": "^5.3.3"
+  },
+  "peerDependencies": {
+    "typescript": "^5.3.3"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "types": "./dist/src/index.d.ts",
+      "import": "./dist/src/index.mjs",
+      "require": "./dist/src/index.js"
+    }
   }
 }

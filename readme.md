@@ -11,6 +11,8 @@
 Sempre que cria um pacote dentro dele tem que executar
 ```bash
 yarn link
+# Este comando faz build de todos
+yarn tsc --build
 # Este comando faz build de um unico
 yarn tsc --build packages/lib-hera/tsconfig.json
 ```
