@@ -1,5 +1,5 @@
 {
-  "name": "@olympus/lib-hera",
+  "name": "@olympus/domain-ceos",
   "version": "1.0.0",
   "main": "src/index.ts",
   "author": "Joisiney Leandro",
@@ -9,15 +9,11 @@
     "build": "rm -rf dist && tsc && tsc-alias",
     "start:dev": "node --watch --import tsx src/index.ts",
     "test": "vitest",
-    "lint": "eslint ./src --ext .ts,.tsx",
-    "lint:fix": "eslint ./src --ext .ts,.tsx --fix"
-  },
-  "dependencies": {
-    "useragent": "^2.3.0"
+    "lint": "eslint ./ --ext .ts,.tsx",
+    "lint:fix": "eslint . --ext .ts,.tsx --fix"
   },
   "devDependencies": {
     "@types/node": "^20.11.16",
-    "@types/useragent": "^2.3.4",
     "tsc-alias": "^1.8.8",
     "tsx": "^4.7.0",
     "typescript": "^5.3.3"

@@ -1,5 +1,5 @@
-import { INewsDto } from '@/domain/dto/news.dto'
-import { NewsEntity } from '@/domain/entities/news.entity'
+import { INewsDto, NewsEntity } from '@olympus/domain-ceos'
+
 import {
   Either,
   IOptional,

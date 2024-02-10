@@ -8,9 +8,10 @@
   "scripts": {
     "start:dev:apolo": "cd apps/be-apolo && yarn start:dev",
     "start:dev": "yarn start:dev:apolo",
+    "build:ceos": "cd apps/domain-ceos && yarn build",
     "build:apolo": "cd apps/be-apolo && yarn build",
     "build:hera": "cd packages/lib-hera && yarn build",
-    "build": "yarn build:hera & yarn build:apolo",
+    "build": "yarn build:hera & yarn build:apolo & yarn build:ceos",
     "start:apolo": "cd apps/be-apolo && yarn start",
     "start": "yarn start:apolo",
     "lint:apolo": "cd apps/be-apolo && yarn lint",
@@ -25,6 +26,7 @@
   "dependencies": {
     "@olympus/lib-hera": "*",
     "@olympus/lint-zeus": "*",
+    "@olympus/domain-ceos": "*",
     "reflect-metadata": "^0.2.1",
     "zod": "^3.22.4"
   },
