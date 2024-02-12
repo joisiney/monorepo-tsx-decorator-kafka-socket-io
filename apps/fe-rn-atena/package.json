@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@expo-google-fonts/inter": "^0.2.3",
+    "classnames": "^2.5.1",
     "expo": "~50.0.6",
     "expo-font": "~11.10.2",
     "expo-status-bar": "~1.11.1",
@@ -20,6 +21,7 @@
     "nativewind": "^2.0.11",
     "react": "18.2.0",
     "react-native": "0.73.4",
+    "react-native-random-uuid": "^0.1.4",
     "tailwindcss": "3.3.2"
   },
   "devDependencies": {
