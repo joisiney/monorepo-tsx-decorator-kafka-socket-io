@@ -5,11 +5,12 @@
   "author": "Joisiney Leandro",
   "license": "MIT",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview",
-    "lint": "eslint ./ --ext .ts,.tsx",
-    "lint:fix": "eslint . --ext .ts,.tsx --fix"
+    "start": "node ./dist/src/index.js",
+    "build": "rm -rf dist && tsc && tsc-alias",
+    "start:dev": "node --watch --import tsx src/index.ts",
+    "test": "vitest",
+    "lint": "eslint ./src --ext .ts,.tsx",
+    "lint:fix": "eslint ./src --ext .ts,.tsx --fix"
   },
   "devDependencies": {
     "@types/react": "^18.0.26",

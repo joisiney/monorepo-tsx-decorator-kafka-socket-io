@@ -1,5 +1,5 @@
 import { useInfiniteQuery } from '@tanstack/react-query'
-import { clientHttp } from '../../services/client-http'
+import { clientHttp } from '../../contexts/react-query'
 
 const queryFn = async <Input, Output>({
   transformData,
