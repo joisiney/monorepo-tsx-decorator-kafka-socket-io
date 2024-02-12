@@ -9,7 +9,9 @@
     "prebuild": "EXPO_USE_METRO_WORKSPACE_ROOT=1 yarn expo prebuild",
     "clean": "EXPO_USE_METRO_WORKSPACE_ROOT=1 yarn cache clean --force",
     "clean:gradlew": "EXPO_USE_METRO_WORKSPACE_ROOT=1 && cd android && ./gradlew clean",
-    "web": "expo start --web"
+    "web": "expo start --web",
+    "lint": "eslint ./ --ext .ts,.tsx",
+    "lint:fix": "eslint . --ext .ts,.tsx --fix"
   },
   "dependencies": {
     "@expo-google-fonts/inter": "^0.2.3",

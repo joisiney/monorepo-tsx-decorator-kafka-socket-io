@@ -6,20 +6,34 @@
   "license": "MIT",
   "packageManager": "yarn@1.22.19",
   "scripts": {
-    "start:dev:atena:android": "cd apps/fe-rn-atena && yarn android",
+    "start:prd:apolo": "cd apps/be-apolo && yarn start:prd",
     "start:dev:apolo": "cd apps/be-apolo && yarn start:dev",
+    
+    "start:dev:atena:android": "cd apps/fe-rn-atena && yarn android",
+    "start:dev:atena:ios": "cd apps/fe-rn-atena && yarn ios",
+    
+    "start:prod": "yarn start:prd:apolo",
     "start:dev": "yarn start:dev:apolo",
-    "build:ceos": "cd apps/domain-ceos && yarn build",
+
     "build:apolo": "cd apps/be-apolo && yarn build",
+    "build:ceos": "cd packages/domain-ceos && yarn build",
     "build:hera": "cd packages/lib-hera && yarn build",
+
     "build": "yarn build:hera & yarn build:apolo & yarn build:ceos",
-    "start:apolo": "cd apps/be-apolo && yarn start",
-    "start": "yarn start:apolo",
+    
     "lint:apolo": "cd apps/be-apolo && yarn lint",
-    "lint": "yarn lint:apolo",
+    "lint:atena": "cd apps/fe-rn-atena && yarn lint",
+    "lint:ceos": "cd packages/domain-ceos && yarn lint",
+    "lint:hera": "cd packages/lib-hera && yarn lint",
+
+    "lint": "yarn lint:apolo && yarn lint:atena && yarn lint:ceos && yarn lint:hera",
+
     "lint:fix:apolo": "cd apps/be-apolo && yarn lint:fix",
+    "lint:fix:atena": "cd apps/fe-rn-atena && yarn lint:fix",
+    "lint:fix:ceos": "cd packages/domain-ceos && yarn lint:fix",
     "lint:fix:hera": "cd packages/lib-hera && yarn lint:fix",
-    "lint:fix": "yarn lint:fix:apolo & yarn lint:fix:hera"
+
+    "lint:fix": "yarn lint:fix:apolo && yarn lint:fix:atena && yarn lint:fix:ceos && yarn lint:fix:hera"
   },
   "engines": {
     "node": ">=v20.9.0"
