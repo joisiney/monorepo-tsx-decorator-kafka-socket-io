@@ -4,7 +4,7 @@ import { api } from '../services/client-http'
 
 const MINUTE = 1000 * 60
 
-const queryClient = new QueryClient({
+export const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       gcTime: 10 * MINUTE,

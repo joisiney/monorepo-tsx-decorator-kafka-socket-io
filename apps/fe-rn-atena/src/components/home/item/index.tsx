@@ -3,7 +3,13 @@ import { Ionicons } from '@expo/vector-icons'
 import classNames from 'classnames'
 import { styled } from 'nativewind'
 import { FC, useEffect, useRef, useState } from 'react'
-import { Text, TextInput, TouchableOpacity, View } from 'react-native'
+import {
+  ActivityIndicator,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from 'react-native'
 
 const Button = styled(TouchableOpacity)
 const Input = styled(TextInput)
@@ -11,10 +17,11 @@ const Icon = styled(Ionicons)
 
 export const HomeItem: FC<{
   item: AppNewsEntity
-  handleRemove: () => void
-  handleUpdateTitle: (title: string, id: string) => void
+  handleRemove: () => Promise<void>
+  handleUpdateTitle: (title: string, id: string) => Promise<void>
 }> = ({ item, handleRemove, handleUpdateTitle }) => {
   const [isEditing, setIsEditing] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
   const [newTitle, setNewTitle] = useState(item.title)
   const textInputRef = useRef<TextInput>(null)
 
@@ -27,9 +34,20 @@ export const HomeItem: FC<{
     setIsEditing(false)
   }
 
+  function handleRemoveEditing() {
+    setIsLoading(true)
+    handleRemove().finally(() => {
+      setIsLoading(false)
+      setIsEditing(false)
+    })
+  }
+
   function handleSubmitEditing() {
-    handleUpdateTitle(newTitle, item.id)
-    setIsEditing(false)
+    setIsLoading(true)
+    handleUpdateTitle(newTitle, item.id).finally(() => {
+      setIsLoading(false)
+      setIsEditing(false)
+    })
   }
   useEffect(() => {
     if (isEditing) {
@@ -44,13 +62,13 @@ export const HomeItem: FC<{
           focusable
           selection={{ start: newTitle.length, end: newTitle.length }}
           className={classNames(
-            'text-base font-interregular text-slate-900 flex flex-1 pl-2 min-h-[38px]',
+            'text-base font-interregular text-slate-900 flex flex-1 pl-2 mr-2 min-h-[38px]',
             { 'border border-slate-100 rounded-sm': isEditing },
           )}
+          editable={!isLoading}
           value={newTitle}
           ref={textInputRef}
           onChangeText={setNewTitle}
-          onBlur={handleCancelEditing}
           onSubmitEditing={handleSubmitEditing}
         />
       ) : (
@@ -62,31 +80,39 @@ export const HomeItem: FC<{
           {newTitle.length > 35 ? '...' : ''}
         </Text>
       )}
-      <Button
-        className="w-9 h-9 items-center justify-center"
-        onPress={isEditing ? handleCancelEditing : handleStartEditing}
-      >
-        <Icon
-          name={isEditing ? 'send-sharp' : 'pencil'}
-          className={classNames('text-lg', {
-            'text-blue-700': isEditing,
-            'text-slate-700': !isEditing,
-          })}
-        />
-      </Button>
+      {isLoading ? (
+        <View className="w-9 h-9 items-center justify-center">
+          <ActivityIndicator color="black" />
+        </View>
+      ) : (
+        <>
+          <Button
+            className="w-9 h-9 items-center justify-center"
+            onPress={isEditing ? handleSubmitEditing : handleStartEditing}
+          >
+            <Icon
+              name={isEditing ? 'send-sharp' : 'pencil'}
+              className={classNames('text-lg', {
+                'text-blue-700': isEditing,
+                'text-slate-700': !isEditing,
+              })}
+            />
+          </Button>
 
-      <Button
-        className="w-9 h-9 items-center justify-center"
-        onPress={isEditing ? handleSubmitEditing : handleRemove}
-      >
-        <Icon
-          name={isEditing ? 'close-circle-sharp' : 'trash'}
-          className={classNames('text-lg', {
-            'text-red-500': isEditing,
-            'text-slate-700': !isEditing,
-          })}
-        />
-      </Button>
+          <Button
+            className="w-9 h-9 items-center justify-center"
+            onPress={isEditing ? handleCancelEditing : handleRemoveEditing}
+          >
+            <Icon
+              name={isEditing ? 'close-circle-sharp' : 'trash'}
+              className={classNames('text-lg', {
+                'text-red-500': isEditing,
+                'text-slate-700': !isEditing,
+              })}
+            />
+          </Button>
+        </>
+      )}
     </View>
   )
 }

@@ -30,13 +30,13 @@ export const useAllNews = <Input, Output>({
       return select(data)
     },
     queryFn: ({ pageParam = 1 }) => queryFn({ transformData, page: pageParam }),
-    getNextPageParam: (lastPage) => {
+    getNextPageParam: (lastPage = { page: 1, pages: [] }) => {
       const { page, pages } = lastPage as { page: number; pages: number }
       const nextPage = Math.min(page + 1, pages)
       return nextPage
     },
-    getPreviousPageParam: (firstPage) => {
-      const { page, pages } = firstPage as { page: number; pages: number }
+    getPreviousPageParam: (firstPage = { page: 1, pages: [] }) => {
+      const { page } = firstPage as { page: number }
       const previusPage = Math.max(page - 1, 0)
       return previusPage
     },

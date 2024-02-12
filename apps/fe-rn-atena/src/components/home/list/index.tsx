@@ -5,8 +5,8 @@ import { EmptyState } from '../empty-state'
 import { HomeItem } from '../item'
 export const List: FC<{
   data: AppNewsEntity[]
-  handleDelete: (itemDelete: AppNewsEntity) => void
-  handleUpdateTitle: (title: string, id: string) => void
+  handleDelete: (id: string) => Promise<void>
+  handleUpdateTitle: (data: AppNewsEntity) => Promise<void>
   handleInfiniteScroll: () => void
   isLoading: boolean
 }> = ({
@@ -37,8 +37,10 @@ export const List: FC<{
           <HomeItem
             key={`item-${item.id}-index-${index}`}
             item={item}
-            handleRemove={() => handleDelete(item)}
-            handleUpdateTitle={handleUpdateTitle}
+            handleRemove={() => handleDelete(item.id)}
+            handleUpdateTitle={(title: string, id: string) =>
+              handleUpdateTitle(new AppNewsEntity({ ...item.db, title, id }))
+            }
           />
         )
       }}

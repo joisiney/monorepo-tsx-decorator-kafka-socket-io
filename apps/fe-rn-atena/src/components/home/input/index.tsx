@@ -1,24 +1,32 @@
 import { Entypo } from '@expo/vector-icons'
 import { styled } from 'nativewind'
-import { FC, useRef, useState } from 'react'
-import { Alert, TextInput, TouchableOpacity, View } from 'react-native'
+import { FC, useCallback, useRef, useState } from 'react'
+import {
+  ActivityIndicator,
+  Alert,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from 'react-native'
 
 const Button = styled(TouchableOpacity)
 const Input = styled(TextInput)
 
 export const HomeInput: FC<{ handleAdd: any }> = ({ handleAdd }) => {
   const [value, setValue] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
   const inputRef = useRef<TextInput>(null)
 
-  const handleSubmit = () => {
+  const handleSubmit = useCallback(() => {
     inputRef.current?.blur()
     if (value !== '') {
       setValue('')
-      handleAdd(value)
+      setIsLoading(true)
+      handleAdd(value).finally(() => setIsLoading(false))
     } else {
       Alert.alert('Atenção', 'Você não pode cadastrar uma item vazia')
     }
-  }
+  }, [handleAdd, value])
 
   return (
     <View className="mx-6 bg-white border border-slate-200 h-12 rounded-md flex-row">
@@ -31,14 +39,19 @@ export const HomeInput: FC<{ handleAdd: any }> = ({ handleAdd }) => {
         placeholderTextColor="#B2B2B2"
         returnKeyType="send"
         selectionColor="#666666"
+        editable={!isLoading}
         onSubmitEditing={handleSubmit}
       />
       <Button
         className="h-12 w-12 items-center justify-center"
         activeOpacity={0.7}
+        disabled={isLoading}
         onPress={handleSubmit}
       >
-        <Entypo name="chevron-small-right" size={24} color="black" />
+        {!isLoading && (
+          <Entypo name="chevron-small-right" size={24} color="black" />
+        )}
+        {isLoading && <ActivityIndicator size="small" color="#666666" />}
       </Button>
     </View>
   )

@@ -14,7 +14,7 @@ import { INewsRepository } from './index.dto'
 
 @Injectable({ name: 'NEWS_REPOSITORY' })
 export class NewsMockRepository implements INewsRepository.Implements {
-  private mockNews: NewsEntity[] = Array.from({ length: 100 }, (_, index) => {
+  private mockNews: NewsEntity[] = Array.from({ length: 4 }, (_, index) => {
     return new NewsEntity({
       id: index.toString(),
       title: `Title ${index}`,
