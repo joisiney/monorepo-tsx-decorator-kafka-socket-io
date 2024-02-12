@@ -4,9 +4,11 @@ import classNames from 'classnames'
 import { styled } from 'nativewind'
 import { FC, useEffect, useRef, useState } from 'react'
 import { Text, TextInput, TouchableOpacity, View } from 'react-native'
+
 const Button = styled(TouchableOpacity)
 const Input = styled(TextInput)
 const Icon = styled(Ionicons)
+
 export const HomeItem: FC<{
   item: AppNewsEntity
   handleRemove: () => void
@@ -15,6 +17,7 @@ export const HomeItem: FC<{
   const [isEditing, setIsEditing] = useState(false)
   const [newTitle, setNewTitle] = useState(item.title)
   const textInputRef = useRef<TextInput>(null)
+
   function handleStartEditing() {
     setIsEditing(true)
   }

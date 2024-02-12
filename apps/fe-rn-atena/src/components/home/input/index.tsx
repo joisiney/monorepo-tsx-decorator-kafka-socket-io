@@ -2,11 +2,14 @@ import { Entypo } from '@expo/vector-icons'
 import { styled } from 'nativewind'
 import { FC, useRef, useState } from 'react'
 import { Alert, TextInput, TouchableOpacity, View } from 'react-native'
+
 const Button = styled(TouchableOpacity)
 const Input = styled(TextInput)
+
 export const HomeInput: FC<{ handleAdd: any }> = ({ handleAdd }) => {
   const [value, setValue] = useState('')
   const inputRef = useRef<TextInput>(null)
+
   const handleSubmit = () => {
     inputRef.current?.blur()
     if (value !== '') {
@@ -16,6 +19,7 @@ export const HomeInput: FC<{ handleAdd: any }> = ({ handleAdd }) => {
       Alert.alert('Atenção', 'Você não pode cadastrar uma item vazia')
     }
   }
+
   return (
     <View className="mx-6 bg-white border border-slate-200 h-12 rounded-md flex-row">
       <Input

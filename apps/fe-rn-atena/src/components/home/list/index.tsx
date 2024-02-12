@@ -1,8 +1,8 @@
 import { AppNewsEntity } from '@/@core/domain/entities/news.entity'
 import { FC } from 'react'
 import { FlatList } from 'react-native'
-import { EmptyState } from './empty-state'
-import { HomeItem } from './item'
+import { EmptyState } from '../empty-state'
+import { HomeItem } from '../item'
 export const List: FC<{
   data: AppNewsEntity[]
   handleDelete: (itemDelete: AppNewsEntity) => void
