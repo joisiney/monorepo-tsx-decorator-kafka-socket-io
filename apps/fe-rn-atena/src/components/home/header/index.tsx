@@ -3,7 +3,7 @@ import { Text, View } from 'react-native'
 
 export const Header: FC<{ total: number }> = ({ total }) => {
   return (
-    <View className="w-full mt-8 h-14 justify-betweenflex flex-row px-6">
+    <View className="w-full h-14 justify-betweenflex flex-row px-6">
       <View className="flex justify-center">
         <Text className="text-lg font-interblack text-neutral-900">
           OLYMPUS.NEWS

@@ -4,13 +4,23 @@ import {
   Inter_900Black,
   useFonts,
 } from '@expo-google-fonts/inter'
-
+import classNames from 'classnames'
 import { StatusBar } from 'expo-status-bar'
 import { styled } from 'nativewind'
-import { ImageBackground } from 'react-native'
+import {
+  ImageBackground,
+  KeyboardAvoidingView,
+  Platform,
+  View,
+} from 'react-native'
 import imgBg from '../assets/background.png'
 import { PageHome } from './pages/home'
+
+const hehavior = Platform.OS === 'ios' ? 'padding' : undefined
+
 const Bg = styled(ImageBackground)
+const KeyboardView = styled(KeyboardAvoidingView)
+
 export function App() {
   const [fontsLoaded, fontError] = useFonts({
     Inter_900Black,
@@ -21,10 +31,20 @@ export function App() {
   if (!fontsLoaded && !fontError) {
     return null
   }
+  const isAndroid = Platform.OS === 'android'
   return (
-    <Bg className="flex-1" source={imgBg} resizeMode="repeat">
-      <PageHome />
-      <StatusBar backgroundColor="black" style="light" />
-    </Bg>
+    <KeyboardView className="flex-1" behavior={hehavior} enabled>
+      <Bg className="flex-1" source={imgBg} resizeMode="repeat">
+        <View
+          className={classNames('flex-1', {
+            'mt-12': !isAndroid,
+            'mt-6': isAndroid,
+          })}
+        >
+          <PageHome />
+          <StatusBar backgroundColor="black" style="light" />
+        </View>
+      </Bg>
+    </KeyboardView>
   )
 }

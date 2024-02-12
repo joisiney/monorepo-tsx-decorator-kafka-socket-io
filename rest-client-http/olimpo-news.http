@@ -13,7 +13,7 @@ content-type: application/json
 ### 2. Listar todas as notícias
 GET {{host}}/olympus/news HTTP/1.1
 content-type: application/json
-x-page: 1
+x-page: 9
 x-take: 12
 
 ### 3. Consultar notícia por id

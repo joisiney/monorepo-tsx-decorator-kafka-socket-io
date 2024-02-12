@@ -1,9 +1,9 @@
+import 'reflect-metadata'
 import { TransformExceptionService } from '../../application/services/transform-exception.service'
 import { InjectorFactory } from '../../decorators/injection'
 import { ControllerParams } from './controller.params'
 import { ControllerParamsParser } from './controller.parser'
 import { IController } from './index.dto'
-
 export class ControllerComposer {
   constructor() {
     if (!InjectorFactory.instance.has('PluginRouter')) {
@@ -49,7 +49,8 @@ export class ControllerComposer {
                 status: 'success',
                 ...(typeof result === 'boolean' ? {} : result),
               }
-              reply.status(response.code).send(response)
+              
+              reply.status(response.code).send(JSON.stringify(result))
             }
             throw new Error('Method not found')
           } catch (error) {
