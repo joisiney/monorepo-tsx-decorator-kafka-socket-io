@@ -43,14 +43,15 @@ export class ControllerComposer {
               const result = parseded
                 ? await handler(parseded)
                 : await handler()
-
               const response = {
                 code: 200,
                 status: 'success',
                 ...(typeof result === 'boolean' ? {} : result),
               }
-              
-              reply.status(response.code).send(JSON.stringify(result))
+              reply
+                .status(response.code)
+                .header('Content-Type', 'application/json; charset=utf-8')
+                .send(result)
             }
             throw new Error('Method not found')
           } catch (error) {

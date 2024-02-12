@@ -1,0 +1,16 @@
+{
+    "extends": "../../tsconfig.json",
+    "compilerOptions": {
+        "jsx": "react-jsx",
+        "strict": true,
+        "baseUrl": "./",
+        "paths": {
+        "@/*": ["./src/*"],
+        "@assets/*": ["./assets/*"]
+        }
+    },
+    "include": ["./src/**/*.ts", "./src/**/*.tsx"],
+    "exclude": [
+        "node_modules"
+    ]
+}

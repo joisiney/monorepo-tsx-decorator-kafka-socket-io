@@ -13,6 +13,7 @@ export namespace IController {
   }
   export interface IResponse {
     status(code: number): IResponse
+    header(key: string, value: string): IResponse
     send(response: any): void
   }
 }

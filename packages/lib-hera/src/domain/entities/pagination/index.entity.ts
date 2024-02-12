@@ -1,15 +1,5 @@
-interface IPaginationBoot {
-  page: number
-  take: number
-}
-interface IPaginationHydrate<T> {
-  data: T[]
-  page: number
-  take: number
-  skip: number
-  pages: number
-  total: number
-}
+import { IPagination } from './index.dto'
+
 export class PaginationEntity<T> {
   private _data!: T[]
   private _pages!: number
@@ -17,21 +7,21 @@ export class PaginationEntity<T> {
   private _skip!: number
   private _page!: number
   private _take!: number
-  constructor(props: IPaginationBoot | IPaginationHydrate<T>) {
+  constructor(props: IPagination.Boot | IPagination.Hydrate<T>) {
     if ('data' in props) {
-      this.hydrate(props as IPaginationHydrate<T>)
+      this.hydrate(props as IPagination.Hydrate<T>)
     } else {
       this._page = props.page
       this._take = props.take
-      this.boot(props as IPaginationBoot)
+      this.boot(props as IPagination.Boot)
     }
   }
 
-  private boot(props: IPaginationBoot) {
+  private boot(props: IPagination.Boot) {
     this._skip = (props.page - 1) * props.take
   }
 
-  private hydrate(props: IPaginationHydrate<T>) {
+  private hydrate(props: IPagination.Hydrate<T>) {
     this._data = props.data
     this._page = props.page
     this._take = props.take

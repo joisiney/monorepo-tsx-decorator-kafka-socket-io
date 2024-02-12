@@ -4,6 +4,7 @@ import {
   Inter_900Black,
   useFonts,
 } from '@expo-google-fonts/inter'
+import { ContextReactQuery } from '@olympus/gateway-eros'
 import classNames from 'classnames'
 import { StatusBar } from 'expo-status-bar'
 import { styled } from 'nativewind'
@@ -33,18 +34,20 @@ export function App() {
   }
   const isAndroid = Platform.OS === 'android'
   return (
-    <KeyboardView className="flex-1" behavior={hehavior} enabled>
-      <Bg className="flex-1" source={imgBg} resizeMode="repeat">
-        <View
-          className={classNames('flex-1', {
-            'mt-12': !isAndroid,
-            'mt-6': isAndroid,
-          })}
-        >
-          <PageHome />
-          <StatusBar backgroundColor="black" style="light" />
-        </View>
-      </Bg>
-    </KeyboardView>
+    <ContextReactQuery baseUrl={process.env.EXPO_PUBLIC_APOLO_API_URL}>
+      <KeyboardView className="flex-1" behavior={hehavior} enabled>
+        <Bg className="flex-1" source={imgBg} resizeMode="repeat">
+          <View
+            className={classNames('flex-1', {
+              'mt-12': !isAndroid,
+              'mt-6': isAndroid,
+            })}
+          >
+            <PageHome />
+            <StatusBar backgroundColor="black" style="light" />
+          </View>
+        </Bg>
+      </KeyboardView>
+    </ContextReactQuery>
   )
 }

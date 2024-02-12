@@ -37,8 +37,9 @@
   },
   "dependencies": {
     "@olympus/domain-ceos": "*",
+    "@olympus/fe-rn-atena": "*",
     "@olympus/lib-hera": "*",
-    "@olympus/lint-zeus": "*",
+    "@olympus/gateway-eros": "*",
     "reflect-metadata": "^0.2.1",
     "zod": "^3.22.4"
   },

@@ -1,9 +1,0 @@
-### 1. Consultar usuario por id
-GET {{host}}/user/find-one/4 HTTP/1.1
-content-type: application/json
-
-### 2. Consultar todos os usuarios
-GET {{host}}/user/find HTTP/1.1
-content-type: application/json
-x-page:2
-x-page-size:20
