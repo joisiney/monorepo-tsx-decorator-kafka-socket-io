@@ -1,7 +1,7 @@
-import { AppNewsEntity } from '@/@core/domain/entities/news.entity'
 import { useAllNews } from '@olympus/gateway-eros'
 import { IPagination } from '@olympus/lib-hera'
 import { useCallback, useRef } from 'react'
+import { AppNewsEntity } from '../../../@core/domain/entities/news.entity'
 
 export const useFindAllService = () => {
   const isLastPageRef = useRef<any | undefined>()
@@ -23,7 +23,10 @@ export const useFindAllService = () => {
     }: {
       pageParams: number
       pages: IPagination.Hydrate<AppNewsEntity>[]
-    }) => pages.map((item) => item.data).flat(),
+    }) => {
+      const response = pages.map((item) => item.data).flat()
+      return response
+    },
   })
   const isLoading = isFetchingNextPage || isFetchingPreviousPage
 
@@ -32,6 +35,5 @@ export const useFindAllService = () => {
       fetchNextPage()
     }
   }, [fetchNextPage, hasNextPage, isLoading])
-
   return { data, isLoading, handleInfiniteScroll }
 }

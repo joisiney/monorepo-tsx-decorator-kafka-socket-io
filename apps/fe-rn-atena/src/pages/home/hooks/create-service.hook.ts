@@ -1,6 +1,6 @@
-import { AppNewsEntity } from '@/@core/domain/entities/news.entity'
 import { queryClient, useCreateNews } from '@olympus/gateway-eros'
 import { useCallback } from 'react'
+import { AppNewsEntity } from '../../../@core/domain/entities/news.entity'
 
 export const useCreateService = () => {
   const createNewsService = useCreateNews()

@@ -10,7 +10,6 @@
     "start:dev": "node --watch --trace-warnings --env-file=./.env-development --import tsx src/infra/server.ts",
     "build": "rm -rf dist && tsc && tsc-alias",
     "start:prd": "node --env-file=./.env-development --import ./dist/src/infra/server.js",
-    "test": "vitest",
     "lint": "eslint ./ --ext .ts,.tsx",
     "lint:fix": "eslint . --ext .ts,.tsx --fix"
   },

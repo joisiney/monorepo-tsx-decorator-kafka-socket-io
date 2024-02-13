@@ -13,7 +13,7 @@ const queryFn = async <Input, Output>({
       'x-page': page,
     },
   })
-  return transformData(response)
+  return transformData(response as Input)
 }
 
 export const useAllNews = <Input, Output>({
@@ -23,12 +23,10 @@ export const useAllNews = <Input, Output>({
   transformData: (props: Input) => Output
   select: (props: any) => any
 }) => {
-  return useInfiniteQuery({
+  const response = useInfiniteQuery({
     queryKey: ['/olympus/news'],
     initialPageParam: 1,
-    select: (data) => {
-      return select(data)
-    },
+    select: (data) => select(data),
     queryFn: ({ pageParam = 1 }) => queryFn({ transformData, page: pageParam }),
     getNextPageParam: (lastPage = { page: 1, pages: [] }) => {
       const { page, pages } = lastPage as { page: number; pages: number }
@@ -41,4 +39,5 @@ export const useAllNews = <Input, Output>({
       return previusPage
     },
   })
+  return response
 }
