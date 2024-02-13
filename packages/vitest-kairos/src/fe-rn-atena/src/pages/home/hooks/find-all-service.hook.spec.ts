@@ -2,7 +2,7 @@ import { INewsDto } from '@olympus/domain-ceos'
 import { useFindAllService } from '@olympus/fe-rn-atena/src/pages/home/hooks/find-all-service.hook'
 import { clientHttp } from '@olympus/gateway-eros'
 import { renderHook, waitFor } from '@testing-library/react-native'
-import { afterEach, describe, expect, it, vi } from 'vitest'
+import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { NewsMockList } from '../../../../../utils/mocks/news.mock'
 import { PaginationMock } from '../../../../../utils/mocks/pagination.mock'
 import { wrapper } from '../../../../../utils/react-query'
@@ -12,10 +12,10 @@ const news = NewsMockList()
 const responseMock = PaginationMock(news)
 
 describe('@olympus/fe-rn-atena/useFindAllService', () => {
-  afterEach(() => {
+  beforeEach(() => {
     vi.clearAllMocks()
   })
-  it.only('@olympus/gateway-eros->useAllNews/success', async () => {
+  it('@olympus/gateway-eros->useAllNews/success', async () => {
     vi.spyOn(clientHttp.api, 'get').mockImplementation(() =>
       Promise.resolve(responseMock),
     )
