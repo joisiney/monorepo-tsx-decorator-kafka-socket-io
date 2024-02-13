@@ -1,15 +1,15 @@
 {
-    "extends": "../../tsconfig.json",
+    "extends": "expo/tsconfig.base",
     "compilerOptions": {
-        "moduleResolution": "node",
-        "baseUrl": ".",
-        "outDir": "./dist",
-        "rootDir": "./",
         "jsx": "react-jsx",
         "strict": true,
+        "baseUrl": "./",
+        "paths": {
+            "react": [ "./node_modules/@types/react" ]
+          }
     },
-    "include": ["./**/*.tsx","./**/*.ts"],
+    "include": ["./src/**/*.ts", "./src/**/*.tsx"],
     "exclude": [
-        "node_modules", "dist"
+        "node_modules"
     ]
 }
