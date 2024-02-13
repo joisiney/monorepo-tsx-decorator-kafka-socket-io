@@ -11,7 +11,6 @@ export const Header: FC<{ total: number }> = ({ total }) => {
       </View>
       {total > 0 ? (
         <View
-          testID="header-news"
           className="flex-1 flex-row justify-end items-center"
         >
           <Text className="text-base font-interregular text-neutral-900">
@@ -24,7 +23,6 @@ export const Header: FC<{ total: number }> = ({ total }) => {
         </View>
       ) : (
         <View
-          testID="header-news"
           className="flex-1 flex-row justify-end items-center"
         >
           <Text className="text-base font-interregular text-neutral-900">
