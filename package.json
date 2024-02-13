@@ -5,33 +5,37 @@
   "main": "index.js",
   "license": "MIT",
   "packageManager": "yarn@1.22.19",
+  "type": "module",
   "scripts": {
-    "link:all":"yarn install && cd packages/lib-hera && yarn link && cd packages/domain-ceos && yarn link && cd packages/lint-zeus && yarn link",
+    "test":"cd packages/vitest-kairos && yarn test",
+    "link:all": "yarn install && cd packages/gateway-eros && yarn install && yarn link && cd packages/lib-hera && yarn install && yarn link && cd packages/domain-ceos && yarn install && yarn link && cd packages/lint-zeus && yarn install && yarn link && cd packages/fe-rn-atena && yarn install && yarn link && cd packages/be-apolo && yarn install && yarn link",
     "start:prd:apolo": "cd apps/be-apolo && yarn start:prd",
     "start:dev:apolo": "cd apps/be-apolo && yarn start:dev",
     "start:dev:atena:android": "cd apps/fe-rn-atena && yarn android",
     "start:dev:atena:ios": "cd apps/fe-rn-atena && yarn ios",
-    "start:prod": "yarn start:prd:apolo",
+    "start:prd": "yarn start:prd:apolo",
     "start:dev": "yarn start:dev:apolo",
     "build:apolo": "cd apps/be-apolo && yarn build",
     "build:ceos": "cd packages/domain-ceos && yarn build",
     "build:hera": "cd packages/lib-hera && yarn build",
-    "build": "yarn build:hera & yarn build:apolo & yarn build:ceos",
+    "build": "yarn build:hera && yarn build:apolo && yarn build:ceos",
     "lint:apolo": "cd apps/be-apolo && yarn lint",
     "lint:atena": "cd apps/fe-rn-atena && yarn lint",
     "lint:ceos": "cd packages/domain-ceos && yarn lint",
     "lint:eros": "cd packages/gateway-eros && yarn lint",
     "lint:hera": "cd packages/lib-hera && yarn lint",
-    "lint": "yarn lint:apolo && yarn lint:atena && yarn lint:ceos && yarn lint:hera && yarn lint:eros",
+    "lint:kairos": "cd packages/vitest-kairos && yarn lint",
+    "lint": "yarn lint:apolo && yarn lint:atena && yarn lint:ceos && yarn lint:hera && yarn lint:eros && yarn lint:kairos",
     "lint:fix:apolo": "cd apps/be-apolo && yarn lint:fix",
     "lint:fix:atena": "cd apps/fe-rn-atena && yarn lint:fix",
     "lint:fix:ceos": "cd packages/domain-ceos && yarn lint:fix",
     "lint:fix:hera": "cd packages/lib-hera && yarn lint:fix",
     "lint:fix:eros": "cd packages/gateway-eros && yarn lint:fix",
-    "lint:fix": "yarn lint:fix:apolo && yarn lint:fix:atena && yarn lint:fix:ceos && yarn lint:fix:hera && yarn lint:fix:eros",
-    "remove:dist": "rm -rf packages/lib-hera/dist && rm -rf packages/domain-ceos/dist && rm -rf apps/be-apolo/dist && rm -rf packages/gateway-eros",
-    "remove:modules": "rm -rf node_modules && rm -rf packages/lib-hera/node_modules && rm -rf packages/lint-zeus/node_modules && rm -rf packages/domain-ceos/node_modules && rm -rf apps/be-apolo/node_modules && rm -rf apps/fe-rn-atena/node_modules && rm -rf packages/gateway-eros/node_modules",
-    "remove:lock": "rm -rf packages/lib-hera/yarn.lock && rm -rf packages/domain-ceos/yarn.lock && rm -rf apps/be-apolo/yarn.lock && rm -rf apps/fe-rn-atena/yarn.lock && rm -rf packages/gateway-eros/yarn.lock",
+    "lint:fix:kairos": "cd packages/vitest-kairos && yarn lint:fix",
+    "lint:fix": "yarn lint:fix:apolo && yarn lint:fix:atena && yarn lint:fix:ceos && yarn lint:fix:hera && yarn lint:fix:eros && yarn lint:fix:kairos",
+    "remove:dist": "rm -rf packages/lib-hera/dist && rm -rf packages/domain-ceos/dist && rm -rf apps/be-apolo/dist && rm -rf packages/gateway-eros/dist && rm -rf packages/vitest-kairos/dist",
+    "remove:modules": "rm -rf node_modules && rm -rf packages/lib-hera/node_modules && rm -rf packages/lint-zeus/node_modules && rm -rf packages/domain-ceos/node_modules && rm -rf apps/be-apolo/node_modules && rm -rf apps/fe-rn-atena/node_modules && rm -rf packages/gateway-eros/node_modules && rm -rf packages/vitest-kairos/node_modules",
+    "remove:lock": "rm -rf packages/lib-hera/yarn.lock && rm -rf packages/domain-ceos/yarn.lock && rm -rf apps/be-apolo/yarn.lock && rm -rf apps/fe-rn-atena/yarn.lock && rm -rf packages/gateway-eros/yarn.lock && rm -rf packages/vitest-kairos/yarn.lock",
     "remove:all": "yarn remove:dist && yarn remove:modules && yarn remove:lock"
   },
   "engines": {
@@ -40,8 +44,8 @@
   "dependencies": {
     "@olympus/domain-ceos": "*",
     "@olympus/fe-rn-atena": "*",
-    "@olympus/lib-hera": "*",
     "@olympus/gateway-eros": "*",
+    "@olympus/lib-hera": "*",
     "reflect-metadata": "^0.2.1",
     "zod": "^3.22.4"
   },
@@ -55,7 +59,6 @@
     "typescript": "^5.3.3",
     "vitest": "^1.2.2"
   },
-  
   "workspaces": {
     "packages": [
       "packages/*",

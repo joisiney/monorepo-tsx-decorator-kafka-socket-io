@@ -10,7 +10,10 @@ export const Header: FC<{ total: number }> = ({ total }) => {
         </Text>
       </View>
       {total > 0 ? (
-        <View className="flex-1 flex-row justify-end items-center">
+        <View
+          testID="header-news"
+          className="flex-1 flex-row justify-end items-center"
+        >
           <Text className="text-base font-interregular text-neutral-900">
             Você tem
           </Text>
@@ -20,7 +23,10 @@ export const Header: FC<{ total: number }> = ({ total }) => {
           </Text>
         </View>
       ) : (
-        <View className="flex-1 flex-row justify-end items-center">
+        <View
+          testID="header-news"
+          className="flex-1 flex-row justify-end items-center"
+        >
           <Text className="text-base font-interregular text-neutral-900">
             Você não tem notícias
           </Text>

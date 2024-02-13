@@ -3,7 +3,11 @@ import { IApiClient } from '../dto/http-client.dto'
 export class AxiosApiClient implements IApiClient {
   private api!: AxiosInstance
 
+  checkIfBooted() {
+    if (!this.api) throw new Error('AxiosApiClient is not booted')
+  }
   async post<T>(url: string, data: any, config?: any): Promise<T> {
+    this.checkIfBooted()
     try {
       const response = await this.api.post<T>(url, data, config)
       return response.data as T
@@ -14,6 +18,7 @@ export class AxiosApiClient implements IApiClient {
   }
 
   async put<T>(url: string, data: any, config?: any): Promise<T> {
+    this.checkIfBooted()
     try {
       const response = await this.api.put<T>(url, data, config)
       return response.data as T
@@ -24,6 +29,7 @@ export class AxiosApiClient implements IApiClient {
   }
 
   async delete<T>(url: string, config?: any): Promise<T> {
+    this.checkIfBooted()
     try {
       const response = await this.api.delete<T>(url, config)
       return response.data as T
@@ -34,6 +40,7 @@ export class AxiosApiClient implements IApiClient {
   }
 
   async get<T>(url: string, config?: any): Promise<T> {
+    this.checkIfBooted()
     try {
       const response = await this.api.get<T>(url, config)
       return response.data as T
@@ -43,10 +50,12 @@ export class AxiosApiClient implements IApiClient {
     }
   }
 
-  boot(url?: string) {
+  boot(url?: string, mockHttp?: any) {
     if (!url) throw new Error('BaseURL is required')
-    this.api = axios.create({
-      baseURL: url,
-    })
+    this.api =
+      mockHttp ??
+      axios.create({
+        baseURL: url,
+      })
   }
 }
