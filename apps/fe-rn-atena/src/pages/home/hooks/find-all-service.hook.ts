@@ -14,7 +14,6 @@ export const useFindAllService = () => {
   } = useAllNews<IPagination.Hydrate<any>, IPagination.Hydrate<AppNewsEntity>>({
     transformData: (result) => {
       isLastPageRef.current = result.page >= result.pages
-
       result.data = result.data.map((item) => new AppNewsEntity(item))
       return result
     },
