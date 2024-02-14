@@ -58,7 +58,7 @@ This is an example of how to list things you need to use the software and how to
   npm install --global yarn@1.22.21
   ```
 
-### Instruções
+### Guia de inicialização
 
 Para inicializar o **backend**, basta seguir as instruções abaixo:
 
