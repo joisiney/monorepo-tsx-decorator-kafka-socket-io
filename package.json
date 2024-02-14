@@ -4,11 +4,12 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
-  "packageManager": "yarn@1.22.19",
   "type": "module",
   "scripts": {
     "test":"cd packages/vitest-kairos && yarn test",
     "link:all": "yarn install && cd packages/gateway-eros && yarn install && yarn link && cd packages/lib-hera && yarn install && yarn link && cd packages/domain-ceos && yarn install && yarn link && cd packages/lint-zeus && yarn install && yarn link && cd packages/fe-rn-atena && yarn install && yarn link && cd packages/be-apolo && yarn install && yarn link",
+    "start:mysql:apolo": "cd apps/be-apolo && yarn docker-up",
+    "stop:mysql:apolo": "cd apps/be-apolo && yarn docker-down",
     "start:prd:apolo": "cd apps/be-apolo && yarn start:prd",
     "start:dev:apolo": "cd apps/be-apolo && yarn start:dev",
     "start:dev:atena:android": "cd apps/fe-rn-atena && yarn android",
@@ -39,7 +40,8 @@
     "remove:all": "yarn remove:dist && yarn remove:modules && yarn remove:lock"
   },
   "engines": {
-    "node": ">=v20.9.0"
+    "node": ">=v20.9.0",
+    "yarn": "^1.22.21"
   },
   "dependencies": {
     "@olympus/domain-ceos": "*",
