@@ -38,13 +38,16 @@ Para instalar e configurar uma cópia local, siga estas etapas simples:
 
 ### Prerequisitos
 
-This is an example of how to list things you need to use the software and how to install them.
-* **Docker** Caso não o tenha faça download através deste [link aqui](https://www.docker.com/products/docker-desktop)
-* node@v20.9.0
+Para garantir o funcionamento adequado do nosso aplicativo, verifique:
+
+
+1. **Docker** Caso não o tenha faça download através deste [link aqui](https://www.docker.com/products/docker-desktop)
+2. **node@v20.9.0**
   ```sh
   nvm use v20.9.0
   ```
-* yarn@1.22.21
+
+3. **yarn@1.22.21**
   ```sh
   # Instalação para IOS
   
@@ -57,7 +60,6 @@ This is an example of how to list things you need to use the software and how to
   # Instale usando npm
   npm install --global yarn@1.22.21
   ```
-
 ### Guia de inicialização
 
 Para inicializar o **backend**, basta seguir as instruções abaixo:
@@ -70,11 +72,11 @@ Para inicializar o **backend**, basta seguir as instruções abaixo:
    ```sh
    yarn install
    ```
-3. Execute o comando que cria o link entre os repositórios para que as dependências entre eles possam funcionar.
+3. Execute o comando que cria o __link__ entre os repositórios, permitindo que as dependências entre eles possam funcionar.
    ```sh
    yarn link:all
    ```
-4. Inicializando o **mysql** através do docker composer
+4. Inicializando o __mysql__ através do docker composer
    ```sh
    start:mysql:apolo
    ```
@@ -82,10 +84,12 @@ Para inicializar o **backend**, basta seguir as instruções abaixo:
    ```sh
    yarn start:dev:apolo
    ```
-   Após  a execução deste comando você deve ver texto em seu terminal:
+   Se tudo der certo deverá ver o seguinte __log__ em seu terminal:
    <img src="https://res.cloudinary.com/dmoi0mmuj/image/upload/v1707882723/github/Captura_de_Tela_2024-02-14_a%CC%80s_00.51.58_r8lg3q.png" alt=""/>
-   O objetivo deste log é lhe apresentar todas as rotas criadas com seu respectivo método de acesso.
-   Caso você utilize o VSCode e tenha o habito de usar o plugin `REST Client` na pasta `/rest-client-http` deixei todos os métodos cadastrados e atualizados
+   O objetivo deste **log** é apresentar todas as rotas criadas, juntamente com seus respectivos métodos de acesso.
+   Se você utiliza o VSCode e tem o hábito de usar o plugin `REST Client` na pasta `/rest-client-http`, todos os métodos estão cadastrados e atualizados lá 😜.<br/><br/>
+   **Erro ao inicializar o Apollo** 😢<br/>
+   Não se preocupe, vamos resolver isso juntos. Neste repositório, você encontrará todos os pacotes com a pasta `packages/**/dist` compilada, que podem ter alguma incompatibilidade com sua configuração. Para resolver isso, basta executar `yarn remove:all`. Esse comando irá apagar todas as pastas `packages/**/dist` já compiladas. Em seguida, execute novamente `yarn start:dev:apollo`, que deve começar a funcionar corretamente.
 6. Inicializando o **app**, o primeiro passo é fazer uma cópia do arquivo `apps/fe-rn-atena/.env.example` e salvá-lo como `.env`.<br/>
     **OBS:** O React Native não pode acessar o host local da mesma forma que um aplicativo da web. Você deve usar `http://10.0.2.2:3001`, que é um alias para `http://127.0.0.1:3001`, de acordo com a documentação do emulador Android.
 
