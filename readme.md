@@ -9,8 +9,8 @@
 
 Dividi-o em 7 workspaces dentro do monorepo para garantir a escalabilidade do projeto em uma arquitetura robusta e escalável.
 
-1. **app/be-demeter:** Este serviço é responsável por consumir as notícias na fila do Apache Kafka, enviadas pelo `app/be-apolo`. [mais info](docs/demeter.md)
-2. **app/be-apolo:** Esta API REST é responsável pela produção e envio de notícias para a fila do Apache Kafka. Além disso, este servidor também é responsável pelo gerenciamento do CRUD de usuários. [mais info](docs/apolo.md)
+1. **app/be-demeter:** Este serviço é responsável por produzir as notícias na fila do Apache Kafka, enviadas pelo `app/be-apolo`. [mais info](docs/demeter.md)
+2. **app/be-apolo:** Esta API REST é responsável pela consumir e envio de notícias para a fila do Apache Kafka. Além disso, este servidor também é responsável pelo gerenciamento do CRUD de usuários. [mais info](docs/apolo.md)
 3. **app/fe-rn-atena:** Este APP, desenvolvido em React Native e inicializado com Expo, é responsável pela visualização do CRUD de notícias e usuários. Além disso, ele irá lidar com a atualização em tempo real das notícias e dos usuários. [mais info](docs/atena.md)
 4. **packages/lib-ceos:** É onde fica a camada de `domain` da aplicação. Esta camada será responsável por centralizar a lógica de todos os aplicativos em um único pacote, facilitando a manutenção e escalabilidade. [mais info](docs/ceos.md)
 5. **packages/lib-hera:** Bibliotecas comuns utilizadas por todos os `apps/*` ou `packages/*`. [mais info](docs/hera.md)

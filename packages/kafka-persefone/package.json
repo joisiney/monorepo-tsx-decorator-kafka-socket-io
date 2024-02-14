@@ -1,5 +1,5 @@
 {
-  "name": "@olympus/lib-hera",
+  "name": "@olympus/kafka-persefone",
   "version": "1.0.0",
   "main": "src/index.ts",
   "author": "Joisiney Leandro",
@@ -12,14 +12,7 @@
     "lint:fix": "eslint ./src --ext .ts,.tsx --fix"
   },
   "dependencies": {
-    "useragent": "^2.3.0"
-  },
-  "devDependencies": {
-    "@types/node": "^20.11.16",
-    "@types/useragent": "^2.3.4",
-    "tsc-alias": "^1.8.8",
-    "tsx": "^4.7.0",
-    "typescript": "^5.3.3"
+    "kafkajs": "^2.2.4"
   },
   "peerDependencies": {
     "typescript": "^5.3.3"

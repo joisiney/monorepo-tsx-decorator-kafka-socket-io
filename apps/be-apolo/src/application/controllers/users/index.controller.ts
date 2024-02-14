@@ -1,6 +1,8 @@
-
 import { UserCreateUseCase } from '@/application/use-cases/users/create/index.use-case'
-import { IUserAllDto, userAllDto } from '@/application/use-cases/users/find-all/index.dto'
+import {
+  IUserAllDto,
+  userAllDto,
+} from '@/application/use-cases/users/find-all/index.dto'
 import { UserFindAllUseCase } from '@/application/use-cases/users/find-all/index.use-case'
 import { UserFindByIdUseCase } from '@/application/use-cases/users/find-id/index.use-case'
 import { UserRemoveByIdUseCase } from '@/application/use-cases/users/remove/index.use-case'
@@ -14,7 +16,6 @@ import {
 import { IUserCreateDto, userCreateDto } from './dto/create.dto'
 import { IUserIdDto, userIdDto } from './dto/id.dto'
 import { IUserUpdateDto, userUpdateDto } from './dto/put.dto'
-
 
 @Controller('/olympus')
 @Injectable({
@@ -51,7 +52,7 @@ export class UserController extends ControllerComposer {
   async findAll(props: IUserAllDto) {
     return this.findAllUseCase.execute(props)
   }
-  
+
   @Route({ method: 'DELETE', url: '/user/:id', dto: userIdDto })
   async removeById({ id }: IUserIdDto) {
     return this.removeByIdUseCase.execute(id)

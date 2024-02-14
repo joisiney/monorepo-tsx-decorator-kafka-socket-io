@@ -5,7 +5,7 @@ import { Injectable } from '@olympus/lib-hera'
 export class UserFindByIdUseCase {
   constructor(private readonly userRepository: IUserRepository.Implements) {}
 
-  async execute(id:number) {
+  async execute(id: number) {
     const user = await this.userRepository.findById(id)
     if (user.isError) return user.lanchError()
     return user.value

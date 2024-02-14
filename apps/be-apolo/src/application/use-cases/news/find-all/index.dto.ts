@@ -1,4 +1,4 @@
 export interface IFindAllUseCase {
-    page: number
-    take: number
+  page: number
+  take: number
 }
