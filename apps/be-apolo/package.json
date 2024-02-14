@@ -32,5 +32,13 @@
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.2"
+  },
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "types": "./dist/src/index.d.ts",
+      "import": "./dist/src/index.mjs",
+      "require": "./dist/src/index.js"
+    }
   }
 }
