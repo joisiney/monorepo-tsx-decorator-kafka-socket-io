@@ -6,7 +6,7 @@ import { IRemoveByIdUseCase } from './index.dto'
 export class NewsRemoveByIdUseCase {
   constructor(private readonly newsRepository: INewsRepository.Implements) {}
 
-  async execute(props: IRemoveByIdUseCase.Input) {
+  async execute(props: IRemoveByIdUseCase) {
     const news = await this.newsRepository.remove(props.id)
     if (news.isError) return news.lanchError()
     return news.value

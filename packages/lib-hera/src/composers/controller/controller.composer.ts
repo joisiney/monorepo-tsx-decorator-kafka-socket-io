@@ -1,6 +1,7 @@
 import 'reflect-metadata'
 import { TransformExceptionService } from '../../application/services/transform-exception.service'
 import { InjectorFactory } from '../../decorators/injection'
+import { PaginationEntity } from '../../domain/entities/pagination/index.entity'
 import { ControllerParams } from './controller.params'
 import { ControllerParamsParser } from './controller.parser'
 import { IController } from './index.dto'
@@ -43,15 +44,30 @@ export class ControllerComposer {
               const result = parseded
                 ? await handler(parseded)
                 : await handler()
-              const response = {
+
+              let response: { [key: string]: unknown } = {
                 code: 200,
                 status: 'success',
-                ...(typeof result === 'boolean' ? {} : result),
+                data: typeof result === 'boolean' ? result : undefined,
+              }
+              
+              if (response.data === undefined && 'toJSON' in result) {
+                if (result instanceof PaginationEntity) {
+                  response = {
+                    ...response,
+                    ...result.toJSON()
+                  }
+                } else {
+                  response = {
+                    ...response,
+                    data: result
+                  }
+                }
               }
               reply
-                .status(response.code)
+                .status(response.code as number)
                 .header('Content-Type', 'application/json; charset=utf-8')
-                .send(result)
+                .send(JSON.stringify(response))
             }
             throw new Error('Method not found')
           } catch (error) {

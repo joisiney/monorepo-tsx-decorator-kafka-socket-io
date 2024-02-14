@@ -1,6 +1,4 @@
-export namespace IFindAllUseCase {
-  export interface Input {
+export interface IFindAllUseCase {
     page: number
     take: number
-  }
 }

@@ -1,5 +1,3 @@
-export namespace IFindByIdUseCase {
-  export interface Input {
+export interface IFindByIdUseCase {
     id: string
-  }
 }

@@ -6,7 +6,7 @@ import { IFindAllUseCase } from './index.dto'
 export class NewsFindAllUseCase {
   constructor(private readonly newsRepository: INewsRepository.Implements) {}
 
-  async execute(props: IFindAllUseCase.Input) {
+  async execute(props: IFindAllUseCase) {
     const news = await this.newsRepository.findAll(props)
     if (news.isError) return news.lanchError()
     return news.value

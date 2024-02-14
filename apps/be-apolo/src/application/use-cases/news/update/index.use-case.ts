@@ -6,7 +6,7 @@ import { IUpdateByIdUseCase } from './index.dto'
 export class NewsUpdateByIdUseCase {
   constructor(private readonly newsRepository: INewsRepository.Implements) {}
 
-  async execute(props: IUpdateByIdUseCase.Input) {
+  async execute(props: IUpdateByIdUseCase) {
     const news = await this.newsRepository.update(props)
     if (news.isError) return news.lanchError()
     return news.value
