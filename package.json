@@ -41,7 +41,7 @@
   },
   "engines": {
     "node": ">=v20.9.0",
-    "yarn": "^1.22.21"
+    "yarn": ">=1.22.15"
   },
   "dependencies": {
     "@olympus/domain-ceos": "*",

@@ -78,7 +78,7 @@ Para inicializar o **backend**, basta seguir as instruções abaixo:
    ```
 4. Inicializando o __mysql__ através do docker composer
    ```sh
-   start:mysql:apolo
+   yarn start:mysql:apolo
    ```
 5. Inicializando o **backend**
    ```sh
