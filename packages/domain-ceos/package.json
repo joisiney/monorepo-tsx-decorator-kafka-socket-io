@@ -24,7 +24,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "exports": {
+  "*exports": {
     "./package.json": "./package.json",
     ".": {
       "types": "./dist/src/index.d.ts",
