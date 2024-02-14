@@ -40,11 +40,11 @@
     "remove:all": "yarn remove:dist && yarn remove:modules && yarn remove:lock"
   },
   "engines": {
-    "node": ">=v20.9.0",
-    "yarn": ">=1.22.15"
+    "node": ">=v20.9.0"
   },
   "dependencies": {
     "@olympus/domain-ceos": "*",
+    "@olympus/kafka-persefone": "*",
     "@olympus/fe-rn-atena": "*",
     "@olympus/gateway-eros": "*",
     "@olympus/lib-hera": "*",

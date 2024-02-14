@@ -1,6 +1,7 @@
 {
   "name": "@olympus/be-demeter",
-  "description": "News Consumer",
+  "version": "1.0.0",
+  "description": "News Producer",
   "main": "src/infra/server.ts",
   "author": "Joisiney Leandro",
   "license": "MIT",
@@ -11,5 +12,11 @@
     "start:prd": "node --env-file=./.env-development --import ./dist/src/infra/server.js",
     "lint": "eslint ./ --ext .ts,.tsx",
     "lint:fix": "eslint . --ext .ts,.tsx --fix"
+  },
+  "peerDependencies": {
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "kafkajs": "^2.2.4"
   }
 }

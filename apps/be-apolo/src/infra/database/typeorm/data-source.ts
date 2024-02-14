@@ -4,7 +4,7 @@ import { DataSource, DataSourceOptions } from 'typeorm'
 import { SnakeNamingStrategy } from 'typeorm-naming-strategies'
 
 const entity = join(__dirname, 'entities', '*.entity.ts')
-const migration = join(__dirname,  'migrations', '*.ts')
+const migration = join(__dirname, 'migrations', '*.ts')
 
 const options: DataSourceOptions = {
   type: 'mysql',

@@ -50,17 +50,17 @@ export class ControllerComposer {
                 status: 'success',
                 data: typeof result === 'boolean' ? result : undefined,
               }
-              
+
               if (response.data === undefined && 'toJSON' in result) {
                 if (result instanceof PaginationEntity) {
                   response = {
                     ...response,
-                    ...result.toJSON()
+                    ...result.toJSON(),
                   }
                 } else {
                   response = {
                     ...response,
-                    data: result
+                    data: result,
                   }
                 }
               }

@@ -1,3 +1,3 @@
 export interface IFindByIdUseCase {
-    id: string
+  id: string
 }

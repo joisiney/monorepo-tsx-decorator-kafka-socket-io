@@ -6,7 +6,7 @@ import { IUserAllDto } from './index.dto'
 export class UserFindAllUseCase {
   constructor(private readonly userRepository: IUserRepository.Implements) {}
 
-  async execute(props:IUserAllDto) {
+  async execute(props: IUserAllDto) {
     const user = await this.userRepository.findAll(props)
     if (user.isError) return user.lanchError()
     return user.value

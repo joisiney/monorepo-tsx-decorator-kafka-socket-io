@@ -65,7 +65,7 @@ export class PaginationEntity<T> {
   get pointer() {
     return {
       skip: (this.page - 1) * this.take,
-      take:this.take,
+      take: this.take,
     }
   }
   toJSON() {

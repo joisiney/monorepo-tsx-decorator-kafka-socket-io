@@ -39,7 +39,7 @@ InjectorFactory.instance.set('PluginRouter', app)
     InjectorFactory.resolve(NewsFindByIdUseCase)
     InjectorFactory.resolve(NewsUpdateByIdUseCase)
     InjectorFactory.resolve(NewsRemoveByIdUseCase)
-    
+
     // USE_CASE USER
     InjectorFactory.resolve(UserCreateUseCase)
     InjectorFactory.resolve(UserFindByIdUseCase)
@@ -84,7 +84,7 @@ app.listen(
       console.log('migrations finished')
     } catch (err) {
       console.error(err)
-    } finally{
+    } finally {
       console.log(`Server listening at ${address} 🚀🚀`)
     }
   },
