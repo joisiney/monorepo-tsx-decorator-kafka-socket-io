@@ -24,7 +24,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
-  "_exports": {
+  "exports": {
     "./package.json": "./package.json",
     ".": {
       "types": "./dist/src/index.d.ts",
