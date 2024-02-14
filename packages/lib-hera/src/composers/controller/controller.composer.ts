@@ -71,6 +71,7 @@ export class ControllerComposer {
             }
             throw new Error('Method not found')
           } catch (error) {
+            console.error(error)
             const errorService = new TransformExceptionService(
               this.constructor.name,
               url,
