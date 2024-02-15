@@ -72,27 +72,23 @@ Para inicializar o **backend**, basta seguir as instruções abaixo:
    ```sh
    yarn install
    ```
-3. Execute o comando que cria o __link__ entre os repositórios, permitindo que as dependências entre eles possam funcionar.
+3. Inicializando o __mysql__ através do docker composer
    ```sh
-   yarn link:all
+   yarn apolo:docker-up
    ```
-4. Inicializando o __mysql__ através do docker composer
+4. Inicializando o **backend**
    ```sh
-   yarn start:mysql:apolo
-   ```
-5. Inicializando o **backend**
-   ```sh
-   yarn start:dev:apolo
+   yarn apolo:dev
    ```
    Se tudo der certo deverá ver o seguinte __log__ em seu terminal:
    <img src="https://res.cloudinary.com/dmoi0mmuj/image/upload/v1707882723/github/Captura_de_Tela_2024-02-14_a%CC%80s_00.51.58_r8lg3q.png" alt=""/>
    O objetivo deste **log** é apresentar todas as rotas criadas, juntamente com seus respectivos métodos de acesso.
    Se você utiliza o VSCode e tem o hábito de usar o plugin `REST Client` na pasta `/rest-client-http`, todos os métodos estão cadastrados e atualizados lá 😜.<br/><br/>
    **Erro ao inicializar o Apollo** 😢<br/>
-   Não se preocupe, vamos resolver isso juntos. Neste repositório, você encontrará todos os pacotes com a pasta `packages/**/dist` compilada, que podem ter alguma incompatibilidade com sua configuração. Para resolver isso, basta executar `yarn remove:all`. Esse comando irá apagar todas as pastas `packages/**/dist` já compiladas. Em seguida, execute novamente `yarn start:dev:apollo`, que deve começar a funcionar corretamente.
-6. Inicializando o **app**, o primeiro passo é fazer uma cópia do arquivo `apps/fe-rn-atena/.env.example` e salvá-lo como `.env`.<br/>
+   Não se preocupe, vamos resolver isso juntos. Neste repositório, você encontrará todos os pacotes com a pasta `packages/**/dist` compilada, que podem ter alguma incompatibilidade com sua configuração. Para resolver isso, basta executar `yarn reset`. Esse comando irá apagar todas as pastas `packages/**/dist` já compiladas. Em seguida, execute novamente `yarn apolo:dev`, que deve começar a funcionar corretamente.
+5. Inicializando o **app**, o primeiro passo é fazer uma cópia do arquivo `apps/fe-rn-atena/.env.example` e salvá-lo como `.env`.<br/>
     **OBS:** O React Native não pode acessar o host local da mesma forma que um aplicativo da web. Você deve usar `http://10.0.2.2:3001`, que é um alias para `http://127.0.0.1:3001`, de acordo com a documentação do emulador Android.
-7. Para executar os testes, basta rodar `yarn test` no diretório raiz onde se encontra o arquivo `package.json`, ou no módulo responsável pelos testes em `packages/vitest-kairos/package.json`. Isso mostrará os testes realizados até o momento com o Vitest.
+6. Para executar os testes, basta rodar `yarn test` no diretório raiz onde se encontra o arquivo `package.json`, ou no módulo responsável pelos testes em `packages/vitest-kairos/package.json`. Isso mostrará os testes realizados até o momento com o Vitest.
 <img src="https://res.cloudinary.com/dmoi0mmuj/image/upload/v1707916641/github/svccujdpeyrhgpz9lchi.png?nocache=1" alt="test">
 
 
@@ -100,22 +96,21 @@ Para inicializar o **backend**, basta seguir as instruções abaixo:
 
 O principal objetivo dos comandos no arquivo package.json é criar atalhos para os links dos subaplicativos.
 
-| Bash/Script                    | Descrição                                                                                                                    |
-| ------------------------------ | ---------------------------------------------------------------------------------------------------------------------------- |
-| `yarn test`                    | Executa todos os testes da aplicação com o vitest                                                                            |
-| `yarn link:all`                | Cria links entre todas as aplicações, isto permite que um app acesso um package por exemplo                                  |
-| `yarn start:mysql:apolo`       | inicializa o banco de dados `mysql` no `docker`, seria o mesmo que vc em `apps/be-apolo` e digitasse `docker-composer up -d` |
-| `yarn stop:mysql:apolo`        |                                                                                                                              |
-| `yarn start:prd:apolo`         |                                                                                                                              |
-| `yarn start:dev:apolo`         |                                                                                                                              |
-| `yarn start:dev:atena:android` |                                                                                                                              |
-| `yarn start:dev:atena:ios`     |                                                                                                                              |
-| `yarn start:prd`               | Inicializando todos os `serviços/api` em modo de produção                                                                    |
-| `yarn start:dev`               | Inicializando todos os `serviços/api` em modo de desenvolvimento                                                             |
-| `yarn build:apolo`             |                                                                                                                              |
-| `yarn build:ceos`              |                                                                                                                              |
-| `yarn build:hera`              |                                                                                                                              |
-| `yarn build`                   | Fazendo `build` de todos os `serviços/api` para produção                                                                     |
+| Bash/Script              | Descrição                                                                          |
+| ------------------------ | ---------------------------------------------------------------------------------- |
+| `yarn test`              | Executa todos os testes da aplicação com o Vitest                                  |
+| `yarn lint:fix`          | Formata todos os arquivos `ts` e `tsx`                                             |
+| `yarn lint`              | Verifica todos os arquivos `ts` e `tsx`                                            |
+| `yarn reset`             | Remove todas as pastas `node_modules` e `dist`                                     |
+| `yarn build`             | Gera o bundle de todos os projetos                                                 |
+| `yarn start`             | Inicia todos os projetos em modo de produção (Depende de ter bundle pré-existente) |
+| `yarn dev`               | Inicia todos os projetos em modo de `Hot reload`                                   |
+| `yarn apolo:dev`         | Inicia o Apolo em modo de `Hot reload`                                             |
+| `yarn apolo:docker-up`   | Levanta o banco `MySQL`                                                            |
+| `yarn apolo:docker-down` | Derruba o banco `MySQL`                                                            |
+| `yarn atena:android`     | Inicia o app `Atena` no Android em modo de `Hot reload`                            |
+| `yarn atena:ios`         | Inicia o app `Atena` no iPhone em modo de `Hot reload`                             |
+
 
 
 ## Usage
