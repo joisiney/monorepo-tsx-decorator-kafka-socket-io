@@ -10,6 +10,7 @@ import { UserFindAllUseCase } from '@/application/use-cases/users/find-all/index
 import { UserFindByIdUseCase } from '@/application/use-cases/users/find-id/index.use-case'
 import { UserRemoveByIdUseCase } from '@/application/use-cases/users/remove/index.use-case'
 import { UserUpdateByIdUseCase } from '@/application/use-cases/users/update/index.use-case'
+import { KafkaConsumerService, KafkaDataSource } from '@olympus/kafka-persefone'
 import { InjectorFactory } from '@olympus/lib-hera'
 import Fastify, {
   FastifyError,
@@ -52,9 +53,32 @@ InjectorFactory.instance.set('PluginRouter', app)
     InjectorFactory.resolve(NewsRepositoryMock)
     InjectorFactory.resolve(UserRepositoryTypeORM)
   }
-  // INJECTING NEWS CONTROLLER
-  InjectorFactory.resolve(NewsController)
-  InjectorFactory.resolve(UserController)
+  {
+    // INJECTING NEWS CONTROLLER
+    InjectorFactory.resolve(NewsController)
+    InjectorFactory.resolve(UserController)
+  }
+  // INJECTING DATA SOURCE KAFKA
+  {
+    InjectorFactory.resolve(KafkaDataSource, {
+      name: 'DATA_SOURCE_MESSAGES',
+      defaultArgs: {
+        groupId: 'news-group',
+        brokers: [process.env.BROKERS as string],
+        ssl: true,
+        sasl: {
+          mechanism: process.env.MECHANISM as 'scram-sha-256',
+          username: process.env.USERNAME as string,
+          password: process.env.PASSWORD as string,
+        },
+      },
+    })
+    // A instancia do KafkaProducerService deve ser sempre a última a ser instanciada
+    InjectorFactory.resolve(KafkaConsumerService, {
+      name: 'CONSUMER_NEWS',
+      dep: ['DATA_SOURCE_MESSAGES', 'NewsCreateUseCase'],
+    })
+  }
 }
 
 // ERROR HANDLER

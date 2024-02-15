@@ -1,4 +1,5 @@
 import { INewsRepository } from '@/infra/repositories/news/index.dto'
+import { Subscription } from '@olympus/kafka-persefone'
 import { Injectable } from '@olympus/lib-hera'
 import { ICreateUseCase } from './index.dto'
 
@@ -6,8 +7,10 @@ import { ICreateUseCase } from './index.dto'
 export class NewsCreateUseCase {
   constructor(private readonly newsRepository: INewsRepository.Implements) {}
 
+  @Subscription({ topic: 'news.send-news' })
   async execute(props: ICreateUseCase) {
     const news = await this.newsRepository.create(props)
+    console.log('insert', props.title)
     if (news.isError) return news.lanchError()
     return true
   }

@@ -1,19 +1,12 @@
-import { SendNewsKafkaController } from '@/application/controllers/send-news-kafka.controller'
-import {
-  IProducerService,
-  KafkaProducerService,
-} from '@olympus/kafka-persefone'
+import { ProducerNewsKafkaUseCase } from '@/application/use-cases/producer.use-case'
+import { KafkaDataSource, KafkaProducerService } from '@olympus/kafka-persefone'
 import { InjectorFactory } from '@olympus/lib-hera'
 import 'reflect-metadata'
 
-export namespace IProducer {
-  export type Message = IProducerService.Message
-  export type Implements = IProducerService.Implements
-}
-
-InjectorFactory.resolve(KafkaProducerService, {
-  name: 'PRODUCER_NEWS',
+InjectorFactory.resolve(KafkaDataSource, {
+  name: 'DATA_SOURCE_MESSAGES',
   defaultArgs: {
+    groupId: 'news-group',
     brokers: [process.env.BROKERS as string],
     ssl: true,
     sasl: {
@@ -23,6 +16,26 @@ InjectorFactory.resolve(KafkaProducerService, {
     },
   },
 })
-const kafkaController = InjectorFactory.resolve(SendNewsKafkaController)
 
-kafkaController.execute()
+InjectorFactory.resolve(KafkaProducerService, {
+  name: 'PRODUCER_NEWS',
+  dep: ['DATA_SOURCE_MESSAGES'],
+})
+
+const kafkaProducerController = InjectorFactory.resolve(
+  ProducerNewsKafkaUseCase,
+)
+let counter = 0
+const maxMessages = 5
+const intervalSeconds = 1000 * 10 // 10 seconds
+const dispatchMessage = async () => {
+  await kafkaProducerController.execute(counter)
+  if (counter < maxMessages) {
+    setTimeout(dispatchMessage, intervalSeconds)
+    counter++
+  } else {
+    console.log(`Max messages reached ${counter}`)
+    process.exit(0)
+  }
+}
+setTimeout(dispatchMessage, intervalSeconds)
