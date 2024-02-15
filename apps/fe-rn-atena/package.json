@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "EXPO_USE_METRO_WORKSPACE_ROOT=1 yarn expo start",
+    "start:dev": "EXPO_USE_METRO_WORKSPACE_ROOT=1 yarn expo start",
     "android": "EXPO_USE_METRO_WORKSPACE_ROOT=1 yarn expo run:android",
     "ios": "EXPO_USE_METRO_WORKSPACE_ROOT=1 yarn expo run:ios",
     "prebuild": "EXPO_USE_METRO_WORKSPACE_ROOT=1 yarn expo prebuild",
@@ -11,7 +11,10 @@
     "clean:gradlew": "EXPO_USE_METRO_WORKSPACE_ROOT=1 && cd android && ./gradlew clean",
     "web": "expo start --web",
     "lint": "eslint ./ --ext .ts,.tsx",
-    "lint:fix": "eslint . --ext .ts,.tsx --fix"
+    "lint:fix": "eslint . --ext .ts,.tsx --fix",
+    "reset": "rm -rf ios && rm -rf android && rm -rf node_modules && rm -rf yarn.lock && rm -fr tsconfig.tsbuildinfo",
+    "build": "echo 'No build script found'",
+    "start": "echo 'No build script found'"
   },
   "dependencies": {
     "@expo-google-fonts/inter": "^0.2.3",

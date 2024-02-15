@@ -7,7 +7,6 @@ import { NewsMockList } from '../../../../../utils/mocks/news.mock'
 import { PaginationMock } from '../../../../../utils/mocks/pagination.mock'
 import { wrapper } from '../../../../../utils/react-query'
 
-
 const news = NewsMockList()
 const responseMock = PaginationMock(news)
 

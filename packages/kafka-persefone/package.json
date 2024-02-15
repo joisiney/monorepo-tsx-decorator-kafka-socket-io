@@ -5,9 +5,12 @@
   "author": "Joisiney Leandro",
   "license": "MIT",
   "scripts": {
+    "start": "echo 'No start script defined'",
+    "start:dev": "echo 'No start:dev script defined'",
     "build": "rm -rf dist && tsc && tsc-alias",
     "lint": "eslint ./ --ext .ts,.tsx",
-    "lint:fix": "eslint . --ext .ts,.tsx --fix"
+    "lint:fix": "eslint . --ext .ts,.tsx --fix",
+    "reset": "rm -rf .dist && rm -rf node_modules && rm -rf yarn.lock && rm -fr tsconfig.tsbuildinfo"
   },
   "dependencies": {
     "kafkajs": "^2.2.4"

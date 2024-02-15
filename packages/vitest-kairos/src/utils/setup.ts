@@ -1,2 +1,2 @@
-import React from 'react';
-global.React = React;
+import React from 'react'
+global.React = React

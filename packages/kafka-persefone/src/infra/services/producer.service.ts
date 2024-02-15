@@ -1,5 +1,5 @@
-import { Injectable } from '@olympus/lib-hera';
-import { KafkaDataSourceComposer } from '../database/data-source';
+import { Injectable } from '@olympus/lib-hera'
+import { KafkaDataSourceComposer } from '../database/data-source'
 
 @Injectable({ name: 'MESSAGING_PRODUCER' })
 export class KafkaProducerService extends KafkaDataSourceComposer {

@@ -4,6 +4,14 @@
   "main": "eslintrc.js",
   "author": "Joisiney Leandro",
   "license": "MIT",
+  "scripts": {
+    "start": " echo 'No start script defined'",
+    "start:dev": "echo 'No start:dev script defined'",
+    "build": "echo 'No build script defined'",
+    "lint": "echo 'No lint script defined'",
+    "lint:fix": "echo 'No lint:fix script defined'",
+    "reset": "echo 'No reset script defined'"
+  },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^6.21.0",
     "@typescript-eslint/parser": "^6.21.0",

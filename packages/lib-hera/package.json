@@ -5,11 +5,12 @@
   "author": "Joisiney Leandro",
   "license": "MIT",
   "scripts": {
-    "start": "node ./dist/src/index.js",
+    "start": "echo 'No start script defined'",
+    "start:dev": "echo 'No start:dev script defined'",
     "build": "rm -rf dist && tsc && tsc-alias",
-    "start:dev": "node --watch --import tsx src/index.ts",
     "lint": "eslint ./src --ext .ts,.tsx",
-    "lint:fix": "eslint ./src --ext .ts,.tsx --fix"
+    "lint:fix": "eslint ./src --ext .ts,.tsx --fix",
+    "reset": "rm -rf .dist && rm -rf node_modules && rm -rf yarn.lock && rm -fr tsconfig.tsbuildinfo"
   },
   "dependencies": {
     "useragent": "^2.3.0"

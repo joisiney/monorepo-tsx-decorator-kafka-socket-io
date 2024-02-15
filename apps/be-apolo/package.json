@@ -9,14 +9,15 @@
   "scripts": {
     "start:dev": "node --watch --trace-warnings --env-file=./.env-development --import tsx src/infra/server.ts",
     "build": "rm -rf dist && tsc && tsc-alias",
-    "start:prd": "node --env-file=./.env-development --import ./dist/src/infra/server.js",
+    "start": "node --env-file=./.env-development --import ./dist/src/infra/server.js",
     "lint": "eslint ./ --ext .ts,.tsx",
     "lint:fix": "eslint . --ext .ts,.tsx --fix",
     "docker-up": "docker-compose -f docker-compose.yml up --detach",
     "docker-down": "docker-compose stop",
     "typeorm": "typeorm-ts-node-commonjs -d ./src/infra/database/typeorm/data-source/index.ts",
     "migration:generate": "npm run typeorm migration:generate -o ./src/infra/database/typeorm/migrations/$npm_config_name",
-    "migration:run": "npm run typeorm migration:run"
+    "migration:run": "npm run typeorm migration:run",
+    "reset": "rm -rf .dist && rm -rf node_modules && rm -rf yarn.lock && rm -fr tsconfig.tsbuildinfo"
   },
   "dependencies": {
     "bcrypt": "^5.1.1",
