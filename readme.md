@@ -129,8 +129,9 @@ A parte de notícias está implementada utilizando mock, este CRUD está totalme
 
 - [x] Criar CRUD de notícias em memoria (MOCK)
   - [ ] Teste unitário/integração (Em andamento)
-  - [ ] Producer Apache Kafka (Em andamento)
-  - [ ] Consumer Apache Kafka (Em andamento) 
+  - [x] Producer Apache Kafka
+  - [x] Consumer Apache Kafka
+  - [ ] Disparo de notificação com Socket.io
 - [x] Criar CRUD de usuário com TypeORM e MYSQL
   - [ ] Teste unitário/integração (Em andamento)
 - [x] Implementar notícias no APP
