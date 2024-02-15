@@ -13,6 +13,7 @@
     "build": "yarn workspaces run build",
     "start": "yarn workspaces run start",
     "dev": "yarn workspaces run start:dev",
+    "clean": "yarn workspaces run clean",
     "apolo:dev": "cd apps/be-apolo && yarn start:dev",
     "apolo:docker-up": "cd apps/be-apolo && yarn docker-up",
     "apolo:docker-down": "cd apps/be-apolo && yarn docker-down",

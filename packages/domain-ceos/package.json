@@ -11,7 +11,8 @@
     "test": "vitest",
     "lint": "eslint ./ --ext .ts,.tsx",
     "lint:fix": "eslint . --ext .ts,.tsx --fix",
-    "reset": "rm -rf .dist && rm -rf node_modules && rm -rf yarn.lock && rm -fr tsconfig.tsbuildinfo"
+    "reset": "rm -rf .dist && rm -rf node_modules && rm -rf yarn.lock && rm -fr tsconfig.tsbuildinfo",
+    "clean": "rm -rf .dist"
   },
   "devDependencies": {
     "@types/node": "^20.11.16",

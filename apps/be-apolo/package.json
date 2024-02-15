@@ -17,7 +17,8 @@
     "typeorm": "typeorm-ts-node-commonjs -d ./src/infra/database/typeorm/data-source/index.ts",
     "migration:generate": "npm run typeorm migration:generate -o ./src/infra/database/typeorm/migrations/$npm_config_name",
     "migration:run": "npm run typeorm migration:run",
-    "reset": "rm -rf .dist && rm -rf node_modules && rm -rf yarn.lock && rm -fr tsconfig.tsbuildinfo"
+    "reset": "rm -rf .dist && rm -rf node_modules && rm -rf yarn.lock && rm -fr tsconfig.tsbuildinfo",
+    "clean": "rm -rf .dist"
   },
   "dependencies": {
     "bcrypt": "^5.1.1",

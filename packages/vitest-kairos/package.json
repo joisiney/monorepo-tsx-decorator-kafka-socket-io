@@ -9,7 +9,8 @@
     "reset": "rm -rf .dist && rm -rf node_modules && rm -rf yarn.lock && rm -fr tsconfig.tsbuildinfo",
     "start": " echo 'No start script defined'",
     "build": "echo 'No build script defined'",
-    "start:dev": "echo 'No start:dev script defined'"
+    "start:dev": "echo 'No start:dev script defined'",
+    "clean": "echo 'No clean script defined'"
   },
   "dependencies": {
     "@types/react": "^18.2.55",

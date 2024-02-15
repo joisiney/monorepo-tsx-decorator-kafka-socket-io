@@ -12,7 +12,8 @@
     "start": "node --env-file=./.env-development --import ./dist/src/infra/server.js",
     "lint": "eslint ./ --ext .ts,.tsx",
     "lint:fix": "eslint . --ext .ts,.tsx --fix",
-    "reset": "rm -rf .dist && rm -rf node_modules && rm -rf yarn.lock && rm -fr tsconfig.tsbuildinfo"
+    "reset": "rm -rf .dist && rm -rf node_modules && rm -rf yarn.lock && rm -fr tsconfig.tsbuildinfo",
+    "clean": "rm -rf .dist"
   },
   "dependencies": {
     "fastify": "^4.26.1",
