@@ -51,7 +51,10 @@ export class ControllerComposer {
                 data: typeof result === 'boolean' ? result : undefined,
               }
 
-              if (response.data === undefined && 'toJSON' in result) {
+              if (
+                response.data === undefined &&
+                ['object', 'array'].includes(typeof result)
+              ) {
                 if (result instanceof PaginationEntity) {
                   response = {
                     ...response,
@@ -64,10 +67,11 @@ export class ControllerComposer {
                   }
                 }
               }
-              reply
+              const responseSerialized = JSON.stringify(response)
+              return reply
                 .status(response.code as number)
                 .header('Content-Type', 'application/json; charset=utf-8')
-                .send(JSON.stringify(response))
+                .send(responseSerialized)
             }
             throw new Error('Method not found')
           } catch (error) {
