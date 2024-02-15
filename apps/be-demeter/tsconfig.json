@@ -1,11 +1,19 @@
 {
     "extends": "../../tsconfig.json",
     "compilerOptions": {
-        "moduleResolution": "node",
         "baseUrl": ".",
         "outDir": "./dist",
         "rootDir": "./",
-        "paths": {"@/*": ["src/*"]}
+        "paths": {
+            "@/*": [
+                "./src/*"
+            ]
+        }
     },
-    "exclude": ["node_modules"]
+    "include": [
+        "src/**/*.ts"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
 }

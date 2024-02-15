@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-        "target": "ES2021",
+        "target": "ES2015",
         "module": "commonjs",
         "resolveJsonModule": true,
         "importHelpers": true,
@@ -9,10 +9,11 @@
         "emitDecoratorMetadata": true,
         "allowSyntheticDefaultImports": true,
         "forceConsistentCasingInFileNames": true,
+        "baseUrl": ".",
         "strict": true,
         "composite": true,
         "skipLibCheck": true,
-        "declaration": true
+        "declaration": true,
     },
     "exclude": ["node_modules"]
 }

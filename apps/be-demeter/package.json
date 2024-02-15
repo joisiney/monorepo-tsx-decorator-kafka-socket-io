@@ -5,22 +5,22 @@
   "main": "src/infra/server.ts",
   "author": "Joisiney Leandro",
   "license": "MIT",
-  "private": true,
   "scripts": {
-    "start:dev": "node --watch --trace-warnings --env-file=./.env-development --import tsx src/infra/server.ts",
+    "start:dev": "node --watch --trace-warnings --env-file=./.env --import tsx src/infra/server.ts",
     "build": "rm -rf dist && tsc && tsc-alias",
     "start": "node --env-file=./.env-development --import ./dist/src/infra/server.js",
     "lint": "eslint ./ --ext .ts,.tsx",
     "lint:fix": "eslint . --ext .ts,.tsx --fix",
-    "reset": "rm -rf .dist && rm -rf node_modules && rm -rf yarn.lock && rm -fr tsconfig.tsbuildinfo",
-    "clean": "rm -rf .dist"
+    "reset": "rm -rf ./dist && rm -rf node_modules && rm -rf yarn.lock && rm -fr tsconfig.tsbuildinfo",
+    "clean": "rm -rf ./dist"
   },
   "dependencies": {
+    "@olympus/domain-ceos": "1.0.0",
+    "@olympus/kafka-persefone": "1.0.0",
+    "@olympus/lib-hera": "1.0.0",
     "fastify": "^4.26.1",
     "kafkajs": "^2.2.4",
-    "@olympus/domain-ceos": "*",
-    "@olympus/kafka-persefone": "*",
-    "@olympus/lib-hera": "*"
+    "reflect-metadata": "^0.2.1"
   },
   "*exports": {
     "./package.json": "./package.json",

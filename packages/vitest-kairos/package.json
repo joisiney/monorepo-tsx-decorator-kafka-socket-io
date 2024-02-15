@@ -6,7 +6,7 @@
     "test": "vitest",
     "lint": "eslint ./src --ext .ts,.tsx",
     "lint:fix": "eslint ./src --ext .ts,.tsx --fix",
-    "reset": "rm -rf .dist && rm -rf node_modules && rm -rf yarn.lock && rm -fr tsconfig.tsbuildinfo",
+    "reset": "rm -rf ./dist && rm -rf node_modules && rm -rf yarn.lock && rm -fr tsconfig.tsbuildinfo",
     "start": " echo 'No start script defined'",
     "build": "echo 'No build script defined'",
     "start:dev": "echo 'No start:dev script defined'",
@@ -18,13 +18,13 @@
     "expo-status-bar": "~1.11.1",
     "react": "18.2.0",
     "react-native": "0.73.4",
-    "@olympus/fe-rn-atena": "*",
-    "@olympus/be-apolo": "*",
-    "@olympus/be-demeter": "*",
-    "@olympus/domain-ceos": "*",
-    "@olympus/gateway-eros": "*",
-    "@olympus/kafka-persefone": "*",
-    "@olympus/lib-hera": "*"
+    "@olympus/fe-rn-atena": "1.0.0",
+    "@olympus/be-apolo": "1.0.0",
+    "@olympus/be-demeter": "1.0.0",
+    "@olympus/domain-ceos": "1.0.0",
+    "@olympus/gateway-eros": "1.0.0",
+    "@olympus/kafka-persefone": "1.0.0",
+    "@olympus/lib-hera": "1.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
@@ -37,6 +37,5 @@
     "react-test-renderer": "^18.2.0",
     "vitest": "^1.2.2",
     "vitest-react-native": "^0.1.5"
-  },
-  "private": true
+  }
 }

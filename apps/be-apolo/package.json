@@ -5,7 +5,6 @@
   "main": "src/infra/server.ts",
   "author": "Joisiney Leandro",
   "license": "MIT",
-  "private": true,
   "scripts": {
     "start:dev": "node --watch --trace-warnings --env-file=./.env-development --import tsx src/infra/server.ts",
     "build": "rm -rf dist && tsc && tsc-alias",
@@ -17,8 +16,8 @@
     "typeorm": "typeorm-ts-node-commonjs -d ./src/infra/database/typeorm/data-source/index.ts",
     "migration:generate": "npm run typeorm migration:generate -o ./src/infra/database/typeorm/migrations/$npm_config_name",
     "migration:run": "npm run typeorm migration:run",
-    "reset": "rm -rf .dist && rm -rf node_modules && rm -rf yarn.lock && rm -fr tsconfig.tsbuildinfo",
-    "clean": "rm -rf .dist"
+    "reset": "rm -rf ./dist && rm -rf node_modules && rm -rf yarn.lock && rm -fr tsconfig.tsbuildinfo",
+    "clean": "rm -rf ./dist"
   },
   "dependencies": {
     "bcrypt": "^5.1.1",
@@ -27,8 +26,8 @@
     "mysql": "^2.18.1",
     "stacktrace-js": "^2.0.2",
     "typeorm": "^0.3.20",
-    "@olympus/lib-hera": "*",
-    "@olympus/domain-ceos": "*",
+    "@olympus/lib-hera": "1.0.0",
+    "@olympus/domain-ceos": "1.0.0",
     "typeorm-naming-strategies": "^4.1.0"
   },
   "devDependencies": {

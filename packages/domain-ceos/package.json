@@ -11,11 +11,11 @@
     "test": "vitest",
     "lint": "eslint ./ --ext .ts,.tsx",
     "lint:fix": "eslint . --ext .ts,.tsx --fix",
-    "reset": "rm -rf .dist && rm -rf node_modules && rm -rf yarn.lock && rm -fr tsconfig.tsbuildinfo",
-    "clean": "rm -rf .dist"
+    "reset": "rm -rf ./dist && rm -rf node_modules && rm -rf yarn.lock && rm -fr tsconfig.tsbuildinfo",
+    "clean": "rm -rf ./dist"
   },
   "dependencies": {
-    "@olympus/lib-hera": "*"
+    "@olympus/lib-hera": "1.0.0"
   },
   "devDependencies": {
     "@types/node": "^20.11.16",

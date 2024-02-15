@@ -1,21 +1,22 @@
-import { Injectable } from '@olympus/lib-hera'
-import { KafkaDataSourceComposer } from '../database/data-source'
+import { KafkaDataSourceComposer } from '../../data-source'
+import { IProducerService } from './index.dto'
 
-@Injectable({ name: 'MESSAGING_PRODUCER' })
-export class KafkaProducerService extends KafkaDataSourceComposer {
-  constructor() {
-    super()
-  }
-
-  async send(topic: string, messages: { value: string; key: string }[]) {
+export class KafkaProducerService
+  extends KafkaDataSourceComposer
+  implements IProducerService.Implements
+{
+  async send(topic: string, messages: IProducerService.Message[]) {
     this.checkIfBooted()
     const producer = this.kafka.producer()
+    console.log('Connectting to Kafka')
     await producer.connect()
     await producer.send({
       topic,
       messages,
     })
+    console.log('Message sent to Kafka')
     await producer.disconnect()
+    console.log('Disconnected from Kafka')
   }
 
   async transaction() {

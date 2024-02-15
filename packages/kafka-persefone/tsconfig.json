@@ -1,7 +1,6 @@
 {
     "extends": "../../tsconfig.json",
     "compilerOptions": {
-        "moduleResolution": "node",
         "baseUrl": ".",
         "outDir": "./dist",
         "rootDir": "./",
@@ -12,7 +11,7 @@
         }
     },
     "include": [
-        "src"
+        "src/**/*.ts"
     ],
     "exclude": [
         "node_modules"
