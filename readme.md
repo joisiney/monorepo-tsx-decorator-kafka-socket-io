@@ -86,7 +86,8 @@ Para inicializar o **backend**, basta seguir as instruções abaixo:
    Se você utiliza o VSCode e tem o hábito de usar o plugin `REST Client` na pasta `/rest-client-http`, todos os métodos estão cadastrados e atualizados lá 😜.<br/><br/>
    **Erro ao inicializar o Apollo** 😢<br/>
    Não se preocupe, vamos resolver isso juntos. Neste repositório, você encontrará todos os pacotes com a pasta `packages/**/dist` compilada, que podem ter alguma incompatibilidade com sua configuração. Para resolver isso, basta executar `yarn reset`. Esse comando irá apagar todas as pastas `packages/**/dist` já compiladas. Em seguida, execute novamente `yarn apolo:dev`, que deve começar a funcionar corretamente.
-5. Inicializando o **app**, o primeiro passo é fazer uma cópia do arquivo `apps/fe-rn-atena/.env.example` e salvá-lo como `.env`.<br/>
+5. Inicializando o **app**, o primeiro passo é fazer uma cópia do arquivo `apps/fe-rn-atena/.env.example` e salvá-lo como `.env`.
+Após criar o `.env`, execute `yarn atena:prebuild` para preparar os artefatos necessários para inicializar o `app` no Android e iPhone. Finalizando este passo, que pode levar alguns minutos, basta executar `yarn atena:android` ou `yarn atena:ios` para que o app inicialize em modo de `Hot reload`.<br/>
     **OBS:** O React Native não pode acessar o host local da mesma forma que um aplicativo da web. Você deve usar `http://10.0.2.2:3001`, que é um alias para `http://127.0.0.1:3001`, de acordo com a documentação do emulador Android.
 6. Para executar os testes, basta rodar `yarn test` no diretório raiz onde se encontra o arquivo `package.json`, ou no módulo responsável pelos testes em `packages/vitest-kairos/package.json`. Isso mostrará os testes realizados até o momento com o Vitest.
 <img src="https://res.cloudinary.com/dmoi0mmuj/image/upload/v1707916641/github/svccujdpeyrhgpz9lchi.png?nocache=1" alt="test">
@@ -108,6 +109,7 @@ O principal objetivo dos comandos no arquivo package.json é criar atalhos para 
 | `yarn apolo:dev`         | Inicia o Apolo em modo de `Hot reload`                                             |
 | `yarn apolo:docker-up`   | Levanta o banco `MySQL`                                                            |
 | `yarn apolo:docker-down` | Derruba o banco `MySQL`                                                            |
+| `yarn atena:prebuild`    | Cria os artefatos pré-requisito para inicializar o Android e iPhone.               |
 | `yarn atena:android`     | Inicia o app `Atena` no Android em modo de `Hot reload`                            |
 | `yarn atena:ios`         | Inicia o app `Atena` no iPhone em modo de `Hot reload`                             |
 
