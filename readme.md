@@ -90,11 +90,11 @@ Para inicializar o **backend**, basta seguir as instruções abaixo:
 ```sh
 yarn demeter:dev
 ```
-Quando você iniciar este APP ele simplesmente produzirá uma mensagem para o KAFKA.
-6. Inicializando o **app**, o primeiro passo é fazer uma cópia do arquivo `apps/fe-rn-atena/.env.example` e salvá-lo como `.env`.
+Após iniciar o Demeter, ele irá enviar 10 mensagens para o Kafka e em seguida encerrará o processo.
+1. Inicializando o **app**, o primeiro passo é fazer uma cópia do arquivo `apps/fe-rn-atena/.env.example` e salvá-lo como `.env`.
 Após criar o `.env`, execute `yarn atena:prebuild` para preparar os artefatos necessários para inicializar o `app` no Android e iPhone. Finalizando este passo, que pode levar alguns minutos, basta executar `yarn atena:android` ou `yarn atena:ios` para que o app inicialize em modo de `Hot reload`.<br/****>
     **OBS:** O React Native não pode acessar o host local da mesma forma que um aplicativo da web. Você deve usar `http://10.0.2.2:3001`, que é um alias para `http://127.0.0.1:3001`, de acordo com a documentação do emulador Android.
-6. Para executar os testes, basta rodar `yarn test` no diretório raiz onde se encontra o arquivo `package.json`, ou no módulo responsável pelos testes em `packages/vitest-kairos/package.json`. Isso mostrará os testes realizados até o momento com o Vitest.
+1. Para executar os testes, basta rodar `yarn test` no diretório raiz onde se encontra o arquivo `package.json`, ou no módulo responsável pelos testes em `packages/vitest-kairos/package.json`. Isso mostrará os testes realizados até o momento com o Vitest.
 <img src="https://res.cloudinary.com/dmoi0mmuj/image/upload/v1707916641/github/svccujdpeyrhgpz9lchi.png?nocache=1" alt="test">
 
 

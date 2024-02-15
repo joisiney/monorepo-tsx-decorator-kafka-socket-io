@@ -26,7 +26,7 @@ const kafkaProducerController = InjectorFactory.resolve(
   ProducerNewsKafkaUseCase,
 )
 let counter = 0
-const maxMessages = 5
+const maxMessages = 10
 const intervalSeconds = 1000 * 10 // 10 seconds
 const dispatchMessage = async () => {
   await kafkaProducerController.execute(counter)
