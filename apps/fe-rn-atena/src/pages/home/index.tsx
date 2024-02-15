@@ -9,13 +9,13 @@ import { useUpdateService } from './hooks/update-service.hook'
 
 export const PageHome: FC = () => {
   const { handleAdd } = useCreateService()
-  const { data, isLoading, handleInfiniteScroll } = useFindAllService()
+  const { total, data, isLoading, handleInfiniteScroll } = useFindAllService()
   const { handleUpdateTitle } = useUpdateService()
   const { handleDelete } = useRemoveService()
 
   return (
     <>
-      <Header total={(data && data.length) ?? 0} />
+      <Header total={total} />
       <HomeInput handleAdd={handleAdd} />
       <List
         data={data ?? []}

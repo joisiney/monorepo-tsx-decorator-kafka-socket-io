@@ -5,6 +5,7 @@ import { AppNewsEntity } from '../../../@core/domain/entities/news.entity'
 
 export const useFindAllService = () => {
   const isLastPageRef = useRef<any | undefined>()
+  const totalPagination = useRef<number | undefined>()
   const {
     fetchNextPage,
     hasNextPage,
@@ -14,6 +15,7 @@ export const useFindAllService = () => {
   } = useAllNews<IPagination.Hydrate<any>, IPagination.Hydrate<AppNewsEntity>>({
     transformData: (result) => {
       isLastPageRef.current = result.page >= result.pages
+      totalPagination.current = result.total
       result.data = result.data.map((item) => new AppNewsEntity(item))
       return result
     },
@@ -34,5 +36,10 @@ export const useFindAllService = () => {
       fetchNextPage()
     }
   }, [fetchNextPage, hasNextPage, isLoading])
-  return { data, isLoading, handleInfiniteScroll }
+  return {
+    data,
+    total: totalPagination.current ?? 0,
+    isLoading,
+    handleInfiniteScroll,
+  }
 }
