@@ -17,7 +17,14 @@
     "expo": "~50.0.6",
     "expo-status-bar": "~1.11.1",
     "react": "18.2.0",
-    "react-native": "0.73.4"
+    "react-native": "0.73.4",
+    "@olympus/fe-rn-atena": "*",
+    "@olympus/be-apolo": "*",
+    "@olympus/be-demeter": "*",
+    "@olympus/domain-ceos": "*",
+    "@olympus/gateway-eros": "*",
+    "@olympus/kafka-persefone": "*",
+    "@olympus/lib-hera": "*"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

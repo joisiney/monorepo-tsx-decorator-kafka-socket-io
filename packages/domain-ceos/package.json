@@ -14,6 +14,9 @@
     "reset": "rm -rf .dist && rm -rf node_modules && rm -rf yarn.lock && rm -fr tsconfig.tsbuildinfo",
     "clean": "rm -rf .dist"
   },
+  "dependencies": {
+    "@olympus/lib-hera": "*"
+  },
   "devDependencies": {
     "@types/node": "^20.11.16",
     "tsc-alias": "^1.8.8",

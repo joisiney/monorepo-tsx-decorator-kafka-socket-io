@@ -14,7 +14,8 @@
     "clean": "rm -rf .dist"
   },
   "dependencies": {
-    "kafkajs": "^2.2.4"
+    "kafkajs": "^2.2.4",
+    "@olympus/lib-hera": "*"
   },
   "devDependencies": {
     "@types/node": "^20.11.16",

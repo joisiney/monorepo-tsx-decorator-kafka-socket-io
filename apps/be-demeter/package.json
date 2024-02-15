@@ -17,7 +17,10 @@
   },
   "dependencies": {
     "fastify": "^4.26.1",
-    "kafkajs": "^2.2.4"
+    "kafkajs": "^2.2.4",
+    "@olympus/domain-ceos": "*",
+    "@olympus/kafka-persefone": "*",
+    "@olympus/lib-hera": "*"
   },
   "*exports": {
     "./package.json": "./package.json",
