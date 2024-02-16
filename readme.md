@@ -154,4 +154,4 @@ Desenvolvi o aplicativo com o mínimo de telas possível, concentrando todas as 
 </p>
 
 ## Vídeo demonstrando a funcionalidade implementada em pleno funcionamento.
-[Link de apresentação simples feito com Video](https://vimeo.com/manage/videos/913678369/676aeadf27?extension_recording=true)
+[Link de apresentação simples](https://vimeo.com/manage/videos/913678369/676aeadf27?extension_recording=true)
