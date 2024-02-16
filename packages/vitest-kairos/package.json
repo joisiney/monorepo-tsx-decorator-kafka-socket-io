@@ -24,6 +24,7 @@
     "@olympus/domain-ceos": "1.0.0",
     "@olympus/gateway-eros": "1.0.0",
     "@olympus/kafka-persefone": "1.0.0",
+    "@olympus/io-server-pluto": "1.0.0",
     "@olympus/lib-hera": "1.0.0"
   },
   "devDependencies": {
