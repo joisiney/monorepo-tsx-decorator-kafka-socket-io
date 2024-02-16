@@ -14,6 +14,7 @@ import {
   Platform,
   View,
 } from 'react-native'
+
 import imgBg from '../assets/background.png'
 import { PageHome } from './pages/home'
 

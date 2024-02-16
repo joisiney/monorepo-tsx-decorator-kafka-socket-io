@@ -49,7 +49,7 @@ export class InjectorFactory {
     }
 
     // eslint-disable-next-line new-cap
-    const instance = new target(...depsInstance)
+    const instance = new target(...depsInstance.flat())
     if (typeInjection === 'SINGLETON') {
       InjectorFactory.instance.set(targetName, instance)
     }

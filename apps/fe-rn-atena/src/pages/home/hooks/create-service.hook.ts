@@ -1,5 +1,7 @@
+import { Socket } from '@/utils/socket'
+import { INewsDto } from '@olympus/domain-ceos'
 import { queryClient, useCreateNews } from '@olympus/gateway-eros'
-import { useCallback } from 'react'
+import { useCallback, useEffect } from 'react'
 import { AppNewsEntity } from '../../../@core/domain/entities/news.entity'
 
 export const useCreateService = () => {
@@ -13,6 +15,13 @@ export const useCreateService = () => {
         thumbnail: `https://api.lorem.space/image/face?w=100&h=100&data=${newTaskTitle}`,
       })
       await createNewsService.mutate(newTask.toCreate())
+    },
+    [createNewsService],
+  )
+  useEffect(() => {
+    const socketInstance = Socket.getInstance()
+    socketInstance.on('news-create', (response: INewsDto) => {
+      const newTask = new AppNewsEntity(response)
       queryClient.setQueryData(['/olympus/news'], ({ pageParams, pages }) => {
         const lastedIndicePage = pages.length - 1
         const lastedPage = pages[lastedIndicePage]
@@ -25,8 +34,10 @@ export const useCreateService = () => {
           pageParams: [...pageParams],
         }
       })
-    },
-    [createNewsService],
-  )
+    })
+    return () => {
+      socketInstance.off('news-create')
+    }
+  }, [])
   return { handleAdd }
 }

@@ -50,14 +50,14 @@ export class NewsRepositoryMock implements INewsRepository.Implements {
 
   async create(
     news: Omit<IOptional<INewsDto, 'id'>, 'createdAt'>,
-  ): Promise<Either<string, NotFoundException>> {
+  ): Promise<Either<NewsEntity, NotFoundException>> {
     const hasNews = await this.has(news.id)
     if (hasNews) {
       return new Left(new NotFoundException('News already exists'))
     }
     const newNews = new NewsEntity(news)
     this.mockNews.push(newNews)
-    return new Right(newNews.id)
+    return new Right(newNews)
   }
 
   private async has(id?: string): Promise<boolean> {
@@ -67,22 +67,25 @@ export class NewsRepositoryMock implements INewsRepository.Implements {
 
   async update(
     news: IRequired<Partial<INewsDto>, 'id'>,
-  ): Promise<Either<string, NotFoundException>> {
+  ): Promise<Either<NewsEntity, NotFoundException>> {
     const index = this.mockNews.findIndex((item) => item.id === news.id)
     if (index === -1) {
       return new Left(new NotFoundException('News not found'))
     }
     const clone = { ...this.mockNews[index], ...news } as INewsDto
-    this.mockNews[index] = new NewsEntity(clone)
-    return new Right(news.id)
+    const updated = new NewsEntity(clone)
+    this.mockNews[index] = updated
+    return new Right(updated)
   }
 
-  async remove(id: string): Promise<Either<boolean, NotFoundException>> {
+  async remove(
+    id: string,
+  ): Promise<Either<Pick<INewsDto, 'id'>, NotFoundException>> {
     const index = this.mockNews.findIndex((item) => item.id === id)
     if (index === -1) {
       return new Left(new NotFoundException('News not found'))
     }
     this.mockNews.splice(index, 1)
-    return new Right(true)
+    return new Right({ id })
   }
 }

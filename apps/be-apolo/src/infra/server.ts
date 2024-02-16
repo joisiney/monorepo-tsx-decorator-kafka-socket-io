@@ -10,6 +10,7 @@ import { UserFindAllUseCase } from '@/application/use-cases/users/find-all/index
 import { UserFindByIdUseCase } from '@/application/use-cases/users/find-id/index.use-case'
 import { UserRemoveByIdUseCase } from '@/application/use-cases/users/remove/index.use-case'
 import { UserUpdateByIdUseCase } from '@/application/use-cases/users/update/index.use-case'
+import { IOServerService } from '@olympus/io-server-pluto'
 import { KafkaConsumerService, KafkaDataSource } from '@olympus/kafka-persefone'
 import { InjectorFactory } from '@olympus/lib-hera'
 import Fastify, {
@@ -26,7 +27,9 @@ import { UserRepositoryTypeORM } from './repositories/user/typeorm.repository'
 const port = +(process.env.PORT ?? 3001)
 
 // BOOTSTRAP FASTIFY
-const app: FastifyInstance = Fastify({ logger: false })
+const app: FastifyInstance = Fastify({
+  logger: false,
+})
 
 // INJECTING ROUTER
 InjectorFactory.instance.set('PluginRouter', app)
@@ -52,6 +55,21 @@ InjectorFactory.instance.set('PluginRouter', app)
     // INJECTING NEWS REPOSITORY
     InjectorFactory.resolve(NewsRepositoryMock)
     InjectorFactory.resolve(UserRepositoryTypeORM)
+  }
+  {
+    // SOCKET.IO Deve vir sempre antes da injeção dos controllers.
+    InjectorFactory.resolve(IOServerService, {
+      name: 'IO_SERVER',
+      defaultArgs: {
+        channels: ['news-delete', 'news-update', 'news-create'],
+        server: app.server,
+        options: {
+          cors: {
+            origin: '*',
+          },
+        },
+      },
+    })
   }
   {
     // INJECTING NEWS CONTROLLER

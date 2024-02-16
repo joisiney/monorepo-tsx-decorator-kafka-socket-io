@@ -10,8 +10,7 @@ export class NewsCreateUseCase {
   @Subscription({ topic: 'news.send-news' })
   async execute(props: ICreateUseCase) {
     const news = await this.newsRepository.create(props)
-    console.log('insert', props.title)
     if (news.isError) return news.lanchError()
-    return true
+    return news.value
   }
 }

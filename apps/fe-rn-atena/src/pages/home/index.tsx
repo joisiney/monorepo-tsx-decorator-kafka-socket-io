@@ -8,8 +8,8 @@ import { useRemoveService } from './hooks/remove-service.hook'
 import { useUpdateService } from './hooks/update-service.hook'
 
 export const PageHome: FC = () => {
-  const { handleAdd } = useCreateService()
   const { total, data, isLoading, handleInfiniteScroll } = useFindAllService()
+  const { handleAdd } = useCreateService()
   const { handleUpdateTitle } = useUpdateService()
   const { handleDelete } = useRemoveService()
 

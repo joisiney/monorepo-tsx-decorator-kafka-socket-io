@@ -19,10 +19,10 @@ export namespace INewsRepository {
     findById(id: string): Promise<Either<NewsEntity, NotFoundException>>
     create(
       news: Omit<IOptional<INewsDto, 'id'>, 'createdAt'>,
-    ): Promise<Either<string, NotFoundException>>
+    ): Promise<Either<NewsEntity, NotFoundException>>
     update(
       news: IRequired<Partial<INewsDto>, 'id'>,
-    ): Promise<Either<string, NotFoundException>>
-    remove(id: string): Promise<Either<boolean, NotFoundException>>
+    ): Promise<Either<NewsEntity, NotFoundException>>
+    remove(id: string): Promise<Either<Pick<INewsDto, 'id'>, NotFoundException>>
   }
 }

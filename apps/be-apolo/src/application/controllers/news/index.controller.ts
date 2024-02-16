@@ -5,6 +5,7 @@ import { NewsFindAllUseCase } from '@/application/use-cases/news/find-all/index.
 import { NewsFindByIdUseCase } from '@/application/use-cases/news/find-id/index.use-case'
 import { NewsRemoveByIdUseCase } from '@/application/use-cases/news/remove/index.use-case'
 import { NewsUpdateByIdUseCase } from '@/application/use-cases/news/update/index.use-case'
+import { IIoServer } from '@olympus/io-server-pluto'
 import {
   Controller,
   ControllerComposer,
@@ -18,6 +19,7 @@ import { INewsUpdateDto, newsUpdateDto } from './dto/put.dto'
 @Controller('/olympus/news/')
 @Injectable({
   dep: [
+    'IO_SERVER',
     'NewsFindAllUseCase',
     'NewsCreateUseCase',
     'NewsFindByIdUseCase',
@@ -27,6 +29,7 @@ import { INewsUpdateDto, newsUpdateDto } from './dto/put.dto'
 })
 export class NewsController extends ControllerComposer {
   constructor(
+    private serverIO: IIoServer.Implements,
     private findAllUseCase: NewsFindAllUseCase,
     private createUseCase: NewsCreateUseCase,
     private findByIdUseCase: NewsFindByIdUseCase,
@@ -38,8 +41,7 @@ export class NewsController extends ControllerComposer {
 
   @Route({ method: 'GET', url: '/', dto: newsAllDto })
   async newsAll(input: INewsAllDto) {
-    const response = await this.findAllUseCase.execute(input)
-    return response
+    return this.findAllUseCase.execute(input)
   }
 
   @Route({ method: 'GET', url: '/:id', dto: newsKeyDto })
@@ -49,16 +51,22 @@ export class NewsController extends ControllerComposer {
 
   @Route({ method: 'POST', url: '/', dto: newsDto })
   async newsCreate(data: INewsDto) {
-    return this.createUseCase.execute(data)
+    const result = await this.createUseCase.execute(data)
+    this.serverIO.emitter('news-create', result)
+    return true
   }
 
   @Route({ method: 'PUT', url: '/:id', dto: newsUpdateDto })
   async newsUpdate(input: INewsUpdateDto) {
-    return this.updateByIdUseCase.execute(input)
+    const result = await this.updateByIdUseCase.execute(input)
+    this.serverIO.emitter('news-update', result)
+    return result
   }
 
   @Route({ method: 'DELETE', url: '/:id', dto: newsKeyDto })
   async newsDelete(input: INewsKeyDto) {
-    return this.removeByIdUseCase.execute(input)
+    const result = this.removeByIdUseCase.execute(input)
+    this.serverIO.emitter('news-delete', input)
+    return result
   }
 }
