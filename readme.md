@@ -62,40 +62,45 @@ Para garantir o funcionamento adequado do nosso aplicativo, verifique:
   ```
 ### Guia de inicialização
 
+Segue o texto markdown corrigido:
+
+```markdown
 Para inicializar o **backend**, basta seguir as instruções abaixo:
 
-1. Clone o repositório
+1. Clone o repositório:
    ```sh
    git clone git@github.com:joisiney/monorepo-tsx-decorator-kafka.git
    ```
-2. Instale YARN modules
+
+2. Instale os módulos do YARN:
    ```sh
    yarn install
    ```
-3. Inicializando o __mysql__ através do docker composer
+
+3. Inicialize o **mysql** através do Docker Compose:
    ```sh
    yarn apolo:docker-up
    ```
-4. Inicializando o **apolo** app responsável pela API REST e consumir mensagens do KAFKA
+4. Copie o arquivo `apps/be-apolo/.env-development` e salve como `.env`. Observação: O Kafka não está no Docker, pois nesta POC optei por usar o Kafka do `https://upstash.com/`. Neste caso, crie uma conta no UPSTASH e crie um tópico com o nome `news.send-news`. Em seguida, preencha as credenciais de acesso corretamente no arquivo `.env`.
+5. Copie o arquivo `apps/be-demeter/.env-development` e salve como `.env`, preenchendo as credenciais de acesso do Kafka com os mesmos dados que você inseriu no item 4.
+6. . Inicialize o aplicativo **apolo**, responsável pela API REST e pela consumação de mensagens do KAFKA:
    ```sh
    yarn apolo:dev
    ```
-   Se tudo der certo deverá ver o seguinte __log__ em seu terminal:
-   <img src="https://res.cloudinary.com/dmoi0mmuj/image/upload/v1707882723/github/Captura_de_Tela_2024-02-14_a%CC%80s_00.51.58_r8lg3q.png" alt=""/>
-   O objetivo deste **log** é apresentar todas as rotas criadas, juntamente com seus respectivos métodos de acesso.
-   Se você utiliza o VSCode e tem o hábito de usar o plugin `REST Client` na pasta `/rest-client-http`, todos os métodos estão cadastrados e atualizados lá 😜.<br/><br/>
-   **Erro ao inicializar o Apollo** 😢<br/>
-   Não se preocupe, vamos resolver isso juntos. Neste repositório, você encontrará todos os pacotes com a pasta `packages/**/dist` compilada, que podem ter alguma incompatibilidade com sua configuração. Para resolver isso, basta executar `yarn reset`. Esse comando irá apagar todas as pastas `packages/**/dist` já compiladas. Em seguida, execute novamente `yarn apolo:dev`, que deve começar a funcionar corretamente.
-5. Iniciando o **demeter** app responsável por PRODUZIR mensagens no KAFKA para que o **apolo** as consuma
-```sh
-yarn demeter:dev
+   Se tudo ocorrer conforme o esperado, você deverá visualizar o seguinte **log** em seu terminal:
+   ![log](https://res.cloudinary.com/dmoi0mmuj/image/upload/v1707882723/github/Captura_de_Tela_2024-02-14_a%CC%80s_00.51.58_r8lg3q.png)
+   O objetivo deste **log** é apresentar todas as rotas criadas, juntamente com seus respectivos métodos de acesso. Se você utiliza o VSCode e tem o hábito de usar o plugin `REST Client` na pasta `/rest-client-http`, todos os métodos estão cadastrados e atualizados lá 😜.
+7. Inicialize o **aplicativo atena**:
+   1. Copie o arquivo `apps/fe-rn-atena/.env.example` e salve-o como `.env`.
+      - **OBS:** O React Native Android não acessa o host `localhost` da mesma forma que um aplicativo da web. Você deve usar `http://10.0.2.2:3001`, que é um alias para `http://127.0.0.1:3001`, de acordo com a documentação do emulador Android. No iPhone, continue usando `http://localhost:3001`.
+   2. Execute `yarn atena:prebuild` para criar os artefatos do **Android/iPhone**.
+   3. Execute `yarn atena:android` para iniciar o aplicativo no emulador **Android**.
+   4. Execute `yarn atena:ios` para iniciar o aplicativo no emulador **iPhone**.
+8. Com o **apolo** (API REST) inicializado e duas instâncias do aplicativo **atena** abertas, é hora de produzir mensagens. Execute `yarn demeter:dev`; ele irá produzir 10 mensagens, uma a cada 10 segundos, e as enviará usando o KAFKA, para que o **apolo** consuma essas mensagens e dispare notificações via `socket.io` para que o **atena** as receba.
+9. Para executar os testes, basta rodar `yarn test`.
+   ![test](https://res.cloudinary.com/dmoi0mmuj/image/upload/v1707916641/github/svccujdpeyrhgpz9lchi.png?nocache=1)
 ```
-Após iniciar o Demeter, ele irá enviar 10 mensagens para o Kafka e em seguida encerrará o processo.
-1. Inicializando o **app**, o primeiro passo é fazer uma cópia do arquivo `apps/fe-rn-atena/.env.example` e salvá-lo como `.env`.
-Após criar o `.env`, execute `yarn atena:prebuild` para preparar os artefatos necessários para inicializar o `app` no Android e iPhone. Finalizando este passo, que pode levar alguns minutos, basta executar `yarn atena:android` ou `yarn atena:ios` para que o app inicialize em modo de `Hot reload`.<br/****>
-    **OBS:** O React Native não pode acessar o host local da mesma forma que um aplicativo da web. Você deve usar `http://10.0.2.2:3001`, que é um alias para `http://127.0.0.1:3001`, de acordo com a documentação do emulador Android.
-1. Para executar os testes, basta rodar `yarn test` no diretório raiz onde se encontra o arquivo `package.json`, ou no módulo responsável pelos testes em `packages/vitest-kairos/package.json`. Isso mostrará os testes realizados até o momento com o Vitest.
-<img src="https://res.cloudinary.com/dmoi0mmuj/image/upload/v1707916641/github/svccujdpeyrhgpz9lchi.png?nocache=1" alt="test">
+
 
 
 ## Guia de comandos úteis da aplicação:
