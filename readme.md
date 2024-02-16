@@ -99,9 +99,7 @@ Para inicializar o **backend**, basta seguir as instruções abaixo:
    4. Execute `yarn atena:ios` para iniciar o aplicativo no emulador **iPhone**.
 8. Com o **apolo** (API REST) inicializado e duas instâncias do aplicativo **atena** abertas, é hora de produzir mensagens. Execute `yarn demeter:dev`; ele irá produzir 10 mensagens, uma a cada 10 segundos, e as enviará usando o KAFKA, para que o **apolo** consuma essas mensagens e dispare notificações via `socket.io` para que o **atena** as receba.
 9. Para executar os testes, basta rodar `yarn test`.
-   ![test](https://res.cloudinary.com/dmoi0mmuj/image/upload/v1707916641/github/svccujdpeyrhgpz9lchi.png?nocache=1)
-```
-
+   ![test-jest](https://res.cloudinary.com/dmoi0mmuj/image/upload/v1707916641/github/svccujdpeyrhgpz9lchi.png?nocache=1)
 
 
 ## Guia de comandos úteis da aplicação:
@@ -137,15 +135,15 @@ A parte de notícias está implementada utilizando mock, este CRUD está totalme
   - [ ] Teste unitário/integração (Em andamento)
   - [x] Producer Apache Kafka
   - [x] Consumer Apache Kafka
-  - [ ] Disparo de notificação com Socket.io
+  - [x] Disparo de notificação com Socket.io
 - [x] Criar CRUD de usuário com TypeORM e MYSQL
   - [ ] Teste unitário/integração (Em andamento)
 - [x] Implementar notícias no APP
   - [x] Integração com API REST
-  - [ ] Integração com Socket.IO
-  - [x] Teste unitário/integração (Em andamento)
+  - [x] Integração com Socket.IO
+  - [ ] Teste unitário/integração (Em andamento)
 - [ ] Implementar usuário no APP
-  - [x] Integração com API REST
+  - [ ] Integração com API REST
 
 ## APP UX
 
