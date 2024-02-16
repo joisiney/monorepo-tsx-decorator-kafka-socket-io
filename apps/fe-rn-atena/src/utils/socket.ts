@@ -1,10 +1,11 @@
 import { Socket as ISocket, io } from 'socket.io-client'
+import envVars from './envVars'
 
 export class Socket {
   private static instance: ISocket | undefined
   public static getInstance() {
     if (!Socket.instance) {
-      Socket.instance = io(process.env.EXPO_PUBLIC_APOLO_API_URL as string, {
+      Socket.instance = io(envVars.baseURLApolo, {
         transports: ['websocket'],
       })
     }

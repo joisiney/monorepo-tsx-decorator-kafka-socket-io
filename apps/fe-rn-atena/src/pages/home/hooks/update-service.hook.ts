@@ -29,6 +29,7 @@ export const useUpdateService = () => {
           }
           return clonePage
         })
+
         return {
           pages: clone,
           pageParams: [...pageParams],

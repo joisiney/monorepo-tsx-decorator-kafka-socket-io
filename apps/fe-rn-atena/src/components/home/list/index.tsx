@@ -19,7 +19,9 @@ export const List: FC<{
   return (
     <FlatList
       data={data}
-      keyExtractor={(item, index) => `item-${item.id}-index-${index}`}
+      keyExtractor={(item, index) =>
+        `item-${item.id}-${item.title}-index-${index}`
+      }
       contentContainerStyle={{ paddingBottom: 24 }}
       onEndReached={handleInfiniteScroll}
       onEndReachedThreshold={0.1}
@@ -35,7 +37,7 @@ export const List: FC<{
       renderItem={({ item, index }) => {
         return (
           <HomeItem
-            key={`item-${item.id}-index-${index}`}
+            key={`item-${item.id}-${item.title}-index-${index}`}
             item={item}
             handleRemove={() => handleDelete(item.id)}
             handleUpdateTitle={(title: string, id: string) =>

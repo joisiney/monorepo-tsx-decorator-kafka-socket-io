@@ -17,6 +17,7 @@ import {
 
 import imgBg from '../assets/background.png'
 import { PageHome } from './pages/home'
+import envVars from './utils/envVars'
 
 const hehavior = Platform.OS === 'ios' ? 'padding' : undefined
 
@@ -35,7 +36,7 @@ export function App() {
   }
   const isAndroid = Platform.OS === 'android'
   return (
-    <ContextReactQuery baseUrl={process.env.EXPO_PUBLIC_APOLO_API_URL}>
+    <ContextReactQuery baseUrl={envVars.baseURLApolo}>
       <KeyboardView className="flex-1" behavior={hehavior} enabled>
         <Bg className="flex-1" source={imgBg} resizeMode="repeat">
           <View
