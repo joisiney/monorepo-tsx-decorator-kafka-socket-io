@@ -62,9 +62,6 @@ Para garantir o funcionamento adequado do nosso aplicativo, verifique:
   ```
 ### Guia de inicialização
 
-Segue o texto markdown corrigido:
-
-```markdown
 Para inicializar o **backend**, basta seguir as instruções abaixo:
 
 1. Clone o repositório:
