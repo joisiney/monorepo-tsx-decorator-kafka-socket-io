@@ -37,6 +37,21 @@ InjectorFactory.instance.set('PluginRouter', app)
 // INJECTING NEWS MODULE
 {
   {
+    // SOCKET.IO Deve vir sempre antes da injeção dos use-cases que o consumirem.
+    InjectorFactory.resolve(IOServerService, {
+      name: 'IO_SERVER',
+      defaultArgs: {
+        channels: ['news-delete', 'news-update', 'news-create'],
+        server: app.server,
+        options: {
+          cors: {
+            origin: '*',
+          },
+        },
+      },
+    })
+  }
+  {
     // USE_CASE NEWS
     InjectorFactory.resolve(NewsFindAllUseCase)
     InjectorFactory.resolve(NewsCreateUseCase)
@@ -55,21 +70,6 @@ InjectorFactory.instance.set('PluginRouter', app)
     // INJECTING NEWS REPOSITORY
     InjectorFactory.resolve(NewsRepositoryMock)
     InjectorFactory.resolve(UserRepositoryTypeORM)
-  }
-  {
-    // SOCKET.IO Deve vir sempre antes da injeção dos controllers.
-    InjectorFactory.resolve(IOServerService, {
-      name: 'IO_SERVER',
-      defaultArgs: {
-        channels: ['news-delete', 'news-update', 'news-create'],
-        server: app.server,
-        options: {
-          cors: {
-            origin: '*',
-          },
-        },
-      },
-    })
   }
   {
     // INJECTING NEWS CONTROLLER

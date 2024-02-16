@@ -26,10 +26,10 @@ const kafkaProducerController = InjectorFactory.resolve(
   ProducerNewsKafkaUseCase,
 )
 let counter = 0
-const maxMessages = 10
+const maxMessages = 4
 const intervalSeconds = 1000 * 10 // 10 seconds
 const dispatchMessage = async () => {
-  await kafkaProducerController.execute(counter)
+  await kafkaProducerController.execute(counter + 1000)
   if (counter < maxMessages) {
     setTimeout(dispatchMessage, intervalSeconds)
     counter++

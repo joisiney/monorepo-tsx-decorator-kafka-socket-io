@@ -18,9 +18,9 @@
     "demeter:dev": "cd apps/be-demeter && yarn start:dev",
     "apolo:docker-up": "cd apps/be-apolo && yarn docker-up",
     "apolo:docker-down": "cd apps/be-apolo && yarn docker-down",
-    "atena:prebuild": "cd apps/be-apolo && yarn prebuild",
-    "atena:android": "cd apps/be-apolo && yarn android",
-    "atena:ios": "cd apps/be-apolo && yarn ios"
+    "atena:prebuild": "cd apps/fe-rn-atena && yarn prebuild",
+    "atena:android": "cd apps/fe-rn-atena && yarn android",
+    "atena:ios": "cd apps/fe-rn-atena && yarn ios"
   },
   "engines": {
     "node": ">=v20.9.0"

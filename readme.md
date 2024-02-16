@@ -94,6 +94,7 @@ Para inicializar o **backend**, basta seguir as instruções abaixo:
    1. Copie o arquivo `apps/fe-rn-atena/.env.example` e salve-o como `.env`.
       - **OBS:** O React Native Android não acessa o host `localhost` da mesma forma que um aplicativo da web. Você deve usar `http://10.0.2.2:3001`, que é um alias para `http://127.0.0.1:3001`, de acordo com a documentação do emulador Android. No iPhone, continue usando `http://localhost:3001`.
    2. Execute `yarn atena:prebuild` para criar os artefatos do **Android/iPhone**.
+      1. Por algum motivo, se este comando `yarn atena:prebuild` não funcionar, vá para o diretório `apps/fe-rn-atena` e execute `yarn prebuild`.
    3. Execute `yarn atena:android` para iniciar o aplicativo no emulador **Android**.
    4. Execute `yarn atena:ios` para iniciar o aplicativo no emulador **iPhone**.
 8. Com o **apolo** (API REST) inicializado e duas instâncias do aplicativo **atena** abertas, é hora de produzir mensagens. Execute `yarn demeter:dev`; ele irá produzir 10 mensagens, uma a cada 10 segundos, e as enviará usando o KAFKA, para que o **apolo** consuma essas mensagens e dispare notificações via `socket.io` para que o **atena** as receba.
@@ -155,4 +156,4 @@ Desenvolvi o aplicativo com o mínimo de telas possível, concentrando todas as 
 </p>
 
 ## Vídeo demonstrando a funcionalidade implementada em pleno funcionamento.
-[Link de apresentação simples feito com Video](https://vimeo.com/manage/videos/912920778/9a01d9e851/player?extension_recording=true)
+[Link de apresentação simples feito com Video](https://vimeo.com/manage/videos/913678369/676aeadf27?extension_recording=true)
