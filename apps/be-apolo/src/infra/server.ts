@@ -105,7 +105,6 @@ app.setErrorHandler(function (
   request: FastifyRequest,
   reply: FastifyReply,
 ) {
-  console.log('app/setErrorHandler()', error)
   return reply.send(error)
 })
 
@@ -121,13 +120,11 @@ app.listen(
     }
     try {
       await dataSource.initialize()
-      console.log('data base running')
       await dataSource.runMigrations()
-      console.log('migrations finished')
     } catch (err) {
       console.error(err)
     } finally {
-      console.log(`Server listening at ${address} 🚀🚀`)
+      console.info(`Server listening at ${address} 🚀🚀`)
     }
   },
 )

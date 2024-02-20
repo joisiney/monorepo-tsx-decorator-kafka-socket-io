@@ -1,5 +1,5 @@
-export * from './news/all.gateway'
-export * from './news/create.gateway'
-export * from './news/remove.gateway'
-export * from './news/update.gateway'
-// ?
+export * from './news'
+export * from './user'
+export default {
+  name: 'gateways',
+}

@@ -3,6 +3,7 @@ import { INewsDto } from '@olympus/domain-ceos'
 import { queryClient, useCreateNews } from '@olympus/gateway-eros'
 import { useCallback, useEffect } from 'react'
 import { AppNewsEntity } from '../../../@core/domain/entities/news.entity'
+import { IPageNews } from '../index.dto'
 
 export const useCreateService = () => {
   const createNewsService = useCreateNews()
@@ -21,19 +22,21 @@ export const useCreateService = () => {
   useEffect(() => {
     const socketInstance = Socket.getInstance()
     socketInstance.on('news-create', (response: INewsDto) => {
-      const newTask = new AppNewsEntity(response)
-      queryClient.setQueryData(['/olympus/news'], ({ pageParams, pages }) => {
-        const lastedIndicePage = pages.length - 1
-        const lastedPage = pages[lastedIndicePage]
-        const cloneLastedPage = { ...lastedPage, data: [...lastedPage.data] }
-        cloneLastedPage.data.push(newTask)
-        const clone = [...pages]
-        clone[lastedIndicePage] = cloneLastedPage
-        return {
-          pages: clone,
-          pageParams: [...pageParams],
-        }
-      })
+      queryClient.setQueryData(
+        ['/olympus/news'],
+        ({ pageParams, pages }: IPageNews.QueryParams) => {
+          const lastedIndicePage = pages.length - 1
+          const lastedPage = pages[lastedIndicePage]
+          const cloneLastedPage = { ...lastedPage, data: [...lastedPage.data] }
+          cloneLastedPage.data.push(response)
+          const clone = [...pages]
+          clone[lastedIndicePage] = cloneLastedPage
+          return {
+            pages: clone,
+            pageParams: [...pageParams],
+          }
+        },
+      )
     })
     return () => {
       socketInstance.off('news-create')

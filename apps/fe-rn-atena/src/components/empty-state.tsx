@@ -1,7 +1,7 @@
 import emptyState from '@assets/empty-state.png'
 import { FC } from 'react'
 import { Image, Text, View } from 'react-native'
-export const EmptyState: FC = () => {
+export const EmptyStateList: FC = () => {
   return (
     <View className="w-full h-full items-center mt-20">
       <Image source={emptyState} alt="" />

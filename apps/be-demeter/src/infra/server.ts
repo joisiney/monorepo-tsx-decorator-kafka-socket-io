@@ -34,7 +34,7 @@ const dispatchMessage = async () => {
     setTimeout(dispatchMessage, intervalSeconds)
     counter++
   } else {
-    console.log(`Max messages reached ${counter}`)
+    console.info(`Max messages reached ${counter}`)
     process.exit(0)
   }
 }

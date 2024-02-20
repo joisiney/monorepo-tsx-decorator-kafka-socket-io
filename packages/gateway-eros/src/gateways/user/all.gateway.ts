@@ -2,7 +2,7 @@ import { useInfiniteQuery } from '@tanstack/react-query'
 import { clientHttp } from '../../contexts/react-query'
 
 const queryFn = async <Input, Output>({ page }: { page: number }) => {
-  const response = await clientHttp.get<Output>('/olympus/news', {
+  const response = await clientHttp.get<Output>('/olympus/user', {
     headers: {
       'x-page': page,
     },
@@ -10,13 +10,13 @@ const queryFn = async <Input, Output>({ page }: { page: number }) => {
   return response
 }
 
-export const useAllNews = <Input, Output>({
+export const useAllUser = <Input, Output>({
   select,
 }: {
   select: (props: any) => any
 }) => {
   const response = useInfiniteQuery({
-    queryKey: ['/olympus/news'],
+    queryKey: ['/olympus/user'],
     initialPageParam: 1,
     select: (data) => select(data),
     queryFn: ({ pageParam = 1 }) => queryFn<Input, Output>({ page: pageParam }),

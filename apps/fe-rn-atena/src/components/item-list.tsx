@@ -1,4 +1,3 @@
-import { AppNewsEntity } from '@/@core/domain/entities/news.entity'
 import { Ionicons } from '@expo/vector-icons'
 import classNames from 'classnames'
 import { styled } from 'nativewind'
@@ -15,14 +14,15 @@ const Button = styled(TouchableOpacity)
 const Input = styled(TextInput)
 const Icon = styled(Ionicons)
 
-export const HomeItem: FC<{
-  item: AppNewsEntity
+export const ItemList: FC<{
+  title: string
+  id: string | number
   handleRemove: () => Promise<void>
-  handleUpdateTitle: (title: string, id: string) => Promise<void>
-}> = ({ item, handleRemove, handleUpdateTitle }) => {
+  handleUpdateTitle: (title: string, id: string | number) => Promise<void>
+}> = ({ title, id, handleRemove, handleUpdateTitle }) => {
   const [isEditing, setIsEditing] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
-  const [newTitle, setNewTitle] = useState(item.title)
+  const [itemTitle, setItemTitle] = useState(title)
   const textInputRef = useRef<TextInput>(null)
 
   function handleStartEditing() {
@@ -30,7 +30,7 @@ export const HomeItem: FC<{
   }
 
   function handleCancelEditing() {
-    setNewTitle(item.title)
+    setItemTitle(title)
     setIsEditing(false)
   }
 
@@ -44,7 +44,7 @@ export const HomeItem: FC<{
 
   function handleSubmitEditing() {
     setIsLoading(true)
-    handleUpdateTitle(newTitle, item.id).finally(() => {
+    handleUpdateTitle(itemTitle, id).finally(() => {
       setIsLoading(false)
       setIsEditing(false)
     })
@@ -60,15 +60,15 @@ export const HomeItem: FC<{
       {isEditing ? (
         <Input
           focusable
-          selection={{ start: newTitle.length, end: newTitle.length }}
+          selection={{ start: itemTitle.length, end: itemTitle.length }}
           className={classNames(
             'text-base font-interregular text-slate-900 flex flex-1 pl-2 mr-2 min-h-[38px]',
             { 'border border-slate-100 rounded-sm': isEditing },
           )}
           editable={!isLoading}
-          value={newTitle}
+          value={itemTitle}
           ref={textInputRef}
-          onChangeText={setNewTitle}
+          onChangeText={setItemTitle}
           onSubmitEditing={handleSubmitEditing}
         />
       ) : (
@@ -76,8 +76,8 @@ export const HomeItem: FC<{
           numberOfLines={1}
           className="text-base font-interregular text-slate-900 flex flex-1"
         >
-          {newTitle}
-          {newTitle.length > 35 ? '...' : ''}
+          {itemTitle}
+          {itemTitle.length > 35 ? '...' : ''}
         </Text>
       )}
       {isLoading ? (

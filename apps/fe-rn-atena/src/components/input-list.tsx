@@ -12,7 +12,7 @@ import {
 const Button = styled(TouchableOpacity)
 const Input = styled(TextInput)
 
-export const HomeInput: FC<{ handleAdd: any }> = ({ handleAdd }) => {
+export const InputList: FC<{ handleAdd: any }> = ({ handleAdd }) => {
   const [value, setValue] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const inputRef = useRef<TextInput>(null)
@@ -34,7 +34,7 @@ export const HomeInput: FC<{ handleAdd: any }> = ({ handleAdd }) => {
         ref={inputRef}
         value={value}
         onChangeText={(text) => setValue(text)}
-        placeholder="Adicionar novo notícia..."
+        placeholder="Adicionar novo..."
         className="h-12 flex-1 border-r border-slate-200 px-6"
         placeholderTextColor="#B2B2B2"
         returnKeyType="send"
