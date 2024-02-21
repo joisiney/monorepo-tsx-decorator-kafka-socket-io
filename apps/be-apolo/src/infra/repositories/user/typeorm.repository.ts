@@ -1,5 +1,3 @@
-import { dataSource } from '@/infra/database/typeorm/data-source'
-import { UserTypeORM } from '@/infra/database/typeorm/entities/user.entity'
 import { IUserDto, UserEntity } from '@olympus/domain-ceos'
 import {
   Either,
@@ -11,6 +9,8 @@ import {
   PaginationEntity,
   Right,
 } from '@olympus/lib-hera'
+import { dataSource } from '../../database/typeorm/data-source'
+import { UserTypeORM } from '../../database/typeorm/entities/user.entity'
 import { IUserRepository } from './index.dto'
 
 @Injectable({ name: 'USER_REPOSITORY' })

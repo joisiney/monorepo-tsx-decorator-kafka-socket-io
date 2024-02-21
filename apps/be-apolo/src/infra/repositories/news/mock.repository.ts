@@ -14,15 +14,7 @@ import { INewsRepository } from './index.dto'
 
 @Injectable({ name: 'NEWS_REPOSITORY' })
 export class NewsRepositoryMock implements INewsRepository.Implements {
-  private mockNews: NewsEntity[] = Array.from({ length: 1 }, (_, index) => {
-    return new NewsEntity({
-      id: index.toString(),
-      title: `Title ${index}`,
-      description: `Description ${index}`,
-      content: `Content ${index}`,
-      thumbnail: `https://api.lorem.space/image/face?w=100&h=100&data=${index}`,
-    })
-  })
+  private mockNews: NewsEntity[] = []
 
   async findAll(
     props: INewsRepository.InputFindAll,
