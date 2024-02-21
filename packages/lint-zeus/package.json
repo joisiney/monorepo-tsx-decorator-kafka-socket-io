@@ -11,7 +11,8 @@
     "lint": "echo 'No lint script defined'",
     "lint:fix": "echo 'No lint:fix script defined'",
     "reset": "echo 'No reset script defined'",
-    "clean": "echo 'No clean script defined'"
+    "clean": "echo 'No clean script defined'",
+    "coverage": "echo 'No build script found'"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^6.21.0",

@@ -14,7 +14,8 @@
     "reset": "rm -rf ios && rm -rf android && rm -rf node_modules  && rm -rf .expo && rm -rf yarn.lock && rm -fr tsconfig.tsbuildinfo",
     "build": "echo 'No build script found'",
     "start": "echo 'No build script found'",
-    "clean": "echo 'No build script found'"
+    "clean": "echo 'No build script found'",
+    "coverage": "echo 'No build script found'"
   },
   "dependencies": {
     "@expo-google-fonts/inter": "^0.2.3",

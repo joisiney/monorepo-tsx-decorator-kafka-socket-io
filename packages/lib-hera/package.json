@@ -11,7 +11,8 @@
     "lint": "eslint ./src --ext .ts,.tsx",
     "lint:fix": "eslint ./src --ext .ts,.tsx --fix",
     "reset": "rm -rf ./dist && rm -rf node_modules && rm -rf yarn.lock && rm -fr tsconfig.tsbuildinfo",
-    "clean": "rm -rf ./dist"
+    "clean": "rm -rf ./dist",
+    "coverage": "echo 'No build script found'"
   },
   "dependencies": {
     "reflect-metadata": "^0.2.1",

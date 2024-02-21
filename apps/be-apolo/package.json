@@ -17,7 +17,8 @@
     "migration:generate": "npm run typeorm migration:generate -o ./src/infra/database/typeorm/migrations/$npm_config_name",
     "migration:run": "npm run typeorm migration:run",
     "reset": "rm -rf ./dist && rm -rf node_modules && rm -rf yarn.lock && rm -fr tsconfig.tsbuildinfo",
-    "clean": "rm -rf ./dist"
+    "clean": "rm -rf ./dist",
+    "coverage": "echo 'No build script found'"
   },
   "dependencies": {
     "@olympus/domain-ceos": "1.0.0",

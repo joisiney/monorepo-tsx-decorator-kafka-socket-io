@@ -7,6 +7,7 @@
   "type": "module",
   "scripts": {
     "test": "cd packages/vitest-kairos && yarn test",
+    "coverage": "cd packages/vitest-kairos && yarn coverage",
     "lint:fix": "yarn workspaces run lint:fix",
     "lint": "yarn workspaces run lint",
     "reset": "yarn workspaces run reset && rm -rf node_modules && rm -rf yarn.lock",
