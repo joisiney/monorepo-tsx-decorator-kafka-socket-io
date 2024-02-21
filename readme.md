@@ -147,8 +147,8 @@ A parte de notícias está implementada utilizando mock, este CRUD está totalme
   - [x] Integração com API REST
   - [x] Integração com Socket.IO
   - [ ] Teste unitário/integração (Em andamento)
-- [ ] Implementar usuário no APP
-  - [ ] Integração com API REST
+- [x] Implementar usuário no APP
+  - [x] Integração com API REST
 
 ## APP UX
 
