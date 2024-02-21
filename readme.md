@@ -114,6 +114,7 @@ O principal objetivo dos comandos no arquivo package.json é criar atalhos para 
 | Bash/Script              | Descrição                                                                          |
 | ------------------------ | ---------------------------------------------------------------------------------- |
 | `yarn test`              | Executa todos os testes da aplicação com o Vitest                                  |
+| `yarn coverage`          | Gera o coverage do monorepo                                                        |
 | `yarn lint:fix`          | Formata todos os arquivos `ts` e `tsx`                                             |
 | `yarn lint`              | Verifica todos os arquivos `ts` e `tsx`                                            |
 | `yarn reset`             | Remove todas as pastas `node_modules`, `dist` e `yarn.lock`                        |
