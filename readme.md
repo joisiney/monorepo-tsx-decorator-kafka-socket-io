@@ -93,18 +93,54 @@ Para inicializar o **backend**, basta seguir as instruções abaixo:
    yarn apolo:dev
    ```
    Se tudo ocorrer conforme o esperado, você deverá visualizar o seguinte **log** em seu terminal:
-   ![log](https://res.cloudinary.com/dmoi0mmuj/image/upload/v1707882723/github/Captura_de_Tela_2024-02-14_a%CC%80s_00.51.58_r8lg3q.png)
+```bash
+┌─────────┬──────────────────┬──────────┬─────────────────────┐
+│ (index) │    CONTROLLER    │  METHOD  │        LINK         │
+├─────────┼──────────────────┼──────────┼─────────────────────┤
+│    0    │ 'NewsController' │  'GET'   │   '/olympus/news'   │
+│    1    │ 'NewsController' │  'GET'   │ '/olympus/news/:id' │
+│    2    │ 'NewsController' │  'POST'  │   '/olympus/news'   │
+│    3    │ 'NewsController' │  'PUT'   │ '/olympus/news/:id' │
+│    4    │ 'NewsController' │ 'DELETE' │ '/olympus/news/:id' │
+└─────────┴──────────────────┴──────────┴─────────────────────┘
+┌─────────┬──────────────────┬──────────┬─────────────────────┐
+│ (index) │    CONTROLLER    │  METHOD  │        LINK         │
+├─────────┼──────────────────┼──────────┼─────────────────────┤
+│    0    │ 'UserController' │  'POST'  │   '/olympus/user'   │
+│    1    │ 'UserController' │  'GET'   │ '/olympus/user/:id' │
+│    2    │ 'UserController' │  'GET'   │   '/olympus/user'   │
+│    3    │ 'UserController' │ 'DELETE' │ '/olympus/user/:id' │
+│    4    │ 'UserController' │  'PUT'   │ '/olympus/user/:id' │
+└─────────┴──────────────────┴──────────┴─────────────────────┘
+Server listening at http://[::1]:3001 🚀🚀
+```
    O objetivo deste **log** é apresentar todas as rotas criadas, juntamente com seus respectivos métodos de acesso. Se você utiliza o VSCode e tem o hábito de usar o plugin `REST Client` na pasta `/rest-client-http`, todos os métodos estão cadastrados e atualizados lá 😜.
-7. Inicialize o **aplicativo atena**:
+1. Inicialize o **aplicativo atena**:
    1. Copie o arquivo `apps/fe-rn-atena/.env.example` e salve-o como `.env`.
       - **OBS:** O React Native Android não acessa o host `localhost` da mesma forma que um aplicativo da web. Você deve usar `http://10.0.2.2:3001`, que é um alias para `http://127.0.0.1:3001`, de acordo com a documentação do emulador Android. No iPhone, continue usando `http://localhost:3001`.
    2. Execute `yarn atena:prebuild` para criar os artefatos do **Android/iPhone**.
       1. Por algum motivo, se este comando `yarn atena:prebuild` não funcionar, vá para o diretório `apps/fe-rn-atena` e execute `yarn prebuild`.
    3. Execute `yarn atena:android` para iniciar o aplicativo no emulador **Android**.
    4. Execute `yarn atena:ios` para iniciar o aplicativo no emulador **iPhone**.
-8. Com o **apolo** (API REST) inicializado e duas instâncias do aplicativo **atena** abertas, é hora de produzir mensagens. Execute `yarn demeter:dev`; ele irá produzir 10 mensagens, uma a cada 10 segundos, e as enviará usando o KAFKA, para que o **apolo** consuma essas mensagens e dispare notificações via `socket.io` para que o **atena** as receba.
-9. Para executar os testes, basta rodar `yarn test`.
-   ![test-jest](https://res.cloudinary.com/dmoi0mmuj/image/upload/v1707916641/github/svccujdpeyrhgpz9lchi.png?nocache=1)
+2. Com o **apolo** (API REST) inicializado e duas instâncias do aplicativo **atena** abertas, é hora de produzir mensagens. Execute `yarn demeter:dev`; ele irá produzir 10 mensagens, uma a cada 10 segundos, e as enviará usando o KAFKA, para que o **apolo** consuma essas mensagens e dispare notificações via `socket.io` para que o **atena** as receba.
+3. Para executar os testes unitários, simplesmente rode o comando yarn test. Se tudo correr como esperado, você verá algo semelhante ao bloco abaixo, que informará a quantidade de testes realizados no projeto.
+```bash
+ ✓ packages/vitest-kairos/src/gateway-eros/src/services/client-http/adapters/axios-client.spec.ts (6)
+ ✓ packages/vitest-kairos/src/gateway-eros/src/services/client-http/index.spec.ts (4)
+ ✓ packages/vitest-kairos/src/be-apolo/src/infra/repositories/news/mock.repository.spec.ts (7)
+ ✓ packages/vitest-kairos/src/fe-rn-atena/src/pages/news/hooks/find-all-service.hook.spec.ts (1)
+ ✓ packages/vitest-kairos/src/fe-rn-atena/src/components/header-list/header.spec.tsx (6)
+ ✓ packages/vitest-kairos/src/be-apolo/src/infra/repositories/user/typeorm.repository.spec.ts (7)
+
+ Test Files  6 passed (6)
+      Tests  31 passed (31)
+   Start at  19:40:51
+   Duration  1.15s (transform 485ms, setup 660ms, collect 1.66s, tests 192ms, environment 1ms, prepare 377ms)
+
+
+ PASS  Waiting for file changes...
+       press h to show help, press q to quit
+```
 
 
 ## Guia de comandos úteis da aplicação:
