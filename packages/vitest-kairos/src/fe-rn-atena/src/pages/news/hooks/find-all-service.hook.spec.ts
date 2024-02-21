@@ -1,5 +1,5 @@
-import { INewsDto } from '@olympus/domain-ceos'
-import { useFindAllService } from '@olympus/fe-rn-atena/src/pages/home/hooks/find-all-service.hook'
+import { AppNewsEntity } from '@olympus/fe-rn-atena/src/@core/domain/entities/news.entity'
+import { useFindAllService } from '@olympus/fe-rn-atena/src/pages/news/hooks/find-all-service.hook'
 import { clientHttp } from '@olympus/gateway-eros'
 import { renderHook, waitFor } from '@testing-library/react-native'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
@@ -22,7 +22,7 @@ describe('@olympus/fe-rn-atena/useFindAllService', () => {
       {
         isLoading?: boolean
         handleInfiniteScroll: () => void
-        data?: INewsDto[]
+        data?: AppNewsEntity[]
       },
       any
     >(() => useFindAllService(), {

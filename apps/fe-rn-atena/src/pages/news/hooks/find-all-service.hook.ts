@@ -1,7 +1,8 @@
-import { AppNewsEntity } from '@/@core/domain/entities/news.entity'
+import { INewsDto } from '@olympus/domain-ceos'
 import { useAllNews } from '@olympus/gateway-eros'
 import { IPagination } from '@olympus/lib-hera'
 import { useCallback, useRef } from 'react'
+import { AppNewsEntity } from '../../../@core/domain/entities/news.entity'
 import { IPageNews } from '../index.dto'
 
 export const useFindAllService = () => {
@@ -13,7 +14,10 @@ export const useFindAllService = () => {
     isFetchingNextPage,
     isFetchingPreviousPage,
     data,
-  } = useAllNews<IPagination.Hydrate<any>, IPagination.Hydrate<AppNewsEntity>>({
+  } = useAllNews<
+    IPagination.Hydrate<INewsDto>,
+    IPagination.Hydrate<AppNewsEntity>
+  >({
     select: ({ pages }: IPageNews.QueryParams) => {
       const lastedPage = pages[pages.length - 1]
       isLastPageRef.current = lastedPage.page >= lastedPage.pages
