@@ -29,6 +29,7 @@ let counter = 0
 const maxMessages = 4
 const intervalSeconds = 1000 * 10 // 10 seconds
 const dispatchMessage = async () => {
+  console.info(`Dispatching message ${counter}`)
   await kafkaProducerController.execute(counter + 1000)
   if (counter < maxMessages) {
     setTimeout(dispatchMessage, intervalSeconds)

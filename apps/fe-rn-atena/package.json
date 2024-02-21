@@ -11,7 +11,7 @@
     "web": "expo start --web",
     "lint": "eslint ./ --ext .ts,.tsx",
     "lint:fix": "eslint . --ext .ts,.tsx --fix",
-    "reset": "rm -rf ios && rm -rf android && rm -rf node_modules && rm -rf yarn.lock && rm -fr tsconfig.tsbuildinfo",
+    "reset": "rm -rf ios && rm -rf android && rm -rf node_modules  && rm -rf .expo && rm -rf yarn.lock && rm -fr tsconfig.tsbuildinfo",
     "build": "echo 'No build script found'",
     "start": "echo 'No build script found'",
     "clean": "echo 'No build script found'"
