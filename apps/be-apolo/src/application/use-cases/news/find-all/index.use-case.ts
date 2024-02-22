@@ -1,5 +1,5 @@
 import { INewsRepository } from '@/infra/repositories/news/index.dto'
-import { Injectable } from '@olympus/lib-hera'
+import { Injectable } from '@olympus/be-di-ilitia'
 import { IFindAllUseCase } from './index.dto'
 
 @Injectable({ dep: ['NEWS_REPOSITORY'] })

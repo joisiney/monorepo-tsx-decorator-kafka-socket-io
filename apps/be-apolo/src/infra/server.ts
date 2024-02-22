@@ -1,17 +1,19 @@
-import { NewsController } from '@/application/controllers/news/index.controller'
-import { UserController } from '@/application/controllers/users/index.controller'
-import { NewsCreateUseCase } from '@/application/use-cases/news/create/index.use-case'
-import { NewsFindAllUseCase } from '@/application/use-cases/news/find-all/index.use-case'
-import { NewsFindByIdUseCase } from '@/application/use-cases/news/find-id/index.use-case'
-import { NewsRemoveByIdUseCase } from '@/application/use-cases/news/remove/index.use-case'
-import { NewsUpdateByIdUseCase } from '@/application/use-cases/news/update/index.use-case'
-import { UserCreateUseCase } from '@/application/use-cases/users/create/index.use-case'
-import { UserFindAllUseCase } from '@/application/use-cases/users/find-all/index.use-case'
-import { UserFindByIdUseCase } from '@/application/use-cases/users/find-id/index.use-case'
-import { UserRemoveByIdUseCase } from '@/application/use-cases/users/remove/index.use-case'
-import { UserUpdateByIdUseCase } from '@/application/use-cases/users/update/index.use-case'
+import { NewsController, UserController } from '@/application/controllers'
 import {
-  AddingRouteInScripter,
+  NewsCreateUseCase,
+  NewsFindAllUseCase,
+  NewsFindByIdUseCase,
+  NewsRemoveByIdUseCase,
+  NewsUpdateByIdUseCase,
+  UserCreateUseCase,
+  UserFindAllUseCase,
+  UserFindByIdUseCase,
+  UserRemoveByIdUseCase,
+  UserUpdateByIdUseCase,
+} from '@/application/use-cases'
+import { InjectorFactory } from '@olympus/be-di-ilitia'
+import {
+  AddingRouteInScripterSingleton,
   FastifyAdapter,
   fastifyReqGatherDataPipe,
   fastifyReqParseErrorPipe,
@@ -23,12 +25,10 @@ import {
 } from '@olympus/be-router-angelo'
 import { IOServerService } from '@olympus/io-server-pluto'
 import { KafkaConsumerService, KafkaDataSource } from '@olympus/kafka-persefone'
-import { InjectorFactory } from '@olympus/lib-hera'
 import Fastify, { FastifyInstance, FastifyReply, FastifyRequest } from 'fastify'
 import 'reflect-metadata'
 import { dataSource } from './database/typeorm/data-source'
-import { NewsRepositoryMock } from './repositories/news/mock.repository'
-import { UserRepositoryTypeORM } from './repositories/user/typeorm.repository'
+import { NewsRepositoryMock, UserRepositoryTypeORM } from './repositories'
 
 const port = +(process.env.PORT ?? 3001)
 
@@ -36,25 +36,31 @@ const port = +(process.env.PORT ?? 3001)
 const app: FastifyInstance = Fastify({
   logger: false,
 })
-
+app.addHook(
+  'preHandler',
+  (req: FastifyRequest, reply: FastifyReply, done: any) => {
+    reply.header('Content-Type', 'application/json; charset=utf-8')
+    done()
+  },
+)
 // INJECTING ROUTER
-const routerAdapter = new FastifyAdapter<
+const fastifyRouterAdapter = new FastifyAdapter<
   FastifyInstance,
   FastifyRequest,
   FastifyReply
 >(app)
-routerAdapter.reqPipeline.add(
+fastifyRouterAdapter.reqPipeline.add(
   fastifyReqGatherDataPipe,
   fastifyReqParseUserAgentPipe,
   fastifyReqParseZodPipe,
 )
 
-routerAdapter.resPipeline.add(
+fastifyRouterAdapter.resPipeline.add(
   fastifyResTriggerControllerPipe,
   fastifyResTransformPipe,
 )
-routerAdapter.errorPipeline.add(fastifyReqParseErrorPipe)
-AddingRouteInScripter.getInstance(routerAdapter)
+fastifyRouterAdapter.errorPipeline.add(fastifyReqParseErrorPipe)
+AddingRouteInScripterSingleton.getInstance(fastifyRouterAdapter)
 
 // INJECTING NEWS MODULE
 {

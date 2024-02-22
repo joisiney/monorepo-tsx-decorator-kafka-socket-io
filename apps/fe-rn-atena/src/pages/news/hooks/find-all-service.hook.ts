@@ -1,6 +1,5 @@
-import { INewsDto } from '@olympus/domain-ceos'
+import { INewsDto, IPagination } from '@olympus/domain-ceos'
 import { useAllNews } from '@olympus/gateway-eros'
-import { IPagination } from '@olympus/lib-hera'
 import { useCallback, useRef } from 'react'
 import { AppNewsEntity } from '../../../@core/domain/entities/news.entity'
 import { IPageNews } from '../index.dto'

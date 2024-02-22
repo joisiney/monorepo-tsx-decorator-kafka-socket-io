@@ -1,5 +1,4 @@
-import { IUserDto } from '@olympus/domain-ceos'
-import { IPagination } from '@olympus/lib-hera'
+import { IPagination, IUserDto } from '@olympus/domain-ceos'
 
 export namespace IPageUser {
   export interface QueryParams {

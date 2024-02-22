@@ -1,6 +1,6 @@
 import { INewsRepository } from '@/infra/repositories/news/index.dto'
+import { Injectable } from '@olympus/be-di-ilitia'
 import { IIoServer } from '@olympus/io-server-pluto'
-import { Injectable } from '@olympus/lib-hera'
 import { IUpdateByIdUseCase } from './index.dto'
 
 @Injectable({ dep: ['NEWS_REPOSITORY', 'IO_SERVER'] })

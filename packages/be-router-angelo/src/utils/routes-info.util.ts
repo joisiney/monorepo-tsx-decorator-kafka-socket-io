@@ -1,4 +1,4 @@
-import { InjectorFactory } from '@olympus/lib-hera'
+import { InjectorFactory } from '@olympus/be-di-ilitia'
 import { findMetaData } from './find-meta-data.util'
 import { urlFormat } from './url-format.util'
 

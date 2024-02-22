@@ -1,5 +1,4 @@
-import { Type } from '../index.dto'
-import { IInjectable } from './index.dto'
+import { IInjectable, Type } from './index.dto'
 import { InjectorFactory } from './index.factory'
 
 export function Injectable(props?: Partial<IInjectable>) {

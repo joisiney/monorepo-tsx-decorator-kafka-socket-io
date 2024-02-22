@@ -1,8 +1,8 @@
-import { InjectorFactory } from '@olympus/lib-hera'
+import { InjectorFactory } from '@olympus/be-di-ilitia'
+import { findMetaData, urlFormat } from '../../../utils'
 import { IRoute } from '../../adapters/route/index.dto'
-import { findMetaData, urlFormat } from '../../utils'
 
-export class AddingRouteInScripter {
+export class AddingRouteInScripterSingleton {
   constructor(private readonly app: IRoute.Implements) {}
 
   private create(target: any) {
@@ -21,16 +21,17 @@ export class AddingRouteInScripter {
     }
   }
 
-  private static instance: AddingRouteInScripter
+  private static instance: AddingRouteInScripterSingleton
   public static getInstance(app: IRoute.Implements) {
-    if (!AddingRouteInScripter.instance) {
-      AddingRouteInScripter.instance = new AddingRouteInScripter(app)
+    if (!AddingRouteInScripterSingleton.instance) {
+      AddingRouteInScripterSingleton.instance =
+        new AddingRouteInScripterSingleton(app)
       InjectorFactory.use(
-        AddingRouteInScripter.instance.create.bind(
-          AddingRouteInScripter.instance,
+        AddingRouteInScripterSingleton.instance.create.bind(
+          AddingRouteInScripterSingleton.instance,
         ),
       )
     }
-    return AddingRouteInScripter.instance
+    return AddingRouteInScripterSingleton.instance
   }
 }

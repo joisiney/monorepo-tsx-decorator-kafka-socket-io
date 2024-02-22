@@ -5,7 +5,8 @@ import { NewsFindAllUseCase } from '@/application/use-cases/news/find-all/index.
 import { NewsFindByIdUseCase } from '@/application/use-cases/news/find-id/index.use-case'
 import { NewsRemoveByIdUseCase } from '@/application/use-cases/news/remove/index.use-case'
 import { NewsUpdateByIdUseCase } from '@/application/use-cases/news/update/index.use-case'
-import { Controller, Injectable, Route } from '@olympus/lib-hera'
+import { Injectable } from '@olympus/be-di-ilitia'
+import { Controller, Route } from '@olympus/be-router-angelo'
 import { INewsAllDto, newsAllDto } from './dto/all.dto'
 import { INewsDto, newsDto } from './dto/news.dto'
 import { INewsUpdateDto, newsUpdateDto } from './dto/put.dto'
@@ -30,27 +31,27 @@ export class NewsController {
   ) {}
 
   @Route({ method: 'GET', url: '/', dto: newsAllDto })
-  async newsAll(input: INewsAllDto) {
+  async factAll(input: INewsAllDto) {
     return this.findAllUseCase.execute(input)
   }
 
   @Route({ method: 'GET', url: '/:id', dto: newsKeyDto })
-  async newsById(input: INewsKeyDto) {
+  async factById(input: INewsKeyDto) {
     return this.findByIdUseCase.execute(input)
   }
 
   @Route({ method: 'POST', url: '/', dto: newsDto })
-  async newsCreate(data: INewsDto) {
+  async factCreate(data: INewsDto) {
     return this.createUseCase.execute(data)
   }
 
   @Route({ method: 'PUT', url: '/:id', dto: newsUpdateDto })
-  async newsUpdate(input: INewsUpdateDto) {
+  async factUpdate(input: INewsUpdateDto) {
     return this.updateByIdUseCase.execute(input)
   }
 
   @Route({ method: 'DELETE', url: '/:id', dto: newsKeyDto })
-  async newsDelete(input: INewsKeyDto) {
+  async factDelete(input: INewsKeyDto) {
     return this.removeByIdUseCase.execute(input)
   }
 }

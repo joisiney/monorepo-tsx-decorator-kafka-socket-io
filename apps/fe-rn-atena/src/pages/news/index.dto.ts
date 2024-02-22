@@ -1,5 +1,4 @@
-import { INewsDto } from '@olympus/domain-ceos'
-import { IPagination } from '@olympus/lib-hera'
+import { INewsDto, IPagination } from '@olympus/domain-ceos'
 
 export namespace IPageNews {
   export interface QueryParams {

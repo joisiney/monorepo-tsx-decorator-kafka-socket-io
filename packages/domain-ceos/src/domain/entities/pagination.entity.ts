@@ -1,4 +1,4 @@
-import { IPagination } from './index.dto'
+import { IPagination } from '../dto'
 
 export class PaginationEntity<T> {
   private _data!: T[]

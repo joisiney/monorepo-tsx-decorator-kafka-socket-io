@@ -1,6 +1,6 @@
 import { ProducerNewsKafkaUseCase } from '@/application/use-cases/producer.use-case'
+import { InjectorFactory } from '@olympus/be-di-ilitia'
 import { KafkaDataSource, KafkaProducerService } from '@olympus/kafka-persefone'
-import { InjectorFactory } from '@olympus/lib-hera'
 import 'reflect-metadata'
 
 InjectorFactory.resolve(KafkaDataSource, {

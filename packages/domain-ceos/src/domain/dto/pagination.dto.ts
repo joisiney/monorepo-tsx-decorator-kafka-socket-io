@@ -12,3 +12,10 @@ export namespace IPagination {
     total: number
   }
 }
+// export type IPagination<T> = {
+//   data: T[]
+//   count: number
+//   totalPages: number
+//   actualPage: number
+//   hasNextPage: boolean
+// }

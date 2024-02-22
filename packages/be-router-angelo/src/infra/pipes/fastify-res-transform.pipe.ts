@@ -1,4 +1,4 @@
-import { PaginationEntity } from '@olympus/lib-hera'
+import { PaginationEntity } from '@olympus/domain-ceos'
 
 export const fastifyResTransformPipe = async (acc: any) => {
   let response: { [key: string]: unknown } = {

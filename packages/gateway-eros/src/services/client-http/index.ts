@@ -1,5 +1,6 @@
+import { Injectable } from '@olympus/be-di-ilitia'
 import { IApiClient } from './dto/http-client.dto'
-
+@Injectable({ dep: ['HTTP_CLIENT'] })
 export class HttpClient {
   constructor(public api: IApiClient) {}
   public async get<T>(url: string, config?: any) {

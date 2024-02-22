@@ -1,4 +1,4 @@
-import { Injectable } from '@olympus/lib-hera'
+import { Injectable } from '@olympus/be-di-ilitia'
 import { IProducer } from '../dto/index.dto'
 
 @Injectable({

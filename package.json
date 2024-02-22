@@ -35,6 +35,7 @@
     "@olympus/gateway-eros": "1.0.0",
     "@olympus/kafka-persefone": "1.0.0",
     "@olympus/io-server-pluto": "1.0.0",
+    "@olympus/be-di-ilitia": "1.0.0",
     "@olympus/lib-hera": "1.0.0",
     "reflect-metadata": "^0.2.1",
     "zod": "^3.22.4"

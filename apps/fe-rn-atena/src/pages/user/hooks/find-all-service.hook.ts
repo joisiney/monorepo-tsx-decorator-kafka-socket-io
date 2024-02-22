@@ -1,6 +1,6 @@
 import { AppUserEntity } from '@/@core/domain/entities/user.entity'
+import { IPagination } from '@olympus/domain-ceos'
 import { useAllUser } from '@olympus/gateway-eros'
-import { IPagination } from '@olympus/lib-hera'
 import { useCallback, useRef } from 'react'
 import { IPageUser } from '../index.dto'
 
@@ -21,7 +21,7 @@ export const useFindAllService = () => {
       const response = pages
         .map((itemDataInfInfiniteQuery) =>
           itemDataInfInfiniteQuery.data.map(
-            (serverEntity) => new AppUserEntity(serverEntity),
+            (serverEntity: any) => new AppUserEntity(serverEntity),
           ),
         )
         .flat()

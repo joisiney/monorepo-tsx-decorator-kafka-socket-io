@@ -1,3 +1,4 @@
+import { InjectorFactory } from '@olympus/be-di-ilitia'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { FC, ReactElement } from 'react'
 import { HttpClient } from '../services/client-http'
@@ -5,8 +6,8 @@ import { AxiosApiClient } from '../services/client-http/adapters/axios-client'
 
 const MINUTE = 1000 * 60
 
-export const api = new AxiosApiClient()
-export const clientHttp = new HttpClient(api)
+const api = InjectorFactory.resolve(AxiosApiClient, { name: 'HTTP_CLIENT' })
+export const clientHttp = InjectorFactory.resolve(HttpClient)
 
 export const queryClient = new QueryClient({
   defaultOptions: {

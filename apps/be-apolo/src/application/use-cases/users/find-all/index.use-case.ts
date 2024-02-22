@@ -1,5 +1,5 @@
 import { IUserRepository } from '@/infra/repositories/user/index.dto'
-import { Injectable } from '@olympus/lib-hera'
+import { Injectable } from '@olympus/be-di-ilitia'
 import { IUserAllDto } from './index.dto'
 
 @Injectable({ dep: ['USER_REPOSITORY'] })

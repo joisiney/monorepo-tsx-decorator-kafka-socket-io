@@ -12,7 +12,7 @@ export class AxiosApiClient implements IApiClient {
       const response = await this.api.post<T>(url, data, config)
       return response.data as T
     } catch (e) {
-      console.log(`[POST] ${url}`, e)
+      console.error(`[POST] ${url}`, e)
       throw e
     }
   }
@@ -23,7 +23,7 @@ export class AxiosApiClient implements IApiClient {
       const response = await this.api.put<T>(url, data, config)
       return response.data as T
     } catch (e) {
-      console.log(`[PUT] ${url}`, e)
+      console.error(`[PUT] ${url}`, e)
       throw e
     }
   }
@@ -34,7 +34,7 @@ export class AxiosApiClient implements IApiClient {
       const response = await this.api.delete<T>(url, config)
       return response.data as T
     } catch (e) {
-      console.log(`[DELETE] ${url}`, e)
+      console.error(`[DELETE] ${url}`, e)
       throw e
     }
   }
@@ -45,7 +45,7 @@ export class AxiosApiClient implements IApiClient {
       const response = await this.api.get<T>(url, config)
       return response.data as T
     } catch (e) {
-      console.log(`[GET] ${url}`, e)
+      console.error(`[GET] ${url}`, e)
       throw e
     }
   }

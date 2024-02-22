@@ -1,13 +1,11 @@
-import { INewsDto, NewsEntity } from '@olympus/domain-ceos'
-
+import { Injectable } from '@olympus/be-di-ilitia'
+import { INewsDto, NewsEntity, PaginationEntity } from '@olympus/domain-ceos'
 import {
   Either,
   IOptional,
   IRequired,
-  Injectable,
   Left,
   NotFoundException,
-  PaginationEntity,
   Right,
 } from '@olympus/lib-hera'
 import { INewsRepository } from './index.dto'

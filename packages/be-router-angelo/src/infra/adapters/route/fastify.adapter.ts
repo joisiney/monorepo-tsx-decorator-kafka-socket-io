@@ -18,13 +18,11 @@ export class FastifyAdapter<
       try {
         if (props.propertyKey in props.target) {
           const { code, data } = await this.execute(request, reply, props)
-          return reply
-            .status(code)
-            .header('Content-Type', 'application/json; charset=utf-8')
-            .send(data)
+          return reply.status(code).send(data)
         }
         throw new Error('Method not found')
       } catch (error) {
+        console.error(error)
         const dataError = await this.reqPipeline.execute(
           { name: this.constructor.name },
           error,

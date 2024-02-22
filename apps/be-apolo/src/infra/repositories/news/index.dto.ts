@@ -1,10 +1,9 @@
-import { INewsDto, NewsEntity } from '@olympus/domain-ceos'
+import { INewsDto, NewsEntity, PaginationEntity } from '@olympus/domain-ceos'
 import {
   Either,
   IOptional,
   IRequired,
   NotFoundException,
-  PaginationEntity,
 } from '@olympus/lib-hera'
 
 export namespace INewsRepository {

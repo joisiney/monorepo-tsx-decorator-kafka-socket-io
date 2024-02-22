@@ -1,7 +1,5 @@
-import { Type } from '../index.dto'
-
 export function Controller(path: string = '') {
-  return function <T>(target: Type<T>) {
+  return function (target: any) {
     const pathFormatted = path
       .replace(/^\/|\/$/g, '')
       .split('/')

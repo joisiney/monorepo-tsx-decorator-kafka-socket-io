@@ -15,6 +15,7 @@
     "coverage": "echo 'No build script found'"
   },
   "dependencies": {
+    "reflect-metadata": "^0.2.1",
     "@olympus/lib-hera": "1.0.0",
     "useragent": "^2.3.0",
     "zod": "^3.22.4"

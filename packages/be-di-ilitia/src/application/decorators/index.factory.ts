@@ -1,15 +1,14 @@
-import { Type } from '../index.dto'
-import { IInjectable } from './index.dto'
+import { IInjectable, Type } from './index.dto'
 
-export class InjectorFactory {
-  public static raw = new Map<string, any>()
-  public static instance = new Map<string, any>()
-  private static _use: Function[] = []
+class InjectorFactoryService {
+  public raw = new Map<string, any>()
+  public instance = new Map<string, any>()
+  private _use: Function[] = []
 
-  public static use(value: Function) {
+  public use(value: Function) {
     this._use.push(value)
   }
-  static resolve<T>(
+  public resolve<T>(
     target: Type<T>,
     props?: Partial<IInjectable> & { defaultArgs?: any },
   ): T {
@@ -30,20 +29,20 @@ export class InjectorFactory {
         (props && props.name) ?? target.name,
         target,
       )
-      InjectorFactory.raw.set((props && props.name) ?? target.name, target)
+      this.raw.set((props && props.name) ?? target.name, target)
     }
     targetName = targetName ?? Reflect.getMetadata('target-name', target)
 
-    if (InjectorFactory.instance.has(targetName)) {
-      return InjectorFactory.instance.get(targetName)
+    if (this.instance.has(targetName)) {
+      return this.instance.get(targetName)
     }
     const depsName = Reflect.getMetadata('dep', target)
     const depsInstance: any[] = depsName.map((dep: string) => {
-      if (!InjectorFactory.raw.has(dep)) {
+      if (!this.raw.has(dep)) {
         console.error(`Dependency ${dep} not found`)
         return null
       }
-      return InjectorFactory.resolve(InjectorFactory.raw.get(dep))
+      return this.resolve(this.raw.get(dep))
     })
 
     const typeInjection = Reflect.getMetadata('type', target)
@@ -56,8 +55,9 @@ export class InjectorFactory {
     const instance = new target(...depsInstance.flat())
     this._use.forEach((use) => use(instance))
     if (typeInjection === 'SINGLETON') {
-      InjectorFactory.instance.set(targetName, instance)
+      this.instance.set(targetName, instance)
     }
     return instance as T
   }
 }
+export const InjectorFactory = new InjectorFactoryService()
