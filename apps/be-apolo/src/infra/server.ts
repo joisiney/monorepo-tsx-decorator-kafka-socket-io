@@ -10,15 +10,21 @@ import { UserFindAllUseCase } from '@/application/use-cases/users/find-all/index
 import { UserFindByIdUseCase } from '@/application/use-cases/users/find-id/index.use-case'
 import { UserRemoveByIdUseCase } from '@/application/use-cases/users/remove/index.use-case'
 import { UserUpdateByIdUseCase } from '@/application/use-cases/users/update/index.use-case'
+import {
+  AddingRouteInScripter,
+  FastifyAdapter,
+  fastifyReqGatherDataPipe,
+  fastifyReqParseErrorPipe,
+  fastifyReqParseUserAgentPipe,
+  fastifyReqParseZodPipe,
+  fastifyResTransformPipe,
+  fastifyResTriggerControllerPipe,
+  routesInfo,
+} from '@olympus/be-router-angelo'
 import { IOServerService } from '@olympus/io-server-pluto'
 import { KafkaConsumerService, KafkaDataSource } from '@olympus/kafka-persefone'
 import { InjectorFactory } from '@olympus/lib-hera'
-import Fastify, {
-  FastifyError,
-  FastifyInstance,
-  FastifyReply,
-  FastifyRequest,
-} from 'fastify'
+import Fastify, { FastifyInstance, FastifyReply, FastifyRequest } from 'fastify'
 import 'reflect-metadata'
 import { dataSource } from './database/typeorm/data-source'
 import { NewsRepositoryMock } from './repositories/news/mock.repository'
@@ -32,7 +38,23 @@ const app: FastifyInstance = Fastify({
 })
 
 // INJECTING ROUTER
-InjectorFactory.instance.set('PluginRouter', app)
+const routerAdapter = new FastifyAdapter<
+  FastifyInstance,
+  FastifyRequest,
+  FastifyReply
+>(app)
+routerAdapter.reqPipeline.add(
+  fastifyReqGatherDataPipe,
+  fastifyReqParseUserAgentPipe,
+  fastifyReqParseZodPipe,
+)
+
+routerAdapter.resPipeline.add(
+  fastifyResTriggerControllerPipe,
+  fastifyResTransformPipe,
+)
+routerAdapter.errorPipeline.add(fastifyReqParseErrorPipe)
+AddingRouteInScripter.getInstance(routerAdapter)
 
 // INJECTING NEWS MODULE
 {
@@ -99,15 +121,6 @@ InjectorFactory.instance.set('PluginRouter', app)
   }
 }
 
-// ERROR HANDLER
-app.setErrorHandler(function (
-  error: FastifyError,
-  request: FastifyRequest,
-  reply: FastifyReply,
-) {
-  return reply.send(error)
-})
-
 // START SERVER
 app.listen(
   {
@@ -124,6 +137,7 @@ app.listen(
     } catch (err) {
       console.error(err)
     } finally {
+      console.table(routesInfo())
       console.info(`Server listening at ${address} 🚀🚀`)
     }
   },

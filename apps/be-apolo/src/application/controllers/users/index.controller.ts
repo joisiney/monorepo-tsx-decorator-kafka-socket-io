@@ -7,12 +7,7 @@ import { UserFindAllUseCase } from '@/application/use-cases/users/find-all/index
 import { UserFindByIdUseCase } from '@/application/use-cases/users/find-id/index.use-case'
 import { UserRemoveByIdUseCase } from '@/application/use-cases/users/remove/index.use-case'
 import { UserUpdateByIdUseCase } from '@/application/use-cases/users/update/index.use-case'
-import {
-  Controller,
-  ControllerComposer,
-  Injectable,
-  Route,
-} from '@olympus/lib-hera'
+import { Controller, Injectable, Route } from '@olympus/lib-hera'
 import { IUserCreateDto, userCreateDto } from './dto/create.dto'
 import { IUserIdDto, userIdDto } from './dto/id.dto'
 import { IUserUpdateDto, userUpdateDto } from './dto/put.dto'
@@ -27,16 +22,14 @@ import { IUserUpdateDto, userUpdateDto } from './dto/put.dto'
     'UserUpdateByIdUseCase',
   ],
 })
-export class UserController extends ControllerComposer {
+export class UserController {
   constructor(
     private createUseCase: UserCreateUseCase,
     private findByIdUseCase: UserFindByIdUseCase,
     private findAllUseCase: UserFindAllUseCase,
     private removeByIdUseCase: UserRemoveByIdUseCase,
     private updateByIdUseCase: UserUpdateByIdUseCase,
-  ) {
-    super()
-  }
+  ) {}
 
   @Route({ method: 'POST', url: '/user', dto: userCreateDto })
   async save(data: IUserCreateDto) {

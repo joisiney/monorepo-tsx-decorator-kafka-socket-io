@@ -1,8 +1,9 @@
-import * as Exceptions from '../../application/shared/exception'
+import * as Exceptions from '@olympus/lib-hera/src/application/shared/exception'
+import { IRoute } from '../adapters/route/index.dto'
 const classesToCheck = Object.values(Exceptions)
 
 export class TransformExceptionService {
-  #stack: any = {}
+  private stack: any = {}
   constructor(
     readonly controllerName: string,
     readonly url: string,
@@ -10,7 +11,7 @@ export class TransformExceptionService {
     readonly error: Error,
   ) {
     if (this.controllerName !== 'ZodException') {
-      this.#stack = {
+      this.stack = {
         controller: controllerName,
         ...this.stackErrorParse(this.error.stack ?? ''),
       }
@@ -27,21 +28,21 @@ export class TransformExceptionService {
         message: error.message,
         method: this.method,
         url: this.url,
-        stack: this.#stack,
+        stack: this.stack,
       }
     }
 
     if (error.message && error.message.length > 0) {
-      this.#stack.sereverError = error.message
+      this.stack.sereverError = error.message
     } else if (error.toString().length > 0) {
-      this.#stack.sereverError = null
+      this.stack.sereverError = null
     }
     return {
       code: 500,
       status: 'error',
       name: 'InternalException',
       message: 'Erro interno no servidor',
-      stack: this.#stack,
+      stack: this.stack,
     }
   }
 
@@ -82,4 +83,18 @@ export class TransformExceptionService {
       error: this.error as Exceptions.ZodException,
     }
   }
+}
+
+export const fastifyReqParseErrorPipe = async (
+  acc: any,
+  error: Error,
+  { url, method }: IRoute.AddProps,
+) => {
+  const errorService = new TransformExceptionService(
+    acc.name,
+    url,
+    method,
+    error,
+  )
+  return errorService.execute()
 }

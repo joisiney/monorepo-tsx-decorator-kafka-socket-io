@@ -5,12 +5,7 @@ import { NewsFindAllUseCase } from '@/application/use-cases/news/find-all/index.
 import { NewsFindByIdUseCase } from '@/application/use-cases/news/find-id/index.use-case'
 import { NewsRemoveByIdUseCase } from '@/application/use-cases/news/remove/index.use-case'
 import { NewsUpdateByIdUseCase } from '@/application/use-cases/news/update/index.use-case'
-import {
-  Controller,
-  ControllerComposer,
-  Injectable,
-  Route,
-} from '@olympus/lib-hera'
+import { Controller, Injectable, Route } from '@olympus/lib-hera'
 import { INewsAllDto, newsAllDto } from './dto/all.dto'
 import { INewsDto, newsDto } from './dto/news.dto'
 import { INewsUpdateDto, newsUpdateDto } from './dto/put.dto'
@@ -25,16 +20,14 @@ import { INewsUpdateDto, newsUpdateDto } from './dto/put.dto'
     'NewsRemoveByIdUseCase',
   ],
 })
-export class NewsController extends ControllerComposer {
+export class NewsController {
   constructor(
     private findAllUseCase: NewsFindAllUseCase,
     private createUseCase: NewsCreateUseCase,
     private findByIdUseCase: NewsFindByIdUseCase,
     private updateByIdUseCase: NewsUpdateByIdUseCase,
     private removeByIdUseCase: NewsRemoveByIdUseCase,
-  ) {
-    super()
-  }
+  ) {}
 
   @Route({ method: 'GET', url: '/', dto: newsAllDto })
   async newsAll(input: INewsAllDto) {

@@ -29,6 +29,7 @@
   "dependencies": {
     "@olympus/be-apolo": "1.0.0",
     "@olympus/be-demeter": "1.0.0",
+    "@olympus/be-router-angelo": "1.0.0",
     "@olympus/domain-ceos": "1.0.0",
     "@olympus/fe-rn-atena": "1.0.0",
     "@olympus/gateway-eros": "1.0.0",

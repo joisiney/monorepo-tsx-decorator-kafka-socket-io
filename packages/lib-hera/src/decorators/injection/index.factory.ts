@@ -4,7 +4,11 @@ import { IInjectable } from './index.dto'
 export class InjectorFactory {
   public static raw = new Map<string, any>()
   public static instance = new Map<string, any>()
+  private static _use: Function[] = []
 
+  public static use(value: Function) {
+    this._use.push(value)
+  }
   static resolve<T>(
     target: Type<T>,
     props?: Partial<IInjectable> & { defaultArgs?: any },
@@ -50,6 +54,7 @@ export class InjectorFactory {
 
     // eslint-disable-next-line new-cap
     const instance = new target(...depsInstance.flat())
+    this._use.forEach((use) => use(instance))
     if (typeInjection === 'SINGLETON') {
       InjectorFactory.instance.set(targetName, instance)
     }

@@ -1,5 +1,5 @@
+export * from './application/services'
 export * from './application/shared'
-export * from './composers/controller'
 export * from './decorators/index.dto'
 export * from './decorators/injection'
 export * from './decorators/resolver'
