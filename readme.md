@@ -7,23 +7,35 @@
 
 ## 🥶 Sobre o projeto
 
-Dividi este workspace em 3 aplicativos e 7 bibliotecas. Esta é uma arquitetura robusta projetada para escalar tanto na vertical, com poucos projetos, porém muito grandes (monolito), quanto na horizontal, com diversos microprojetos, todos integrados com o Apache Kafka e com o máximo de reaproveitamento de código entre cada aplicativo.
+Dividi este workspace em 3 aplicativos e 9 bibliotecas. Esta é uma arquitetura robusta projetada para escalar tanto na vertical, com poucos projetos, porém muito grandes (monolito), quanto na horizontal, com diversos microprojetos, todos integrados com o Apache Kafka e com o máximo de reaproveitamento de código entre cada aplicativo.
 
 ## Aplicativos:
 
-1. **app/be-demeter:** Este serviço é responsável por produzir as notícias na fila do Apache Kafka, enviadas pelo `app/be-apolo`. [mais info](docs/demeter.md)
-2. **app/be-apolo:** Esta API REST é responsável pela consumir e envio de notícias para a fila do Apache Kafka. Além disso, este servidor também é responsável pelo gerenciamento do CRUD de usuários. [mais info](docs/apolo.md)
-3. **app/fe-rn-atena:** Este APP, desenvolvido em React Native e inicializado com Expo, é responsável pela visualização do CRUD de notícias e usuários. Além disso, ele irá lidar com a atualização em tempo real das notícias e dos usuários. [mais info](docs/atena.md)
+1. **app/be-demeter:** Este serviço é responsável por produzir as notícias na fila do Apache Kafka, enviadas pelo `app/be-apolo`. [mais info](apps/be-demeter/demeter.md)
+   
+2. **app/be-apolo:** Esta API REST é responsável pela consumir e envio de notícias para a fila do Apache Kafka. Além disso, este servidor também é responsável pelo gerenciamento do CRUD de usuários. [mais info](apps/be-apolo/readme.md)
+   
+3. **app/fe-rn-atena:** Este APP, desenvolvido em React Native e inicializado com Expo, é responsável pela visualização do CRUD de notícias e usuários. Além disso, ele irá lidar com a atualização em tempo real das notícias e dos usuários. [mais info](apps/fe-rn-atena/readme.md)
 
 ## Bibliotecas:
 
 1. **packages/domain-ceos:** É onde fica a camada de `domain` da aplicação. Esta camada será responsável por centralizar a lógica de todos os aplicativos em um único pacote, facilitando a manutenção e escalabilidade. [mais info](docs/ceos.md)
+   
 2. **packages/lib-hera:** Bibliotecas comuns utilizadas por todos os `apps/*` ou `packages/*`. [mais info](docs/hera.md)
+   
 3. **packages/lint-zeus:** Este modulo é responsável por definir as configurações padrão globais para o `lint` e `prettier` dentro do `monorepo`. [mais info](docs/zeus.md)
+   
 4. **packages/vitest-kairos:** Prepare-se para uma revolução nos testes! Este módulo é o coração pulsante de todos os testes unitários, de integração e end-to-end da nossa aplicação. Chega de perder tempo configurando ambientes de teste em cada projeto! Aqui, reunimos toda a força e energia para garantir que todos os testes da aplicação sejam escritos com paixão e precisão. Este é o lugar onde a magia dos testes acontece! [mais info](docs/kairos.md).
+   
 5. **packages/kafka-persefone** é uma biblioteca focada em facilitar a produção e consumo de informações por meio do Apache Kafka.
+   
 6. **packages/io-server-pluto** serviço e decorator para **socket.io**
+   
 7. **packages/gateway-eros** é uma padronização para consultar dados pelo FE, altamente acoplada ao **react-query** e ao **packages/domain-ceos**, garantindo a integridade entre as entidades do FE e do BE.
+   
+8. **packages/be-di-ilitia** Esta é uma lib responsável pela injeção de dependência, com um código enxuto e direto ao ponto. Veio para fazer apenas uma coisa: injetar dependências. Simples assim! E o melhor de tudo é que funciona tanto para o backend quanto para o frontend! 😄 [mais info](packages/be-di-ilitia/readme.md).
+   
+9.  **packages/be-router-angelo** Esta biblioteca utiliza o 'packages/be-di-ilitia' para configurar as rotas da sua REST API. Atualmente, conta com um adaptador específico para o Fastify.js, mas não se preocupe, adicionar suporte para outras bibliotecas como o Express.js é tão fácil quanto preparar uma xícara de café pela manhã! ☕️✨ [mais info](packages/be-router-angelo/readme.md).
 
 ## 🚀 Tecnologias
 

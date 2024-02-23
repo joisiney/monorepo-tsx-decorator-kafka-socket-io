@@ -1,4 +1,4 @@
-# APP REACT-NATIVE ATENA
+# SERVICE KAFKA DEMETER
 
 Neste projeto, não vamos usar o Docker para iniciar o Kafka. Em vez disso, iremos utilizar o [Upstash](https://upstash.com). Basta acessar este site, criar sua conta e criar um cluster Kafka e um tópico chamado `news.send-news` para que possamos enviar notificações para o Apolo.
 
