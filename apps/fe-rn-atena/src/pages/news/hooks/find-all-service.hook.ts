@@ -34,7 +34,9 @@ export const useFindAllService = () => {
   const isLoading = isFetchingNextPage || isFetchingPreviousPage
 
   const handleInfiniteScroll = useCallback(() => {
-    if (!isLoading && hasNextPage && !isLastPageRef.current) {
+    const isNotLoading = !isLoading
+    const hasMorePages = hasNextPage && !isLastPageRef.current
+    if (isNotLoading && hasMorePages) {
       fetchNextPage()
     }
   }, [fetchNextPage, hasNextPage, isLoading])

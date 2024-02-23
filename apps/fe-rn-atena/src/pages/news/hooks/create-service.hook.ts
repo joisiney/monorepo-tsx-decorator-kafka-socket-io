@@ -15,7 +15,7 @@ export const useCreateService = () => {
         content: `Conteúdo ${newTaskTitle}`,
         thumbnail: `https://api.lorem.space/image/face?w=100&h=100&data=${newTaskTitle}`,
       })
-      await createNewsService.mutate(newTask.toCreate())
+      createNewsService.mutate(newTask.toCreate())
     },
     [createNewsService],
   )

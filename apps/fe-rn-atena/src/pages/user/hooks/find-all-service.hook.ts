@@ -21,7 +21,7 @@ export const useFindAllService = () => {
       const response = pages
         .map((itemDataInfInfiniteQuery) =>
           itemDataInfInfiniteQuery.data.map(
-            (serverEntity: any) => new AppUserEntity(serverEntity),
+            (serverEntity) => new AppUserEntity(serverEntity),
           ),
         )
         .flat()
@@ -31,7 +31,9 @@ export const useFindAllService = () => {
   const isLoading = isFetchingNextPage || isFetchingPreviousPage
 
   const handleInfiniteScroll = useCallback(() => {
-    if (!isLoading && hasNextPage && !isLastPageRef.current) {
+    const isNotLoading = !isLoading
+    const hasMorePages = hasNextPage && !isLastPageRef.current
+    if (isNotLoading && hasMorePages) {
       fetchNextPage()
     }
   }, [fetchNextPage, hasNextPage, isLoading])

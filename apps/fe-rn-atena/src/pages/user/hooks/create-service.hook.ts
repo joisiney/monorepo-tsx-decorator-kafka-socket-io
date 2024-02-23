@@ -14,7 +14,7 @@ export const useCreateService = () => {
         birthdate: null,
         password: 'johndoe1234',
       })
-      await createUserService.mutate(newTask.toCreate())
+      createUserService.mutate(newTask.toCreate())
     },
     [createUserService],
   )
