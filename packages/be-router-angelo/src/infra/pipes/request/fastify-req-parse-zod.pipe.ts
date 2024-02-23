@@ -1,5 +1,5 @@
 import { ZodException } from '@olympus/lib-hera'
-import { IRoute } from '../adapters/route/index.dto'
+import { IRoute } from '../../adapters/route/index.dto'
 
 export const fastifyReqParseZodPipe = async <
   IRequest extends { [key: string]: any },

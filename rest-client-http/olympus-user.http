@@ -11,7 +11,7 @@ content-type: application/json
 }
 
 ### 2. Consultar usuário por ID
-GET {{host}}/olympus/user/1002 HTTP/1.1
+GET {{host}}/olympus/user/7 HTTP/1.1
 content-type: application/json
 
 ### 3. Buscar todos os usuários com paginação

@@ -16,9 +16,11 @@ import {
   AddingRouteInScripterSingleton,
   FastifyAdapter,
   fastifyReqGatherDataPipe,
-  fastifyReqParseErrorPipe,
   fastifyReqParseUserAgentPipe,
   fastifyReqParseZodPipe,
+  fastifyResGatherErrorPipe,
+  fastifyResIsMyExceptionPipe,
+  fastifyResPresentationErrorPipe,
   fastifyResTransformPipe,
   fastifyResTriggerControllerPipe,
   routesInfo,
@@ -59,7 +61,11 @@ fastifyRouterAdapter.resPipeline.add(
   fastifyResTriggerControllerPipe,
   fastifyResTransformPipe,
 )
-fastifyRouterAdapter.errorPipeline.add(fastifyReqParseErrorPipe)
+fastifyRouterAdapter.errorPipeline.add(
+  fastifyResGatherErrorPipe,
+  fastifyResIsMyExceptionPipe,
+  fastifyResPresentationErrorPipe,
+)
 AddingRouteInScripterSingleton.getInstance(fastifyRouterAdapter)
 
 // INJECTING NEWS MODULE

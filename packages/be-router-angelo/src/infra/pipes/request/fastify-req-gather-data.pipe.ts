@@ -10,6 +10,7 @@ export const fastifyReqGatherDataPipe = async <
     ...(request.query ?? {}),
     ...(request.body ?? {}),
     ip: request.ip,
+    ...request.headers,
     remoteAddress: request?.socket?.remoteAddress,
   }
   return unionInfoRequest

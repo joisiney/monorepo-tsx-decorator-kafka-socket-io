@@ -8,12 +8,8 @@ export class PipelineService {
 
   public async execute(initialAcc: any, ...rest: any[]) {
     return await this._pipes.reduce(async (acc, pipe) => {
-      try {
-        const data = await acc
-        return pipe(data, ...rest)
-      } catch (e) {
-        return {}
-      }
+      const data = await acc
+      return pipe(data, ...rest)
     }, Promise.resolve(initialAcc))
   }
 }

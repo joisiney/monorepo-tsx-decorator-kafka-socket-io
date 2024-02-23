@@ -1,4 +1,4 @@
-import { IRoute } from '../adapters/route/index.dto'
+import { IRoute } from '../../adapters/route/index.dto'
 
 export const fastifyResTriggerControllerPipe = async <
   IReply extends { [key: string]: any },

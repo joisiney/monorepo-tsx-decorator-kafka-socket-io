@@ -8,14 +8,9 @@ export namespace IPagination {
     page: number
     take: number
     skip: number
+    next: number
+    prev: number
     pages: number
     total: number
   }
 }
-// export type IPagination<T> = {
-//   data: T[]
-//   count: number
-//   totalPages: number
-//   actualPage: number
-//   hasNextPage: boolean
-// }

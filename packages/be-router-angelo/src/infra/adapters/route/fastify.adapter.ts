@@ -22,8 +22,7 @@ export class FastifyAdapter<
         }
         throw new Error('Method not found')
       } catch (error) {
-        console.error(error)
-        const dataError = await this.reqPipeline.execute(
+        const dataError = await this.errorPipeline.execute(
           { name: this.constructor.name },
           error,
           props,

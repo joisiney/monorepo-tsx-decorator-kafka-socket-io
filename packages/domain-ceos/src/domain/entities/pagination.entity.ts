@@ -53,6 +53,15 @@ export class PaginationEntity<T> {
     return this._pages
   }
 
+  get next() {
+    const _next = this._page + 1
+    return _next > this._pages ? null : _next
+  }
+  get prev() {
+    const _prev = this._page - 1
+    return _prev < 1 ? null : _prev
+  }
+
   public get total() {
     return this._total
   }
@@ -73,6 +82,8 @@ export class PaginationEntity<T> {
       page: this._page,
       take: this._take,
       skip: this._skip,
+      next: this.next,
+      prev: this.prev,
       pages: this._pages,
       total: this._total,
       data: this._data,
