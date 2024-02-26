@@ -28,6 +28,7 @@ export default defineConfig({
         '**/coverage/**',
         '**/controllers/**',
         '**/use-cases/**',
+        '**/exception/**',
         '**/*.cjs',
         '**/*.dto.ts',
         '**/*.styl.ts',

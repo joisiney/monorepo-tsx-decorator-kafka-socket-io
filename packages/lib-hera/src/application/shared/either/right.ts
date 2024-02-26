@@ -18,6 +18,6 @@ export class Right<R, L> {
   }
 
   lanchError(): void {
-    throw new Error('Não é possível obter erro da direita.')
+    this.error
   }
 }
