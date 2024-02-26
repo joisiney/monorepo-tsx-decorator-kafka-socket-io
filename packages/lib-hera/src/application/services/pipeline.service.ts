@@ -1,4 +1,4 @@
-type PipeRequest = (acc: any, ...rest: any[]) => Promise<any>
+export type PipeRequest = (acc: any, ...rest: any[]) => Promise<any>
 export class PipelineService {
   private _pipes: PipeRequest[] = []
 
