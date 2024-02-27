@@ -1,9 +1,9 @@
 import { Platform } from 'react-native'
 
-const isAndroid = Platform.OS === 'android'
-class EnvVars {
+export class EnvVarsService {
   private _baseURLApolo?: string
   public get baseURLApolo() {
+    const isAndroid = Platform.OS === 'android'
     if (this._baseURLApolo) {
       return this._baseURLApolo
     }
@@ -20,4 +20,4 @@ class EnvVars {
     return this._baseURLApolo
   }
 }
-export default new EnvVars()
+export default new EnvVarsService()
