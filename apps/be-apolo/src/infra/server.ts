@@ -29,10 +29,10 @@ import { IOServerService } from '@olympus/io-server-pluto'
 import { KafkaConsumerService, KafkaDataSource } from '@olympus/kafka-persefone'
 import Fastify, { FastifyInstance, FastifyReply, FastifyRequest } from 'fastify'
 import 'reflect-metadata'
+import './config/env'
 import { dataSource } from './database/typeorm/data-source'
 import { NewsRepositoryMock, UserRepositoryTypeORM } from './repositories'
-
-const port = +(process.env.PORT ?? 3001)
+const port = +process.env.PORT
 
 // BOOTSTRAP FASTIFY
 const app: FastifyInstance = Fastify({
@@ -116,12 +116,12 @@ AddingRouteInScripterSingleton.getInstance(fastifyRouterAdapter)
       name: 'DATA_SOURCE_MESSAGES',
       defaultArgs: {
         groupId: 'news-group',
-        brokers: [process.env.BROKERS as string],
+        brokers: [process.env.BROKERS],
         ssl: true,
         sasl: {
-          mechanism: process.env.MECHANISM as 'scram-sha-256',
-          username: process.env.USERNAME as string,
-          password: process.env.PASSWORD as string,
+          mechanism: process.env.MECHANISM,
+          username: process.env.USERNAME,
+          password: process.env.PASSWORD,
         },
       },
     })
